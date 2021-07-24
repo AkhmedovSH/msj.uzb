@@ -1,0 +1,140 @@
+.banner {
+  position: relative;
+  margin: 80px 0 0;
+  padding: 320px 0;
+  background-image: url("/assets/img/blog/blog-1/banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.banner .container-fluid {
+  padding: 0;
+}
+
+.banner__title {
+  position: absolute;
+  top: -280px;
+  left: 0;
+  max-width: 520px;
+  font-size: 40px;
+  color: #fff;
+  margin: 0;
+  padding: 40px 50px;
+  background-color: #252525;
+}
+
+.description {
+  margin: 50px 0;
+}
+
+.description__text {
+  font-size: 18px;
+  text-align: center;
+  color: #000;
+}
+
+.info {
+  margin: 0 0 50px;
+}
+
+.info__title {
+  font-weight: 500;
+  font-size: 30px;
+  margin: 0 0 30px;
+}
+
+.info__text {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.images__row {
+  padding: 50px 0;
+}
+
+.images__item--top {
+  margin-top: -50px;
+}
+
+.images__item img {
+  width: 100%;
+}
+
+@media (max-width: 992px) {
+  .banner {
+    background-position: 40% center;
+  }
+  .banner__title {
+    top: -220px;
+    font-size: 30px;
+    padding: 30px 40px;
+  }
+  .images__item {
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .banner {
+    padding: 250px 0;
+    background-position: 45% center;
+  }
+  .banner__title {
+    font-size: 30px;
+    padding: 25px 35px;
+    max-width: 400px;
+  }
+  .description {
+    margin: 30px 0;
+  }
+  .description__text {
+    font-size: 16px;
+  }
+  .info__title {
+    font-size: 24px;
+    margin: 0 0 20px;
+  }
+  .info__text {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 576px) {
+  .banner {
+    padding: 200px 0;
+    background-position: 35% center;
+  }
+  .banner__title {
+    top: -180px;
+    font-size: 20px;
+    text-align: left;
+    padding: 15px 25px;
+    max-width: 300px;
+  }
+  .description {
+    margin: 30px 0;
+  }
+  .description__text {
+    font-size: 14px;
+  }
+  .info {
+    margin: 30px 0;
+  }
+  .info__title {
+    font-size: 18px;
+    margin: 0 0 15px;
+  }
+  .info__text {
+    font-size: 14px;
+  }
+  .images__row {
+    padding: 0;
+  }
+  .images__item {
+    margin: 0 0 15px;
+  }
+  .images__item--top {
+    display: none;
+  }
+}
