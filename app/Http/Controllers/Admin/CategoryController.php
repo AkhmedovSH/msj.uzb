@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Category;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class CategoriesController extends Controller
+class CategoryController extends Controller
 {
     public function index(){
         $categories = Category::all();
-        return view('admin.categories.index', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     public function create(){
-        return view('admin.categories.create');
+        return view('admin.category.create');
     }
 
     public function store(Request $request){
@@ -27,7 +27,7 @@ class CategoriesController extends Controller
 
     public function edit($id){
         $category = Category::find($id);
-        return view('admin.categories.edit', ['category' => $category]);
+        return view('admin.category.edit', ['category' => $category]);
     }
 
     public function update(Request $request, $id){

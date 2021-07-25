@@ -25,9 +25,11 @@ Route::get('/for-women', [\App\Http\Controllers\MainController::class, 'forWomen
 Route::get('/public-offer', [\App\Http\Controllers\MainController::class, 'publicOffer']);
 
 
-Route::group(['prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index']);
-	Route::resource('/categories', \App\Http\Controllers\Admin\CategoriesController::class);
+	Route::resource('/category', \App\Http\Controllers\Admin\CategoryController::class);
 	Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 	Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
+	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
+	Route::resource('/size', \App\Http\Controllers\Admin\SizeController::class);
 });

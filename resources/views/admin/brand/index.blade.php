@@ -1,8 +1,5 @@
-<?php
-$title = 'Все бренды';
-$page = 'all-brands';
-include "elements/header.php";
-?>
+@extends('admin.layout')
+@section('content')
 
 <main>
 	<section class="brands categories">
@@ -48,4 +45,4 @@ include "elements/header.php";
 	</section>
 </main>
 
-<?php include "elements/footer.php" ?>
+@endsection

@@ -34,16 +34,15 @@ class ProductController extends Controller
     public function create()
     {
 
-        $attributesData = Attribute::with('filter')->get();
-        $attributes = [];
-        foreach ($attributesData as $key => $value) {
-            $attributes[$key] = $value->id;
-            $attributes[$key] =  $value->filter->title . ': ' .$value->title;
-        }
-        $categories = Category::pluck('title', 'id')->all();
-        $products = Product::pluck('title', 'id')->all();
-        $products_length_types = ProductLengthType::pluck('title', 'id')->all();
-        return view('admin.product.create', compact('attributes', 'categories', 'products', 'products_length_types'));
+        // $attributesData = Attribute::with('filter')->get();
+        // $attributes = [];
+        // foreach ($attributesData as $key => $value) {
+        //     $attributes[$key] = $value->id;
+        //     $attributes[$key] =  $value->filter->title . ': ' .$value->title;
+        // }
+        $categories = Category::pluck('name', 'id')->all();
+        $products = Product::pluck('name', 'id')->all();
+        return view('admin.product.create', compact('categories', 'products'));
     }
 
     public function store(Request $request)

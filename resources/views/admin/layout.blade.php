@@ -19,16 +19,16 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0">
-						<a href="/admin/all-products" class="header__link header__link--active">Все товары</a>
+						<a href="/admin" class="header__link header__link--active">Все товары</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-6">
-						<a href="/admin/all-categories" class="header__link">Все категории</a>
+						<a href="/admin/category" class="header__link">Все категории</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-6 mt-sm-0 mt-3">
-						<a href="/admin/all-brands" class="header__link">Все бренды</a>
+						<a href="/admin/brand" class="header__link">Все бренды</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-6 mt-md-0 mt-3">
-						<a href="/admin/all-sizes" class="header__link">Все размеры</a>
+						<a href="/admin/size" class="header__link">Все размеры</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-6 col-12 mt-lg-0 mt-3">
 						<a href="/" class="header__link">Выйти</a>
