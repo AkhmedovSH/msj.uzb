@@ -1,8 +1,5 @@
-<?php
-$title = 'Все товары';
-$page = 'all-products';
-include "../elements/header.php";
-?>
+@extends('admin.layout')
+@section('content')
 
 <main class="add-product">
 	<section class="add-product__section">
@@ -145,4 +142,4 @@ include "../elements/header.php";
 	</section>
 </main>
 
-<?php include "../elements/footer.php" ?>
+@endsection

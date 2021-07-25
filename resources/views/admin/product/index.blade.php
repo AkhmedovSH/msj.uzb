@@ -1,8 +1,5 @@
-<?php
-$title = 'Все товары';
-$page = 'all-products';
-include "elements/header.php";
-?>
+@extends('admin.layout')
+@section('content')
 
 <main>
 	<section class="products">
@@ -91,9 +88,6 @@ include "elements/header.php";
 		</div>
 	</section>
 
-	<?php include "elements/hide-modal.php" ?>
-	<?php include "elements/delete-modal.php" ?>
-
 </main>
 
-<?php include "elements/footer.php" ?>
+@endsection
