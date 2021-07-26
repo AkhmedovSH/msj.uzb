@@ -27,9 +27,18 @@ Route::get('/public-offer', [\App\Http\Controllers\MainController::class, 'publi
 
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index']);
-	Route::resource('/category', \App\Http\Controllers\Admin\CategoryController::class);
 	Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 	Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
 	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
 	Route::resource('/size', \App\Http\Controllers\Admin\SizeController::class);
+
+	Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
+	Route::get('/category/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);
+	Route::post('/category/store', [\App\Http\Controllers\Admin\CategoryController::class, 'store']);
+	Route::get('/subcategory/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'subCategory']);
+	Route::delete('/category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
+
+	/* REST */
+	Route::get('/get-main-categories', [\App\Http\Controllers\Admin\CategoryController::class, 'getMainCategoriees']);
+	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);
 });

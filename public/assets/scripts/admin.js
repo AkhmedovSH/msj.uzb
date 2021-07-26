@@ -1,16 +1,16 @@
 $(document).ready(function () {
 	// Categories tabs
-	$('.tab__trigger').on('click', function (e) {
-		e.preventDefault()
+	// $('.tab__trigger').on('click', function (e) {
+	// 	e.preventDefault()
 
-		$('.tab__trigger').not(this).removeClass('categories__link--active')
-		$(this).addClass('categories__link--active')
+	// 	$('.tab__trigger').not(this).removeClass('categories__link--active')
+	// 	$(this).addClass('categories__link--active')
 
-		$('.tab__content').removeClass('tab__content--active')
-		$($(this).attr('href')).addClass('tab__content--active')
+	// 	$('.tab__content').removeClass('tab__content--active')
+	// 	$($(this).attr('href')).addClass('tab__content--active')
 
-		$('input[name="where-to-add"]').val($(this).attr('href').slice(1))
-	})
+	// 	$('input[name="where-to-add"]').val($(this).attr('href').slice(1))
+	// })
 
 	// Select onchange tabs
 	$('.add-product__select--trigger').on('change', function (e) {

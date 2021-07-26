@@ -13,7 +13,7 @@
 
 <body>
 
-	<div class="wrapper">
+	<div id="app" class="wrapper">
 
 		<header class="header">
 			<div class="container-fluid">
@@ -44,6 +44,7 @@
 	
 	<script src="{{ asset('assets/libs/jquery/jquery.min.js')}}"></script>
 	<script src="{{ asset('assets/scripts/admin.js')}}"></script>
+	<script src="{{ asset('js/app.js')}}"></script>
 	
 </body>
 	

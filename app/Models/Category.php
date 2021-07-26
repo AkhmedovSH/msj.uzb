@@ -2,26 +2,14 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    use Sluggable;
+    protected $fillable = ['name', 'parent_id'];
 
-    protected $fillable = ['name'];
-
-    public function posts(){
-        return $this->hasMany(Post::class);
-    }
-
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'name'
-            ]
-        ];
+		public function childs() {
+			return $this->hasMany(self::class, 'parent_id', 'id');
     }
 
     public static function add($fields)

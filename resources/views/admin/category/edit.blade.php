@@ -1,8 +1,5 @@
-<?php
-$title = 'Редактировать категорию';
-$page = 'all-categories';
-include "../elements/header.php";
-?>
+@extends('admin.layout')
+@section('content')
 
 <main>
 	<section class="categories">
@@ -23,4 +20,4 @@ include "../elements/header.php";
 	</section>
 </main>
 
-<?php include "../elements/footer.php" ?>
+@endsection
