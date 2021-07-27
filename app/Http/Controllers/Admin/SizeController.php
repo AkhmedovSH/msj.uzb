@@ -18,7 +18,7 @@ class SizeController extends Controller
 	}
 
 	public function create($id) {
-			return view('admin.size.create', compact('id'));
+		return view('admin.size.create', compact('id'));
 	}
 
 	public function store(Request $request){

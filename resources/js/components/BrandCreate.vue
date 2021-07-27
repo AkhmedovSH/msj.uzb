@@ -11,7 +11,7 @@
 							<option :value="item.id" v-for="(item, index) in data" :key="index">{{ item.name }}</option>
 						</select>
 						<div class="categories__btn-wrapper">
-							<button type="button" class="categories__btn" @click="create()" >Сохранить</button>
+							<button type="button" class="categories__btn" @click="create()">Сохранить</button>
 							<a href="/admin/brand" class="categories__btn">Отмена</a>
 						</div>
 					</form>

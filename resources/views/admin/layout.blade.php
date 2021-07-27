@@ -19,7 +19,8 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0">
-						<a href="/admin" class="header__link header__link--active">Все товары</a>
+						<a href="/admin" class="header__link">Все товары</a> 
+						<!-- header__link--active -->
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-4 col-6">
 						<a href="/admin/category" class="header__link">Все категории</a>

@@ -43,6 +43,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);
 
 	Route::resource('/size', \App\Http\Controllers\Admin\SizeController::class);
+	Route::get('/size/create/{id}', [\App\Http\Controllers\Admin\SizeController::class, 'create']);
+	Route::put('/size/store/{id}', [\App\Http\Controllers\Admin\SizeController::class, 'store']);
 	Route::get('/get-sizes', [\App\Http\Controllers\Admin\SizeController::class, 'getSizes']);
 
 	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);

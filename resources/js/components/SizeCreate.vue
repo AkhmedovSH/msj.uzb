@@ -5,13 +5,13 @@
 			<div class="row">
 				<div class="col-xl-4 col-lg-6 col-md-8 col-12 offset-xl-4 offset-lg-3 offset-md-2 offset-0">
 					<h1 class="categories__title">Добавить размер</h1>
-					<form action="#!" method="#!" class="categories__form form">
-						<input type="text" placeholder="Введите размер" name="category-name" class="categories__input" required>
+					<div class="categories__form form">
+						<input type="text" placeholder="Введите размер" name="category-name" class="categories__input" v-model="sendData.name" required>
 						<div class="categories__btn-wrapper">
-							<button type="submit" name="save-category" class="categories__btn">Сохранить</button>
-							<a href="../all-sizes.php" class="categories__btn">Отмена</a>
+							<button type="button" name="save-category" class="categories__btn" @click="create()">Сохранить</button>
+							<a href="/admin/size" class="categories__btn">Отмена</a>
 						</div>
-					</form>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -21,15 +21,20 @@
 
 <script>
 	export default {
-		props: ['brand'],
+		props: ['id'],
 		data() {
 			return {
-				data: [],
+				sendData: {
+					name: '',
+					size_category_id: this.id,
+				}
 			};
     },
 		methods: {
-			redirect() {
-				window.location.href = window.location.origin + '/admin/size'
+			create() {
+				axios.put('/admin/size/store/' + this.id, this.sendData).then(response => {
+						window.location.href = window.location.origin + '/admin/size'
+				})
 			},
 		},
 		mounted() {

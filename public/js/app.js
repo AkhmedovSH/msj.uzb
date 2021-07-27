@@ -2333,15 +2333,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: ['brand'],
+  props: ['id'],
   data: function data() {
     return {
-      data: []
+      sendData: {
+        name: '',
+        size_category_id: this.id
+      }
     };
   },
   methods: {
-    redirect: function redirect() {
-      window.location.href = window.location.origin + '/admin/size';
+    create: function create() {
+      axios.put('/admin/size/store/' + this.id, this.sendData).then(function (response) {
+        window.location.href = window.location.origin + '/admin/size';
+      });
     }
   },
   mounted: function mounted() {}
@@ -2406,130 +2411,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      data: []
+      data: [],
+      dataCopy: [],
+      activeTab: 1
     };
   },
   methods: {
+    setActiveTab: function setActiveTab(tabNumber) {
+      this.data = [];
+      this.activeTab = tabNumber;
+
+      for (var i = 0; i < this.dataCopy.length; i++) {
+        if (this.dataCopy[i]['size_category_id'] == tabNumber) {
+          this.data.push(this.dataCopy[i]);
+        }
+      }
+    },
     redirect: function redirect(id) {
-      window.location.href = window.location.origin + '/admin/brand/' + id + '/edit';
+      window.location.href = window.location.origin + '/admin/size/create/' + this.activeTab;
     },
     getSizes: function getSizes() {
       var _this = this;
 
       axios.get('/admin/get-sizes').then(function (response) {
-        _this.data = response.data;
+        _this.dataCopy = response.data;
+
+        _this.setActiveTab(1);
       });
     }
   },
@@ -21605,74 +21515,82 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("main", [
-      _c("section", { staticClass: "categories" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xl-4 col-lg-6 col-md-8 col-12 offset-xl-4 offset-lg-3 offset-md-2 offset-0"
-              },
-              [
-                _c("h1", { staticClass: "categories__title" }, [
-                  _vm._v("Добавить размер")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  {
-                    staticClass: "categories__form form",
-                    attrs: { action: "#!", method: "#!" }
+  return _c("main", [
+    _c("section", { staticClass: "categories" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "col-xl-4 col-lg-6 col-md-8 col-12 offset-xl-4 offset-lg-3 offset-md-2 offset-0"
+            },
+            [
+              _c("h1", { staticClass: "categories__title" }, [
+                _vm._v("Добавить размер")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "categories__form form" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.sendData.name,
+                      expression: "sendData.name"
+                    }
+                  ],
+                  staticClass: "categories__input",
+                  attrs: {
+                    type: "text",
+                    placeholder: "Введите размер",
+                    name: "category-name",
+                    required: ""
                   },
-                  [
-                    _c("input", {
-                      staticClass: "categories__input",
-                      attrs: {
-                        type: "text",
-                        placeholder: "Введите размер",
-                        name: "category-name",
-                        required: ""
+                  domProps: { value: _vm.sendData.name },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
                       }
-                    }),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "categories__btn-wrapper" }, [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "categories__btn",
-                          attrs: { type: "submit", name: "save-category" }
-                        },
-                        [_vm._v("Сохранить")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "a",
-                        {
-                          staticClass: "categories__btn",
-                          attrs: { href: "../all-sizes.php" }
-                        },
-                        [_vm._v("Отмена")]
-                      )
-                    ])
-                  ]
-                )
-              ]
-            )
-          ])
+                      _vm.$set(_vm.sendData, "name", $event.target.value)
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("div", { staticClass: "categories__btn-wrapper" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "categories__btn",
+                      attrs: { type: "button", name: "save-category" },
+                      on: {
+                        click: function($event) {
+                          return _vm.create()
+                        }
+                      }
+                    },
+                    [_vm._v("Сохранить")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass: "categories__btn",
+                      attrs: { href: "/admin/size" }
+                    },
+                    [_vm._v("Отмена")]
+                  )
+                ])
+              ])
+            ]
+          )
         ])
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -21695,389 +21613,133 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("main", [
+    _c("section", { staticClass: "sizes categories" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "col-xl-2 col-lg-3 col-md-4 col-6 offset-xl-4 offset-lg-3 offset-md-2 offset-0"
+            },
+            [
+              _c(
+                "a",
+                {
+                  staticClass: "categories__link",
+                  class: { "categories__link--active": _vm.activeTab == 1 },
+                  on: {
+                    click: function($event) {
+                      return _vm.setActiveTab(1)
+                    }
+                  }
+                },
+                [_vm._v("Одежда")]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-xl-2 col-lg-3 col-md-4 col-6" }, [
+            _c(
+              "a",
+              {
+                staticClass: "categories__link",
+                class: { "categories__link--active": _vm.activeTab == 2 },
+                on: {
+                  click: function($event) {
+                    return _vm.setActiveTab(2)
+                  }
+                }
+              },
+              [_vm._v("Обувь")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.data, function(item, index) {
+            return _c(
+              "div",
+              { key: index, staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" },
+              [
+                _c("div", { staticClass: "sizes__item" }, [
+                  _c("span", { staticClass: "sizes__text" }, [
+                    _vm._v(_vm._s(item.name))
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(1, true)
+                ])
+              ]
+            )
+          }),
+          0
+        ),
+        _vm._v(" "),
+        _c("div", { staticClass: "row" }, [
+          _c(
+            "div",
+            {
+              staticClass:
+                "col-lg-4 col-md-6 col-sm-8 col-12 offset-lg-4 offset-md-3 offset-sm-2"
+            },
+            [
+              _c("div", { staticClass: "sizes__form form add-size-form" }, [
+                _c("input", {
+                  attrs: {
+                    type: "hidden",
+                    value: "clothes",
+                    name: "where-to-add"
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "button",
+                  {
+                    staticClass: "sizes__btn",
+                    attrs: { type: "button" },
+                    on: {
+                      click: function($event) {
+                        return _vm.redirect()
+                      }
+                    }
+                  },
+                  [_vm._v("Добавить размер")]
+                )
+              ])
+            ]
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("main", [
-      _c("section", { staticClass: "sizes categories" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-12" }, [
-              _c("h1", { staticClass: "categories__title" }, [
-                _vm._v("Выберите раздел")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-xl-2 col-lg-3 col-md-4 col-6 offset-xl-4 offset-lg-3 offset-md-2 offset-0"
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "categories__link categories__link--active tab__trigger",
-                    attrs: { href: "#clothes" }
-                  },
-                  [_vm._v("Одежда")]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-xl-2 col-lg-3 col-md-4 col-6" }, [
-              _c(
-                "a",
-                {
-                  staticClass: "categories__link tab__trigger",
-                  attrs: { href: "#shoes" }
-                },
-                [_vm._v("Обувь")]
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "row tab__content tab__content--active",
-              attrs: { id: "clothes" }
-            },
-            [
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("XS")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "row tab__content", attrs: { id: "shoes" } },
-            [
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6" }, [
-                _c("div", { staticClass: "sizes__item" }, [
-                  _c("span", { staticClass: "sizes__text" }, [_vm._v("42")]),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "sizes__form form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "sizes__delete-btn",
-                        attrs: { type: "submit", name: "delete-size" }
-                      })
-                    ]
-                  )
-                ])
-              ])
-            ]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-lg-4 col-md-6 col-sm-8 col-12 offset-lg-4 offset-md-3 offset-sm-2"
-              },
-              [
-                _c(
-                  "form",
-                  {
-                    staticClass: "sizes__form form add-size-form",
-                    attrs: {
-                      action: "/admin/actions/add-size.php",
-                      method: "#!"
-                    }
-                  },
-                  [
-                    _c("input", {
-                      attrs: {
-                        type: "hidden",
-                        value: "clothes",
-                        name: "where-to-add"
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      { staticClass: "sizes__btn", attrs: { type: "submit" } },
-                      [_vm._v("Добавить размер")]
-                    )
-                  ]
-                )
-              ]
-            )
-          ])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12" }, [
+        _c("h1", { staticClass: "categories__title" }, [
+          _vm._v("Выберите раздел")
         ])
       ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "sizes__form form" }, [
+      _c("button", {
+        staticClass: "sizes__delete-btn",
+        attrs: { type: "button", name: "delete-size" }
+      })
     ])
   }
 ]
