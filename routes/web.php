@@ -29,8 +29,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index']);
 	Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 	Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
-	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
-	Route::resource('/size', \App\Http\Controllers\Admin\SizeController::class);
+	
+	
 
 	Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
 	Route::get('/category/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);
@@ -41,4 +41,10 @@ Route::group(['prefix' => 'admin'], function () {
 	/* REST */
 	Route::get('/get-main-categories', [\App\Http\Controllers\Admin\CategoryController::class, 'getMainCategoriees']);
 	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);
+
+	Route::resource('/size', \App\Http\Controllers\Admin\SizeController::class);
+	Route::get('/get-sizes', [\App\Http\Controllers\Admin\SizeController::class, 'getSizes']);
+
+	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
+	Route::get('/get-brands', [\App\Http\Controllers\Admin\BrandController::class, 'getBrands']);
 });

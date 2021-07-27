@@ -1,6 +1,6 @@
 @extends('admin.layout')
 @section('content')
 
-<size-index></size-index>
+<brand-edit :brand={{ $brand }}></brand-edit>
 
 @endsection

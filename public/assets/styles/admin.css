@@ -271,6 +271,12 @@ button {
   margin: 0;
 }
 
+.categories .subcategories__form a {
+  padding: 12px 15px;
+  width: auto;
+  margin: 0;
+}
+
 .categories .subcategories__actions {
   margin: 0 0 0 auto;
 }

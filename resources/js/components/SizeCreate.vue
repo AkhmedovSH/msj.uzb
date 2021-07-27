@@ -1,9 +1,4 @@
-<?php
-$title = 'Добавить размер';
-$page = 'all-sizes';
-include "../elements/header.php";
-?>
-
+<template>
 <main>
 	<section class="categories">
 		<div class="container-fluid">
@@ -22,5 +17,22 @@ include "../elements/header.php";
 		</div>
 	</section>
 </main>
+</template>
 
-<?php include "../elements/footer.php" ?>
+<script>
+	export default {
+		props: ['brand'],
+		data() {
+			return {
+				data: [],
+			};
+    },
+		methods: {
+			redirect() {
+				window.location.href = window.location.origin + '/admin/size'
+			},
+		},
+		mounted() {
+		}
+	}
+</script>
