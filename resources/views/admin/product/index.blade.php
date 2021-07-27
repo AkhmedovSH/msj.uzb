@@ -1,9 +1,7 @@
 @extends('admin.layout')
 @section('content')
 
-<product-create>
-
-</product-create>
+<product-index></product-index>
 
 
 

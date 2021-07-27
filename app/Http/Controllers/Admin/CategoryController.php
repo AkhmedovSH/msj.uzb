@@ -9,7 +9,10 @@ use App\Http\Controllers\Controller;
 class CategoryController extends Controller
 {
 		public function getMainCategoriees() {
-			$data = Category::where('parent_id', 0)->with('childs')->get();
+			$data = Category::where('parent_id', 0)
+			->with(['childs' => function ($query) {
+				$query->with('childs');
+			}])->get();
 			return response()->json($data, 200);
 		}
 		
