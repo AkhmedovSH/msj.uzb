@@ -6,7 +6,7 @@
 					<div class="modal__body">
 						<h1 class="modal__title">Вы точно хотите удалить?</h1>
 						<form action="#!" method="#!" class="modal__form">
-							<a href="#!" class="modal__link">Нет</a>
+							<a href="javascript:void(0);" class="modal__link">Нет</a>
 							<button type="submit" name="delete-product" class="modal__btn">Да</button>
 						</form>
 					</div>

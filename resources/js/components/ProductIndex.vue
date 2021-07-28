@@ -26,7 +26,7 @@
 							<form action="#!" method="#!" class="products__form form">
 								<input type="checkbox" checked name="current-product" class="products__input products__input-checkbox">
 							</form>
-							<a href="#!" class="products__link">
+							<a href="javascript:void(0);" class="products__link">
 								<span class="products__image">
 									<img src="/assets/img/product/1.jpg" alt="Product Image">
 								</span>

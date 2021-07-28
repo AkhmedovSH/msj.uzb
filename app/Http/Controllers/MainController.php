@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
@@ -16,14 +17,15 @@ class MainController extends Controller
 
 	public function categoryProducts($id)
 	{
-		$data = Product::where('category_id', $id)->paginate(12);
-		return view('front.index');
+		$category = Category::where('id', $id)->first();
+		$data = Product::where('category_id', $id)->orderBy('id', 'desc')->paginate(12);
+		return view('front.categoryProducts', compact('category', 'data'));
 	}
 
 	public function brandProducts($id)
 	{
 		$data = Product::where('brand_id', $id)->paginate(12);
-		return view('front.index');
+		return view('front.brandProducts');
 	}
 
 	public function basket()

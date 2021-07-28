@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/category-products/{id}', [\App\Http\Controllers\MainController::class, 'categoryProducts'])->name('category.products');
 
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
 Route::get('/basket', [\App\Http\Controllers\MainController::class, 'basket']);
@@ -24,14 +25,17 @@ Route::get('/for-men', [\App\Http\Controllers\MainController::class, 'forMen']);
 Route::get('/for-women', [\App\Http\Controllers\MainController::class, 'forWomen']);
 Route::get('/public-offer', [\App\Http\Controllers\MainController::class, 'publicOffer']);
 
+Route::get('/cart', 'CartController@index')->name('cart');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
+Route::patch('/cart/update', 'CartController@update')->name('cart.update');
+
 
 Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index']);
 	Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 	Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
 	
-	
-
 	Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
 	Route::get('/category/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);
 	Route::post('/category/store', [\App\Http\Controllers\Admin\CategoryController::class, 'store']);

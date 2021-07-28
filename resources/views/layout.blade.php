@@ -42,264 +42,36 @@
 
 							<nav class="header__nav nav">
 								<ul class="nav__list">
+									@foreach ($categories as $item)
 									<li class="nav__item nav__item--dropdown">
-										<a href="#!" class="nav__link">Для женщин</a>
+										<a href="javascript:void(0);" class="nav__link">{{ $item->name }}</a>
 										<button class="dropdown-btn mobile-visible"></button>
 										<div class="nav--secondary">
+											@foreach ($item->childs as $item2)
 											<ul class="nav__list nav__list--secondary offset-lg-1">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Одежда</li>
+												<li class="nav__item nav__item--secondary nav__item--secondary-title">{{ $item2->name }}</li>
 												<div class="nav__item--secondary-dropdown">
+													@foreach ($item2->childs as $item3)
 													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Платья</a>
+														<a href="{{ route('category.products', $item3->id) }}" class="nav__link nav__link--secondary">{{ $item3->name }}</a>
 													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Юбки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Брюки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Футболки и майки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Джинсы</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Шорты</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Блузки и рубашки</a>
-													</li>
+													@endforeach
 												</div>
 											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Обувь</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Летняя обувь</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Спортивная</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Зимняя</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Туфли</a>
-													</li>
-												</div>
-											</ul>
+											@endforeach
 											<ul class="nav__list nav__list--secondary">
 												<li class="nav__item nav__item--secondary nav__item--secondary-title">Бренды</li>
 												<div class="nav__item--secondary-dropdown">
+													@foreach ($item->brands as $brand)
 													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">H4</a>
+														<a href="/for-women" class="nav__link nav__link--secondary">{{ $brand->name }}</a>
 													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Eurofashion</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Speedway</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">Redesign</a>
-													</li>
+													@endforeach
 												</div>
 											</ul>
 										</div>
 									</li>
-									<li class="nav__item nav__item--dropdown">
-										<a href="#!" class="nav__link">Для мужчин</a>
-										<button class="dropdown-btn mobile-visible"></button>
-										<div class="nav--secondary">
-											<ul class="nav__list nav__list--secondary offset-lg-1">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Одежда</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Футболки и поло</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Брюки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Рубашки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Шорты</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Джинсы</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Верхняя одежда</a>
-													</li>
-												</div>
-											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Обувь</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Летняя обувь</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Спортивная</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Зимняя</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Туфли</a>
-													</li>
-												</div>
-											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Бренды</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">H4</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Eurofashion</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Speedway</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-men" class="nav__link nav__link--secondary">Redesign</a>
-													</li>
-												</div>
-											</ul>
-										</div>
-									</li>
-									<li class="nav__item nav__item--dropdown">
-										<a href="#!" class="nav__link">Для девочек</a>
-										<button class="dropdown-btn mobile-visible"></button>
-										<div class="nav--secondary">
-											<ul class="nav__list nav__list--secondary offset-lg-1">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Одежда</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Платья</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Юбки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Брюки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Футболки и майки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Джинсы</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Шорты</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Блузки и рубашки</a>
-													</li>
-												</div>
-											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Обувь</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Летняя обувь</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Спортивная</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Зимняя</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Туфли</a>
-													</li>
-												</div>
-											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Бренды</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">H4</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Eurofashion</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Speedway</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-girls" class="nav__link nav__link--secondary">Redesign</a>
-													</li>
-												</div>
-											</ul>
-										</div>
-									</li>
-									<li class="nav__item nav__item--dropdown">
-										<a href="#!" class="nav__link">Для мальчиков</a>
-										<button class="dropdown-btn mobile-visible"></button>
-										<div class="nav--secondary">
-											<ul class="nav__list nav__list--secondary offset-lg-1">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Одежда</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Футболки и поло</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Брюки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Рубашки</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Шорты</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Джинсы</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Верхняя одежда</a>
-													</li>
-												</div>
-											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Обувь</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Летняя обувь</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Спортивная</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Зимняя</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Туфли</a>
-													</li>
-												</div>
-											</ul>
-											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Бренды</li>
-												<div class="nav__item--secondary-dropdown">
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">H4</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Eurofashion</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Speedway</a>
-													</li>
-													<li class="nav__item nav__item--secondary">
-														<a href="/for-boys" class="nav__link nav__link--secondary">Redesign</a>
-													</li>
-												</div>
-											</ul>
-										</div>
-									</li>
+									@endforeach
 									<li class="nav__item">
 										<a href="/delivery.php" class="nav__link">Доставка</a>
 									</li>
@@ -308,7 +80,7 @@
 									</li>
 								</ul>
 								<div class="change-language mobile-visible">
-									<a href="#!" class="uz-lang change-language__link">UZ</a>
+									<a href="javascript:void(0);" class="uz-lang change-language__link">UZ</a>
 									<p href="#!" class="ru-lang change-language__link change-language__link--active">RU</p>
 								</div>
 							</nav>
@@ -321,7 +93,7 @@
 									</a>
 								</div>
 								<div class="change-language mobile-hidden">
-									<a href="#!" class="uz-lang change-language__link">UZ</a>
+									<a href="javascript:void(0);" class="uz-lang change-language__link">UZ</a>
 									<p href="#!" class="ru-lang change-language__link change-language__link--active">RU</p>
 								</div>
 							</div>
@@ -375,7 +147,7 @@
 						<p class="footer__socials-title">Мы с соц. сетях</p>
 						<ul class="footer__socials-list">
 							<!-- <li class="footer__socials-item">
-								<a href="#!" class="footer__socials-link">
+								<a href="javascript:void(0);" class="footer__socials-link">
 									<img src="/public/assets/icons/facebook.svg" alt="Facebook Logo">
 								</a>
 							</li> -->
