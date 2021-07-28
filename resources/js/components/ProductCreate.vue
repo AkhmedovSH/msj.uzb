@@ -31,89 +31,85 @@
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Название товара
-						<input type="text" name="product-name" class="add-product__input">
+						<input type="text" name="product-name" class="add-product__input" v-model="sendData.name">
 					</label>
 				</div>
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Цена
-						<input type="number" name="product-price" class="add-product__input">
+						<input type="number" name="product-price" class="add-product__input" v-model="sendData.price">
 					</label>
 				</div>
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Характеристики
-						<textarea name="characteristics" class="add-product__input"></textarea>
+						<textarea name="characteristics" class="add-product__input" v-model="sendData.characteristics"></textarea>
 					</label>
 				</div>
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Описание
-						<textarea name="description" class="add-product__input"></textarea>
+						<textarea name="description" class="add-product__input" v-model="sendData.description"></textarea>
 					</label>
 				</div>
 
-				<div class="col-12">
-					<span class="add-product__text">Размеры:</span>
+				<div class="col-6">
+					<span class="add-product__text">Размеры Одежды:</span>
 					<ul class="add-product__list">
-						<li class="add-product__item">
+						<li class="add-product__item" v-for="(item, index) in sizes1" :key="index">
 							<label class="add-product__label add-product__label--row">
-								XS
-								<input type="checkbox" name="sizes[]" value="xs" class="add-product__input add-product__input-checkbox">
-							</label>
-						</li>
-						<li class="add-product__item">
-							<label class="add-product__label add-product__label--row">
-								S
-								<input type="checkbox" name="sizes[]" value="s" class="add-product__input add-product__input-checkbox">
-							</label>
-						</li>
-						<li class="add-product__item">
-							<label class="add-product__label add-product__label--row">
-								M
-								<input type="checkbox" name="sizes[]" value="m" class="add-product__input add-product__input-checkbox">
-							</label>
-						</li>
-						<li class="add-product__item">
-							<label class="add-product__label add-product__label--row">
-								XS
-								<input type="checkbox" name="sizes[]" value="xs" class="add-product__input add-product__input-checkbox">
-							</label>
-						</li>
-						<li class="add-product__item">
-							<label class="add-product__label add-product__label--row">
-								S
-								<input type="checkbox" name="sizes[]" value="s" class="add-product__input add-product__input-checkbox">
-							</label>
-						</li>
-						<li class="add-product__item">
-							<label class="add-product__label add-product__label--row">
-								M
-								<input type="checkbox" name="sizes[]" value="m" class="add-product__input add-product__input-checkbox">
+								{{ item.name }}
+								<input type="checkbox" class="add-product__input add-product__input-checkbox" :value="item.id" v-model="sendData.sizes">
 							</label>
 						</li>
 					</ul>
-					<a href="../all-sizes.php" class="add-product__link">Редактировать</a>
+					<a href="/admin/size" class="add-product__link">Редактировать</a>
+				</div>
+				
+				<div class="col-6">
+					<span class="add-product__text">Размеры Обуви:</span>
+					<ul class="add-product__list">
+						<li class="add-product__item" v-for="(item, index) in sizes2" :key="index">
+							<label class="add-product__label add-product__label--row">
+								{{ item.name }}
+								<input type="checkbox" class="add-product__input add-product__input-checkbox" :value="item.id" v-model="sendData.sizes">
+							</label>
+						</li>
+					</ul>
+					<a href="/admin/size" class="add-product__link">Редактировать</a>
 				</div>
 
-				<div class="col-lg-6 col-12">
+				<!-- <div class="col-lg-6 col-12">
 					<label class="add-product__label">
 						Добавление фото (Таблицы размеров)
 						<input type="file" name="table-size-image" class="add-product__input">
+					</label>
+				</div> -->
+
+				<div class="col-lg-6 col-12">
+					<label class="add-product__label">
+						Добавление фото (Главная)
+						<input type="file" class="add-product__input" ref="file">
 					</label>
 				</div>
 
 				<div class="col-lg-6 col-12">
 					<label class="add-product__label">
 						Добавление фото (Вертикальной ориентации)
-						<input type="file" multiple name="product_images[]" class="add-product__input">
+						<input type="file" multiple class="add-product__input" ref="files">
 					</label>
 				</div>
 
+				<div class="col-xl-4 col-md-6 col-12 offset-xl-4 offset-md-3 offset-0" style="text-align:center; cursor: pointer;">
+					<a class="add-product__link" @click="create()">Опубликовать</a>
+				</div>
+
 			</form>
+
+			
 		</div>
 	</section>
 </main>
@@ -133,12 +129,16 @@
 					characteristics: '',
 					brand_id: '',
 					category_id: '',
+					image: '',
 					categories1: 1,
 					categories2: null,
+					sizes: [],
 				},
 				categories1: [],
 				categories2: [],
 				categories3: [],
+				sizes1: [],
+				sizes2: [],
 			};
     },
 		methods: {
@@ -165,13 +165,33 @@
 				for (let i = 0; i < this.categories2.length; i++) {
 					if(this.categories2[i]['id'] == this.sendData.categories2) {
 						this.categories3 = this.categories2[i]['childs']
-						this.sendData.categories3 = this.categories2[0]['id']
+						this.sendData.category_id = this.categories2[0]['id']
 					}
 				}
 			},
 			create() {
-				axios.post('/admin/brand', this.sendData).then(response => {
-					window.location.href = window.location.origin + '/admin/brand'
+				let formData = new FormData();
+				for (let i = 0; i < this.$refs.files.files.length; i++) {
+					formData.append('images[]', this.$refs.files.files[i])
+				}
+
+				if(this.$refs.file.files.length) {
+					formData.append('image', this.$refs.file.files[0])
+				}
+
+				formData.append('images[]', this.$refs.files.files[i])
+				formData.append('name', this.sendData.name)
+				formData.append('price', this.sendData.price)
+				formData.append('description', this.sendData.description)
+				formData.append('characteristics', this.sendData.characteristics)
+				formData.append('brand_id', this.sendData.brand_id)
+				formData.append('sizes', this.sendData.sizes)
+				formData.append('category_id', this.sendData.category_id)
+
+				axios.post('/admin/product', formData, {
+					headers: {"Content-Type": "multipart/form-data","Accept": "application/json"},
+				}).then(response => {
+					//window.location.href = window.location.origin + '/admin/brand'
 				})
 			},
 			getMainCategories() {
@@ -184,11 +204,23 @@
 				axios.get('/admin/get-brands').then(response => {
 					this.brandsCopy = response.data
 				})
+			},
+			getSizes() {
+				axios.get('/admin/get-sizes').then(response => {
+					for (let i = 0; i < response.data.length; i++) {
+						if(response.data[i]['size_category_id'] == 1) {
+							this.sizes1.push(response.data[i])
+						} else {
+							this.sizes2.push(response.data[i])
+						}
+					}
+				})
 			}
 		},
 		async mounted() {
 			await this.getBrands()
 			await this.getMainCategories()
+			await this.getSizes()
 		}
 	}
 </script>

@@ -33,13 +33,6 @@ class ProductController extends Controller
      */
     public function create()
     {
-
-        // $attributesData = Attribute::with('filter')->get();
-        // $attributes = [];
-        // foreach ($attributesData as $key => $value) {
-        //     $attributes[$key] = $value->id;
-        //     $attributes[$key] =  $value->filter->title . ': ' .$value->title;
-        // }
         $categories = Category::pluck('name', 'id')->all();
         $products = Product::pluck('name', 'id')->all();
         return view('admin.product.create', compact('categories', 'products'));
@@ -49,52 +42,20 @@ class ProductController extends Controller
     {
         //dd($request->all());
         $this->validate($request, [
-            'title' => 'required',
+            'name' => 'required',
             'category_id' => 'required',
             'image' => 'nullable|image',
         ]);
 
         $data = Product::add($request->all());
-        $data->uploadImage($request->file('image'));
+        //$data->uploadImage($request->file('image'));
         $data->uploadMultipleImages($request->file('images'));
-        $data->uploadTwoImages($request->file('two_images'));
-        return redirect()->route('product.index');
+        return response()->json($data, 200);
     }
 
     public function edit($id)
     {
-        $data = Product::find($id);
         
-        $attributesData = Attribute::with('filter')->get();
-        $attributes = [];
-        foreach ($attributesData as $key => $value) {
-            $attributes[$key] = $value->id;
-            $attributes[$key] =  $value->filter->title . ': ' .$value->title;
-        }
-       
-        if($data->attribute_ids != null) {
-            $selectedAttributes = Attribute::whereIn('id', $data->attribute_ids)->pluck('id')->all();
-        }else {
-            $selectedAttributes = [];
-        }
-
-        $categories = Category::pluck('title', 'id')->all();
-        $products = Product::pluck('title', 'id')->all();
-        if($data->collection_product_ids != null) {
-            $selectedProducts = Product::whereIn('id', $data->collection_product_ids)->pluck('id')->all();
-        }else {
-            $selectedProducts = [];
-				}
-				
-				if($data->mattress_product_ids != null) {
-					$selectedMattressProducts = Product::whereIn('id', $data->mattress_product_ids)->pluck('id')->all();
-				}else {
-					$selectedMattressProducts = [];
-				}
-
-        $products_length_types = ProductLengthType::pluck('title', 'id')->all();
-        //dd($attributes, $selectedAttributes);
-        return view('admin.product.edit', compact('data', 'attributes', 'categories', 'selectedAttributes', 'products', 'selectedProducts', 'selectedMattressProducts', 'products_length_types'));
     }
 
     /**
@@ -107,7 +68,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'title' => 'required',
+            'name' => 'required',
             'category_id' => 'required',
             'image' => 'nullable|image'
         ]);
@@ -116,7 +77,6 @@ class ProductController extends Controller
         $data->edit($request->all());
         $data->uploadImage($request->file('image'));
         $data->uploadMultipleImages($request->file('images'));
-        $data->uploadTwoImages($request->file('two_images'));
         return redirect()->route('product.index');
     }
 

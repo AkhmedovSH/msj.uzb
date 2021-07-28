@@ -2,12 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
 	public function index()
 	{
+		$recommended = Product::inRandomOrder()->limit(4)->get();
+		$newProducts = Product::orderBy('id', 'desc')->limit(8);
+		return view('front.index', compact('newProducts', 'recommended'));
+	}
+
+	public function categoryProducts($id)
+	{
+		$data = Product::where('category_id', $id)->paginate(12);
+		return view('front.index');
+	}
+
+	public function brandProducts($id)
+	{
+		$data = Product::where('brand_id', $id)->paginate(12);
 		return view('front.index');
 	}
 

@@ -19,6 +19,7 @@ window.Vue = require('vue').default;
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
+Vue.component('product-index', require('./components/ProductIndex.vue').default);
 Vue.component('product-create', require('./components/ProductCreate.vue').default);
 Vue.component('category-index', require('./components/CategoryIndex.vue').default);
 Vue.component('child-categories', require('./components/ChildCategories.vue').default);
