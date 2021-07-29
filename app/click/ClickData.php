@@ -5,7 +5,7 @@ namespace App\click;
 
 class ClickData {
 
-    const SECRET_KEY = "QjS2FvBvuEF6Ix";
+    const SECRET_KEY = "4DmlbY5G9z";
     const MIN_AMOUNT = 100;
     const MAX_AMOUNT = 100000000;
 

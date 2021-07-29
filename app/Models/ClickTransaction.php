@@ -9,8 +9,9 @@ class ClickTransaction extends Model
     protected $table = 'transactions_click';
     protected $guarded =[];
     public $timestamps = false;
+
     public function user(){
-      return $this->belongsTo(User::class, 'user_id', 'id');
+      return $this->belongsTo(User::class, 'phone', 'phone');
     }
 
    const STATUS_CANCEL = -1;
