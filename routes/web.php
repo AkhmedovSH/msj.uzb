@@ -13,9 +13,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/category-products/{id}', [\App\Http\Controllers\MainController::class, 'categoryProducts'])->name('category.products');
+Route::get('/product/{id}', [\App\Http\Controllers\MainController::class, 'singleProduct'])->name('product');
+Route::get('/basket', [\App\Http\Controllers\CartController::class, 'index'])->name('basket');
+Route::get('/order', [\App\Http\Controllers\OrderController::class, 'index'])->name('order');
+Route::post('/payment', [\App\Http\Controllers\OrderController::class, 'payment'])->name('payment');
 
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
-Route::get('/basket', [\App\Http\Controllers\MainController::class, 'basket']);
 Route::get('/blog', [\App\Http\Controllers\MainController::class, 'blog']);
 Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery']);
 Route::get('/favourites', [\App\Http\Controllers\MainController::class, 'favourites']);
@@ -25,10 +28,10 @@ Route::get('/for-men', [\App\Http\Controllers\MainController::class, 'forMen']);
 Route::get('/for-women', [\App\Http\Controllers\MainController::class, 'forWomen']);
 Route::get('/public-offer', [\App\Http\Controllers\MainController::class, 'publicOffer']);
 
-Route::get('/cart', 'CartController@index')->name('cart');
-Route::post('/cart', 'CartController@store')->name('cart.store');
-Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
-Route::patch('/cart/update', 'CartController@update')->name('cart.update');
+Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
+Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+Route::delete('/cart/{product}', [\App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
+Route::patch('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 
 
 Route::group(['prefix' => 'admin'], function () {
@@ -43,6 +46,8 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::delete('/category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
 
 	/* REST */
+	Route::get('/get-products', [\App\Http\Controllers\Admin\ProductController::class, 'getProducts']);
+
 	Route::get('/get-main-categories', [\App\Http\Controllers\Admin\CategoryController::class, 'getMainCategoriees']);
 	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);
 

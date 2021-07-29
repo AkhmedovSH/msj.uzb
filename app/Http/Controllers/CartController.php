@@ -16,14 +16,11 @@ class CartController extends Controller
     public function store(Request $request)
     {
         $id = $request->id;
-        $title = $request->title;
-        $part_number = $request->part_number;
+        $name = $request->name;
         $price = $request->price;
-        $sale = $request->sale;
-       
+				
         if($price == null){ $price = 0; }
-        if($sale != 0){ $price = $price - ($price * $sale / 100); }
-        Cart::add($id, $title, 1, $price)->associate('App\Product');
+        Cart::add($id, $name, 1, $price)->associate('App\Models\Product');
         return redirect()->back();
     }
 

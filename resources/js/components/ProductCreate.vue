@@ -179,7 +179,6 @@
 					formData.append('image', this.$refs.file.files[0])
 				}
 
-				formData.append('images[]', this.$refs.files.files[i])
 				formData.append('name', this.sendData.name)
 				formData.append('price', this.sendData.price)
 				formData.append('description', this.sendData.description)
@@ -219,8 +218,8 @@
 		},
 		async mounted() {
 			await this.getBrands()
-			await this.getMainCategories()
 			await this.getSizes()
+			await this.getMainCategories()
 		}
 	}
 </script>

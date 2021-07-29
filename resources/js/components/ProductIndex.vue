@@ -22,7 +22,7 @@
 				<div class="row mt-5">
 					<div class="col-lg-10 col-12 offset-lg-1">
 						
-						<div class="products__item">
+						<div class="products__item" v-for="(item, index) in data" :key="index">
 							<form action="#!" method="#!" class="products__form form">
 								<input type="checkbox" checked name="current-product" class="products__input products__input-checkbox">
 							</form>
@@ -30,7 +30,7 @@
 								<span class="products__image">
 									<img src="/assets/img/product/1.jpg" alt="Product Image">
 								</span>
-								<span class="products__name">Ветровка женская с классическими брюками</span>
+								<span class="products__name">{{ item.name }}</span>
 							</a>
 							<div class="products__actions actions">
 								<!-- Класс для переключения состояния - visible / invisible -->
@@ -61,8 +61,23 @@
 
 <script>
 	export default {
+		data() {
+			return {
+				data: [],
+			};
+    },
+		methods: {
+			redirect(id) {
+				window.location.href = window.location.origin + '/admin/product/' + id + '/edit'
+			},
+			getProducts() {
+				axios.get('/admin/get-products').then(response => {
+					this.data = response.data.data
+				})
+			}
+		},
 		mounted() {
-			console.log('Component mounted.')
+			this.getProducts()
 		}
 	}
 </script>

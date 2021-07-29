@@ -11,30 +11,11 @@
 
 						<div class="product-content__slider-wrapper product-content__slider-wrapper--active">
 							<div class="product-content__slider">
+								@foreach(json_decode($data->images) as $item)
 								<div class="product-content__slider-item">
-									<img src="/assets/img/product/1.jpg" alt="Product Image">
+									<img src="{{ '/uploads/products/' . $item->image }}" alt="Product Image">
 								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/2.jpg" alt="Product Image">
-								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/3.jpg" alt="Product Image">
-								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/4.jpg" alt="Product Image">
-								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/5.jpg" alt="Product Image">
-								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/6.jpg" alt="Product Image">
-								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/7.jpg" alt="Product Image">
-								</div>
-								<div class="product-content__slider-item">
-									<img src="/assets/img/product/8.jpg" alt="Product Image">
-								</div>
+								@endforeach
 							</div>
 							<button class="product-content__slider-prev"></button>
 							<button class="product-content__slider-next"></button>
@@ -48,13 +29,13 @@
 
 						<div class="product-sidebar__head">
 							<p class="product-sidebar__title">
-								Ветровка женская с классическими брюками
+								{{ $data->name }}
 							</p>
 							<button class="product-sidebar__wishlist-btn"></button>
 						</div>
 
 						<ul class="product-sidebar__price-list">
-							<li data-id="#xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">230 000 сум</li>
+							<li data-id="#xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">{{ $data->price }} сум</li>
 							<li data-id="#s-size" class="product-sidebar__price-item">250 000 сум</li>
 							<li data-id="#m-size" class="product-sidebar__price-item">300 000 сум</li>
 							<li data-id="#l-size" class="product-sidebar__price-item">350 000 сум</li>
@@ -99,11 +80,9 @@
 						<button class="product-sidebar__size-btn">Таблица размеров</button>
 						<form action="/cart" method="post">
 							@csrf
-							<input type="hidden" name="id" value="product.id">
-							<input type="hidden" name="title" value="product.title">
-							<input type="hidden" name="part_number" value="product.part_number">
-							<input type="hidden" name="price" value="product.price">
-							<input type="hidden" name="sale" value="product.sale">
+							<input type="hidden" name="id" value="{{ $data->id }}">
+							<input type="hidden" name="name" value="{{ $data->name }}">
+							<input type="hidden" name="price" value="{{ $data->price }}">
 							<button type="submit" class="product-sidebar__basket-btn">Положить в корзину</button>
 						</form>
 						
@@ -148,7 +127,7 @@
 						<div class="product-sidebar__description">
 							<p class="product-sidebar__description-title">Описание</p>
 							<p class="product-sidebar__description-text">
-								Для смелых девушек, которые не боятся сложных образов, модель из летней коллекции подойдет идеально. Ассиметричная застежка, планка на груди, «крылышки» на плечах, небольшой воротник-«стойка» подчеркнут вашу индивидуальность. Ветровка будет отлично смотреться с джинсами бойфрендами, мом или «бананами». Можете поэкспериментировать с юбками разной длины и фактуры. Не забудьте про удобную обувь.
+								{{ $data->description }}
 							</p>
 						</div>
 

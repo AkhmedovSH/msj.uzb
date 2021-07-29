@@ -6,8 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="/favicon.svg" type="image/x-icon">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/bootstrap-grid/bootstrap-grid.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/admin.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/bootstrap-grid/bootstrap-grid.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/styles/admin.css')}}">
 	<title>Msj Admin</title>
 </head>
 
@@ -43,9 +43,9 @@
 	</div>
 	<!-- /.wrapper -->
 	
-	<script src="{{ asset('public/assets/libs/jquery/jquery.min.js')}}"></script>
-	<script src="{{ asset('public/assets/scripts/admin.js')}}"></script>
-	<script src="{{ asset('public/js/app.js')}}"></script>
+	<script src="{{ asset('/assets/libs/jquery/jquery.min.js')}}"></script>
+	<script src="{{ asset('/assets/scripts/admin.js')}}"></script>
+	<script src="{{ asset('/js/app.js')}}"></script>
 	
 </body>
 	

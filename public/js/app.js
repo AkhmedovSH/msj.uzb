@@ -2396,27 +2396,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     selectCategory1: function selectCategory1() {
       this.brands = [];
 
-      for (var _i = 0; _i < this.categories1.length; _i++) {
-        if (this.categories1[_i]['id'] == this.sendData.categories1) {
-          this.categories2 = this.categories1[_i]['childs'];
+      for (var i = 0; i < this.categories1.length; i++) {
+        if (this.categories1[i]['id'] == this.sendData.categories1) {
+          this.categories2 = this.categories1[i]['childs'];
           this.sendData.categories2 = this.categories2[0]['id'];
-          this.categories3 = this.categories1[_i]['childs'][0]['childs'];
-          this.sendData.category_id = this.categories1[_i]['childs'][0]['childs'][0]['id'];
+          this.categories3 = this.categories1[i]['childs'][0]['childs'];
+          this.sendData.category_id = this.categories1[i]['childs'][0]['childs'][0]['id'];
         }
       }
 
-      for (var _i2 = 0; _i2 < this.brandsCopy.length; _i2++) {
-        if (this.categories1[_i2]['id'] == this.brandsCopy[_i2]['category_id']) {
-          this.brands.push(this.brandsCopy[_i2]);
+      for (var _i = 0; _i < this.brandsCopy.length; _i++) {
+        if (this.categories1[_i]['id'] == this.brandsCopy[_i]['category_id']) {
+          this.brands.push(this.brandsCopy[_i]);
         }
       }
 
       this.sendData.brand_id = this.brands[0]['category_id'];
     },
     selectCategory2: function selectCategory2() {
-      for (var _i3 = 0; _i3 < this.categories2.length; _i3++) {
-        if (this.categories2[_i3]['id'] == this.sendData.categories2) {
-          this.categories3 = this.categories2[_i3]['childs'];
+      for (var i = 0; i < this.categories2.length; i++) {
+        if (this.categories2[i]['id'] == this.sendData.categories2) {
+          this.categories3 = this.categories2[i]['childs'];
           this.sendData.category_id = this.categories2[0]['id'];
         }
       }
@@ -2424,15 +2424,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     create: function create() {
       var formData = new FormData();
 
-      for (var _i4 = 0; _i4 < this.$refs.files.files.length; _i4++) {
-        formData.append('images[]', this.$refs.files.files[_i4]);
+      for (var i = 0; i < this.$refs.files.files.length; i++) {
+        formData.append('images[]', this.$refs.files.files[i]);
       }
 
       if (this.$refs.file.files.length) {
         formData.append('image', this.$refs.file.files[0]);
       }
 
-      formData.append('images[]', this.$refs.files.files[i]);
       formData.append('name', this.sendData.name);
       formData.append('price', this.sendData.price);
       formData.append('description', this.sendData.description);
@@ -2468,11 +2467,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       axios.get('/admin/get-sizes').then(function (response) {
-        for (var _i5 = 0; _i5 < response.data.length; _i5++) {
-          if (response.data[_i5]['size_category_id'] == 1) {
-            _this3.sizes1.push(response.data[_i5]);
+        for (var i = 0; i < response.data.length; i++) {
+          if (response.data[i]['size_category_id'] == 1) {
+            _this3.sizes1.push(response.data[i]);
           } else {
-            _this3.sizes2.push(response.data[_i5]);
+            _this3.sizes2.push(response.data[i]);
           }
         }
       });
@@ -2491,11 +2490,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               _context.next = 4;
-              return _this4.getMainCategories();
+              return _this4.getSizes();
 
             case 4:
               _context.next = 6;
-              return _this4.getSizes();
+              return _this4.getMainCategories();
 
             case 6:
             case "end":
@@ -2582,8 +2581,25 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      data: []
+    };
+  },
+  methods: {
+    redirect: function redirect(id) {
+      window.location.href = window.location.origin + '/admin/product/' + id + '/edit';
+    },
+    getProducts: function getProducts() {
+      var _this = this;
+
+      axios.get('/admin/get-products').then(function (response) {
+        _this.data = response.data.data;
+      });
+    }
+  },
   mounted: function mounted() {
-    console.log('Component mounted.');
+    this.getProducts();
   }
 });
 
@@ -22998,202 +23014,204 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("main", [
+    _c("section", { staticClass: "products" }, [
+      _c("div", { staticClass: "container-fluid" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "row mt-5" }, [
+          _c(
+            "div",
+            { staticClass: "col-lg-10 col-12 offset-lg-1" },
+            _vm._l(_vm.data, function(item, index) {
+              return _c("div", { key: index, staticClass: "products__item" }, [
+                _vm._m(1, true),
+                _vm._v(" "),
+                _c(
+                  "a",
+                  {
+                    staticClass: "products__link",
+                    attrs: { href: "javascript:void(0);" }
+                  },
+                  [
+                    _vm._m(2, true),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "products__name" }, [
+                      _vm._v(_vm._s(item.name))
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _vm._m(3, true)
+              ])
+            }),
+            0
+          )
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("main", [
-      _c("section", { staticClass: "products" }, [
-        _c("div", { staticClass: "container-fluid" }, [
-          _c("div", { staticClass: "row" }, [
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0"
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass: "header__link",
-                    attrs: { href: "/admin/product/create" }
-                  },
-                  [_vm._v("Добавить товар")]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-4 offset-md-3 offset-0"
-              },
-              [
-                _c(
-                  "form",
-                  {
-                    staticClass: "products__form form",
-                    attrs: { action: "#!", method: "#!" }
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "products__btn hide-modal__btn",
-                        attrs: { type: "submit", name: "hide-products" }
-                      },
-                      [_vm._v("Скрыть товары")]
-                    )
-                  ]
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "col-lg-2 col-md-3 col-sm-4 col-12 mt-sm-0 mt-3" },
-              [
-                _c(
-                  "form",
-                  {
-                    staticClass: "products__form form",
-                    attrs: { action: "#!", method: "#!" }
-                  },
-                  [
-                    _c(
-                      "button",
-                      {
-                        staticClass: "products__btn delete-modal__btn",
-                        attrs: { type: "submit", name: "delete-products" }
-                      },
-                      [_vm._v("Удалить")]
-                    )
-                  ]
-                )
-              ]
-            )
+    return _c("div", { staticClass: "row" }, [
+      _c(
+        "div",
+        {
+          staticClass: "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0"
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "header__link",
+              attrs: { href: "/admin/product/create" }
+            },
+            [_vm._v("Добавить товар")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-4 offset-md-3 offset-0"
+        },
+        [
+          _c(
+            "form",
+            {
+              staticClass: "products__form form",
+              attrs: { action: "#!", method: "#!" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "products__btn hide-modal__btn",
+                  attrs: { type: "submit", name: "hide-products" }
+                },
+                [_vm._v("Скрыть товары")]
+              )
+            ]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "col-lg-2 col-md-3 col-sm-4 col-12 mt-sm-0 mt-3" },
+        [
+          _c(
+            "form",
+            {
+              staticClass: "products__form form",
+              attrs: { action: "#!", method: "#!" }
+            },
+            [
+              _c(
+                "button",
+                {
+                  staticClass: "products__btn delete-modal__btn",
+                  attrs: { type: "submit", name: "delete-products" }
+                },
+                [_vm._v("Удалить")]
+              )
+            ]
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "form",
+      {
+        staticClass: "products__form form",
+        attrs: { action: "#!", method: "#!" }
+      },
+      [
+        _c("input", {
+          staticClass: "products__input products__input-checkbox",
+          attrs: { type: "checkbox", checked: "", name: "current-product" }
+        })
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("span", { staticClass: "products__image" }, [
+      _c("img", {
+        attrs: { src: "/assets/img/product/1.jpg", alt: "Product Image" }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "products__actions actions" }, [
+      _c(
+        "form",
+        {
+          staticClass: "actions__form visible",
+          attrs: { action: "#!", method: "#!" }
+        },
+        [
+          _c("button", {
+            staticClass: "actions__btn actions__btn--visible hide-modal__btn",
+            attrs: { type: "submit", name: "hide-product" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "actions__text actions__text--visible" }, [
+            _vm._v("Скрыть с сайта")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "row mt-5" }, [
-            _c("div", { staticClass: "col-lg-10 col-12 offset-lg-1" }, [
-              _c("div", { staticClass: "products__item" }, [
-                _c(
-                  "form",
-                  {
-                    staticClass: "products__form form",
-                    attrs: { action: "#!", method: "#!" }
-                  },
-                  [
-                    _c("input", {
-                      staticClass: "products__input products__input-checkbox",
-                      attrs: {
-                        type: "checkbox",
-                        checked: "",
-                        name: "current-product"
-                      }
-                    })
-                  ]
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  { staticClass: "products__link", attrs: { href: "#!" } },
-                  [
-                    _c("span", { staticClass: "products__image" }, [
-                      _c("img", {
-                        attrs: {
-                          src: "/assets/img/product/1.jpg",
-                          alt: "Product Image"
-                        }
-                      })
-                    ]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "products__name" }, [
-                      _vm._v("Ветровка женская с классическими брюками")
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "products__actions actions" }, [
-                  _c(
-                    "form",
-                    {
-                      staticClass: "actions__form visible",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass:
-                          "actions__btn actions__btn--visible hide-modal__btn",
-                        attrs: { type: "submit", name: "hide-product" }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        { staticClass: "actions__text actions__text--visible" },
-                        [_vm._v("Скрыть с сайта")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass: "actions__text actions__text--invisible"
-                        },
-                        [_vm._v("Вернуть на сайт")]
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "actions__form",
-                      attrs: {
-                        action: "/admin/actions/edit-product.php",
-                        method: "#!"
-                      }
-                    },
-                    [
-                      _c("button", {
-                        staticClass: "actions__btn actions__btn--edit",
-                        attrs: { type: "submit", name: "edit-product" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "actions__text" }, [
-                        _vm._v("Ред-ть")
-                      ])
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "form",
-                    {
-                      staticClass: "actions__form",
-                      attrs: { action: "#!", method: "#!" }
-                    },
-                    [
-                      _c("button", {
-                        staticClass:
-                          "actions__btn actions__btn--delete delete-modal__btn",
-                        attrs: { type: "submit", name: "delete-product" }
-                      }),
-                      _vm._v(" "),
-                      _c("span", { staticClass: "actions__text" }, [
-                        _vm._v("Удалить")
-                      ])
-                    ]
-                  )
-                ])
-              ])
-            ])
-          ])
-        ])
-      ])
+          _c(
+            "span",
+            { staticClass: "actions__text actions__text--invisible" },
+            [_vm._v("Вернуть на сайт")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        {
+          staticClass: "actions__form",
+          attrs: { action: "/admin/actions/edit-product.php", method: "#!" }
+        },
+        [
+          _c("button", {
+            staticClass: "actions__btn actions__btn--edit",
+            attrs: { type: "submit", name: "edit-product" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "actions__text" }, [_vm._v("Ред-ть")])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        { staticClass: "actions__form", attrs: { action: "#!", method: "#!" } },
+        [
+          _c("button", {
+            staticClass: "actions__btn actions__btn--delete delete-modal__btn",
+            attrs: { type: "submit", name: "delete-product" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "actions__text" }, [_vm._v("Удалить")])
+        ]
+      )
     ])
   }
 ]

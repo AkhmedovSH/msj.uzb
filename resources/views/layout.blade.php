@@ -5,20 +5,20 @@
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="shortcut icon" href="/favicon.svg" type="image/x-icon">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/bootstrap-grid/bootstrap-grid.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/normalize/normalize.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/splide/splide.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/splide/splide-default.min.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/jq-form-styler/jquery.formstyler.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/jq-form-styler/jquery.formstyler.theme.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/libs/slick/slick.css')}}">
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/navfooter.css')}}" />
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/index.css')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/libs/bootstrap-grid/bootstrap-grid.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/normalize/normalize.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/splide/splide.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/splide/splide-default.min.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.theme.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/libs/slick/slick.css')}}">
+	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/index.css')}}" />
 
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/blog-inner.css')}}" />
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/basket.css')}}" />
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/ordering-form.css')}}" />
-	<link rel="stylesheet" href="{{ asset('public/assets/styles/product.css')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/blog-inner.css')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css')}}" />
 	<title>msj</title>
 </head>
 
@@ -31,7 +31,7 @@
 						<div class="header__row">
 
 							<a href="/" class="header__logo logo">
-								<img src="/public/assets/icons/logo.svg" alt="Logo">
+								<img src="/assets/icons/logo.svg" alt="Logo">
 							</a>
 
 							<button class="hamburger hamburger--squeeze" type="button">
@@ -88,8 +88,8 @@
 							<div class="header__box">
 								<div class="activities">
 									<a href="/favourites.php" class="favourites-icon activities__link"></a>
-									<a href="/basket.php" class="basket-icon activities__link">
-										<span class="basket-icon__text">2</span>
+									<a href="{{ route('basket') }}" class="basket-icon activities__link">
+										<span class="basket-icon__text">{{ Cart::count() }}</span>
 									</a>
 								</div>
 								<div class="change-language mobile-hidden">
@@ -111,7 +111,7 @@
 				<div class="row">
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12 offset-xl-2 offset-0">
 						<a href="/" class="footer__logo logo">
-							<img src="/public/assets/icons/logo.svg" alt="Logo">
+							<img src="/assets/icons/logo.svg" alt="Logo">
 						</a>
 					</div>
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12 d-md-block d-none">
@@ -148,17 +148,17 @@
 						<ul class="footer__socials-list">
 							<!-- <li class="footer__socials-item">
 								<a href="javascript:void(0);" class="footer__socials-link">
-									<img src="/public/assets/icons/facebook.svg" alt="Facebook Logo">
+									<img src="/assets/icons/facebook.svg" alt="Facebook Logo">
 								</a>
 							</li> -->
 							<li class="footer__socials-item">
 								<a href="https://www.instagram.com/msj__shop/" class="footer__socials-link">
-									<img src="/public/assets/icons/instagram.svg" alt="Instagram Logo">
+									<img src="/assets/icons/instagram.svg" alt="Instagram Logo">
 								</a>
 							</li>
 							<li class="footer__socials-item">
 								<a href="https://t.me/msj_shop" class="footer__socials-link">
-									<img src="/public/assets/icons/telegram.svg" alt="Telegram Logo">
+									<img src="/assets/icons/telegram.svg" alt="Telegram Logo">
 								</a>
 							</li>
 						</ul>
@@ -171,15 +171,15 @@
 		</footer>
 	</div>
 
-	<script src="{{ asset('public/assets/libs/jquery/jquery.min.js')}}"></script>
-	<script src="{{ asset('public/assets/libs/splide/splide.min.js')}}"></script>
-	<script src="{{ asset('public/assets/libs/jq-form-styler/jquery.formstyler.min.js')}}"></script>
-	<script src="{{ asset('public/assets/libs/slick/slick.min.js')}}"></script>
-	<script src="{{ asset('public/assets/libs/jquery-mask/jquery-mask-min.js')}}"></script>
-	<script src="{{ asset('public/assets/scripts/main.js')}}"></script>
+	<script src="{{ asset('/assets/libs/jquery/jquery.min.js')}}"></script>
+	<script src="{{ asset('/assets/libs/splide/splide.min.js')}}"></script>
+	<script src="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.min.js')}}"></script>
+	<script src="{{ asset('/assets/libs/slick/slick.min.js')}}"></script>
+	<script src="{{ asset('/assets/libs/jquery-mask/jquery-mask-min.js')}}"></script>
+	<script src="{{ asset('/assets/scripts/main.js')}}"></script>
 
-	<script src="{{ asset('public/assets/scripts/index.js')}}"></script>
-	<script src="{{ asset('public/assets/scripts/thumbnail-slider.js')}}"></script>
+	<script src="{{ asset('/assets/scripts/index.js')}}"></script>
+	<script src="{{ asset('/assets/scripts/thumbnail-slider.js')}}"></script>
 
 </body>
 </html>

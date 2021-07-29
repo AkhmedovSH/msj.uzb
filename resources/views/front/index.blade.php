@@ -52,25 +52,25 @@
 			<div class="row catalogue__mobile--hidden">
 				<div class="col-lg-3 col-6">
 					<a href="for-women" class="catalogue__item">
-						<img src="/assets/img/index/catalogue-1.jpg" alt="Catalogue Image">
+						<img src="/public/assets/img/index/catalogue-1.jpg" alt="Catalogue Image">
 						<span>Одежда для женщин</span>
 					</a>
 				</div>
 				<div class="col-lg-3 col-6">
 					<a href="for-girls" class="catalogue__item catalogue__item--end">
-						<img src="/assets/img/index/catalogue-2.jpg" alt="Catalogue Image">
+						<img src="/public/assets/img/index/catalogue-2.jpg" alt="Catalogue Image">
 						<span>Одежда для девочек</span>
 					</a>
 				</div>
 				<div class="col-lg-3 col-6">
 					<a href="for-men" class="catalogue__item">
-						<img src="/assets/img/index/catalogue-3.jpg" alt="Catalogue Image">
+						<img src="/public/assets/img/index/catalogue-3.jpg" alt="Catalogue Image">
 						<span>Одежда для мужчин</span>
 					</a>
 				</div>
 				<div class="col-lg-3 col-6">
 					<a href="for-boys" class="catalogue__item catalogue__item--end">
-						<img src="/assets/img/index/catalogue-4.jpg" alt="Catalogue Image">
+						<img src="/public/assets/img/index/catalogue-4.jpg" alt="Catalogue Image">
 						<span>Одежда для мальчиков</span>
 					</a>
 				</div>
@@ -82,25 +82,25 @@
 						<ul class="splide__list">
 							<li class="splide__slide">
 								<a href="for-women" class="catalogue__item">
-									<img src="/assets/img/index/catalogue-1.jpg" alt="Catalogue Image">
+									<img src="/public/assets/img/index/catalogue-1.jpg" alt="Catalogue Image">
 									<span>Одежда для женщин</span>
 								</a>
 							</li>
 							<li class="splide__slide">
 								<a href="for-girls" class="catalogue__item catalogue__item--end">
-									<img src="/assets/img/index/catalogue-2.jpg" alt="Catalogue Image">
+									<img src="/public/assets/img/index/catalogue-2.jpg" alt="Catalogue Image">
 									<span>Одежда для девочек</span>
 								</a>
 							</li>
 							<li class="splide__slide">
 								<a href="for-men" class="catalogue__item">
-									<img src="/assets/img/index/catalogue-3.jpg" alt="Catalogue Image">
+									<img src="/public/assets/img/index/catalogue-3.jpg" alt="Catalogue Image">
 									<span>Одежда для мужчин</span>
 								</a>
 							</li>
 							<li class="splide__slide">
 								<a href="for-boys" class="catalogue__item catalogue__item--end">
-									<img src="/assets/img/index/catalogue-4.jpg" alt="Catalogue Image">
+									<img src="/public/assets/img/index/catalogue-4.jpg" alt="Catalogue Image">
 									<span>Одежда для мальчиков</span>
 								</a>
 							</li>
@@ -125,7 +125,7 @@
 				<div class="col-lg-3 col-sm-6 col-12 d-flex">
 					<a href="innerpages/product/product-1.php" class="products__item">
 						<span class="products__image">
-							<img src="/assets/img/index/pr-8.jpg" alt="Product Image">
+							<img src="/public/assets/img/index/pr-8.jpg" alt="Product Image">
 						</span>
 						<span class="products__name">{{ $item->name }}</span>
 						<span class="products__sizes">XS S M L XL 2XL</span>
@@ -184,7 +184,7 @@
 				<div class="col-lg-3 col-sm-6 col-12 d-flex">
 					<a href="innerpages/product/product-1.php" class="products__item products__item--is-fav">
 						<span class="products__image">
-							<img src="/assets/img/index/pr-1.jpg" alt="Product Image">
+							<img src="/public/assets/img/index/pr-1.jpg" alt="Product Image">
 						</span>
 						<span class="products__name">{{ $item->name }}</span>
 						<span class="products__sizes">XS S M L XL 2XL</span>
@@ -215,7 +215,7 @@
 								<div class="blog__item">
 									<a href="innerpages/blog/blog-1.php" class="blog__link">
 										<span class="blog__image">
-											<img src="/assets/img/blog/blog-1.jpg" alt="Blog Preview Image">
+											<img src="/public/assets/img/blog/blog-1.jpg" alt="Blog Preview Image">
 										</span>
 										<span class="blog__caption">4 главные вещи в летнем гардеробе</span>
 										<span class="blog__subtitle">
@@ -228,7 +228,7 @@
 								<div class="blog__item">
 									<a href="innerpages/blog/blog-1.php" class="blog__link">
 										<span class="blog__image">
-											<img src="/assets/img/blog/blog-2.jpg" alt="Blog Preview Image">
+											<img src="/public/assets/img/blog/blog-2.jpg" alt="Blog Preview Image">
 										</span>
 										<span class="blog__caption">Какую одежду купить ребенку на лето?</span>
 										<span class="blog__subtitle">
@@ -241,7 +241,7 @@
 								<div class="blog__item">
 									<a href="innerpages/blog/blog-1.php" class="blog__link">
 										<span class="blog__image">
-											<img src="/assets/img/blog/blog-3.jpg" alt="Blog Preview Image">
+											<img src="/public/assets/img/blog/blog-3.jpg" alt="Blog Preview Image">
 										</span>
 										<span class="blog__caption">Собираемся в отпуск!</span>
 										<span class="blog__subtitle">
@@ -255,7 +255,7 @@
 								<div class="blog__item">
 									<a href="innerpages/blog/blog-1.php" class="blog__link">
 										<span class="blog__image">
-											<img src="/assets/img/blog/blog-4.jpg" alt="Blog Preview Image">
+											<img src="/public/assets/img/blog/blog-4.jpg" alt="Blog Preview Image">
 										</span>
 										<span class="blog__caption">Выбираем платье для пикника!</span>
 										<span class="blog__subtitle">
@@ -268,7 +268,7 @@
 								<div class="blog__item">
 									<a href="innerpages/blog/blog-1.php" class="blog__link">
 										<span class="blog__image">
-											<img src="/assets/img/blog/blog-5.jpg" alt="Blog Preview Image">
+											<img src="/public/assets/img/blog/blog-5.jpg" alt="Blog Preview Image">
 										</span>
 										<span class="blog__caption">Как носить джоггеры?</span>
 										<span class="blog__subtitle">
@@ -281,7 +281,7 @@
 								<div class="blog__item">
 									<a href="innerpages/blog/blog-1.php" class="blog__link">
 										<span class="blog__image">
-											<img src="/assets/img/blog/blog-6.jpg" alt="Blog Preview Image">
+											<img src="/public/assets/img/blog/blog-6.jpg" alt="Blog Preview Image">
 										</span>
 										<span class="blog__caption">Что носить на пляже?</span>
 										<span class="blog__subtitle">

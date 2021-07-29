@@ -13,11 +13,17 @@ class ProductController extends Controller
 {
     public function index()
     {
-        $data = Product::orderBy('id', 'DESC')->paginate(30);
+        $data = Product::orderBy('id', 'DESC')->paginate(20);
 
         return view('admin.product.index', compact('data'));
 		}
 
+		public function getProducts()
+    {
+        $data = Product::orderBy('id', 'DESC')->paginate(20);
+
+        return response()->json($data, 200);
+		}
 		
 		public function search(Request $request)
     {
@@ -48,7 +54,7 @@ class ProductController extends Controller
         ]);
 
         $data = Product::add($request->all());
-        //$data->uploadImage($request->file('image'));
+        $data->uploadImage($request->file('image'));
         $data->uploadMultipleImages($request->file('images'));
         return response()->json($data, 200);
     }

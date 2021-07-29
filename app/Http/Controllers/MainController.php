@@ -21,16 +21,17 @@ class MainController extends Controller
 		$data = Product::where('category_id', $id)->orderBy('id', 'desc')->paginate(12);
 		return view('front.categoryProducts', compact('category', 'data'));
 	}
+	
+	public function singleProduct($id)
+	{
+		$data = Product::where('id', $id)->first();
+		return view('front.product', compact('data'));
+	}
 
 	public function brandProducts($id)
 	{
 		$data = Product::where('brand_id', $id)->paginate(12);
 		return view('front.brandProducts');
-	}
-
-	public function basket()
-	{
-		return view('front.basket');
 	}
 
 	public function blog()
