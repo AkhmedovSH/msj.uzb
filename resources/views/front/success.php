@@ -1,4 +1,5 @@
-<?php include "../../../elements/header.php"; ?>
+@extends('layout')
+@section('content')
 
 <style>
   body {
@@ -101,4 +102,4 @@
   <a href="/">Вернуться на главную</a>
 </main>
 
-<?php include "../../../elements/footer.php"; ?>
+@endsection

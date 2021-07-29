@@ -15,16 +15,16 @@
 
 						<div class="form__input-group">
 							<div class="form__select-group">
-								<select class="form__select styler" name="user_city">
+								<select class="form__select styler" name="city">
 									<option value="" disabled>Выберите город</option>
-									<option selected value="Tashkent">Ташкент</option>
-									<option value="Samarkand">Самарканд</option>
-									<option value="Buxara">Бухара</option>
+									<option selected value="Ташкент">Ташкент</option>
+									<option value="Самарканд">Самарканд</option>
+									<option value="Бухара">Бухара</option>
 								</select>
 								<div class="form__select-info">
 									<p class="form__select-text">Стоимость доставки: <span class="delivery-price">25 000 сум</span></p>
 									<p class="form__select-text">Стоимость товара: <span class="product-price">{{ Cart::subtotal(0, 0, ' ') }} сум</span></p>
-									<p class="form__select-text">Общая стоимость: <span class="total-price">{{ Cart::subtotal(0, 0, ' ') + 25000 }} сум</span></p>
+									<p class="form__select-text">Общая стоимость: <span class="total-price">{{ Cart::subtotal(0, 0, ' ') }} сум</span></p>
 								</div>
 							</div>
 							<div class="form__radio-group">

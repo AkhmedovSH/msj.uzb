@@ -2,18 +2,31 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\OrderProducts;
 use Illuminate\Database\Eloquent\Model;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
     use HasFactory;
-		protected $fillable = ['phone', 'payment_type', 'name', 'address'];
-    public static function add($fields, $product_ids)
+
+		protected $fillable = ['phone', 'status', 'name', 'payment_type', 'city', 'address', 'total_amount'];
+
+    public static function add($fields)
     {
         $data = new static;
         $data->fill($fields);
+				$data->phone = preg_replace("/[^a-zA-Z1-9]+/", "", $fields['phone']);
         $data->save();
+				foreach (Cart::content() as $key => $value) {
+					$order_products = new OrderProducts();
+					$order_products->order_id = $data->id;
+					$order_products->product_id = $value->model->id;
+					$order_products->quantity = $value->qty;
+					$order_products->save();
+				}
+
         return $data;
     }
 

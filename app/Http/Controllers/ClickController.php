@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Models\User;
 use App\click\ClickData;
-use App\ClickTransaction;
+use App\Models\ClickTransaction;
 use App\TransactionsHistory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 
 class ClickController extends Controller
@@ -17,11 +18,13 @@ class ClickController extends Controller
 
 
     public function click(Request $request){
+			//Log::info('i am here');
         if(strlen($request['merchant_trans_id']) <= 13){
             $user = User::where('name', $request['merchant_trans_id'])->first();
             if($user == null) {
                 $new_user = User::create([
                     'name' => $request['merchant_trans_id'],
+                    'phone' => $request['merchant_trans_id'],
                 ]);
                 $new_user->save();
             }
@@ -44,6 +47,7 @@ class ClickController extends Controller
     }
 
     public function prepare(){
+			
         $checkExists = ClickTransaction::where('click_trans_id', $this->reqData['click_trans_id'])->first();
 
         if ($checkExists !== NULL) {
@@ -59,7 +63,7 @@ class ClickController extends Controller
         if (!$this->reqData['error'] == 0) die(json_encode(ClickData::getMessage('8')));
 
         $newTransaction = new ClickTransaction;
-        $newTransaction->user_phone        = $this->reqData['merchant_trans_id'];
+        $newTransaction->phone        = $this->reqData['merchant_trans_id'];
         $newTransaction->click_trans_id = $this->reqData['click_trans_id'];
         $newTransaction->service_id     = $this->reqData['service_id'];
         $newTransaction->amount         = $this->reqData['amount'];
@@ -91,7 +95,7 @@ class ClickController extends Controller
         $transaction = ClickTransaction::where(
             [
                 ['id', '=', $this->reqData['merchant_prepare_id']],
-                ['user_phone', '=', $this->reqData['merchant_trans_id']],
+                ['phone', '=', $this->reqData['merchant_trans_id']],
                 ['click_trans_id', '=', $this->reqData['click_trans_id']],
                 ['click_paydoc_id', '=', $this->reqData['click_paydoc_id']],
                 ['service_id', '=', $this->reqData['service_id']]
@@ -108,7 +112,7 @@ class ClickController extends Controller
                         $transaction->save();
                         $return_array = [
                             'click_trans_id' => $transaction->click_trans_id,
-                            'merchant_trans_id' => $transaction->user_phone,
+                            'merchant_trans_id' => $transaction->phone,
                             'merchant_confirm_id' => $transaction->id,
                         ];
                         $result = array_merge(ClickData::getMessage('0'), $return_array);
@@ -130,17 +134,6 @@ class ClickController extends Controller
                     if ($transaction->status != ClickTransaction::STATUS_ACTIVE) {
                         $transaction->status = ClickTransaction::STATUS_CANCEL;
                         $transaction->error_note = $this->reqData['error_note'];
-                        //created by me to show transactions history for user
-                        // TransactionsHistory::create([
-                        //     'user_phone' => $transaction->user_phone,
-                        //     'amount' => -$transaction->amount,
-                        //     'description' => 'To\'lov bekor qilindi',
-                        //     'paid' => 'Click'
-                        // ]);
-                        // $transaction->save();
-                        // $user = User::find($transaction->user_id);
-                        // $user->money -= $transaction->amount;
-                        // $user->save();
                         die(json_encode(ClickData::getMessage('9')));
 
                     } else die(json_encode(ClickData::getMessage('n')));
@@ -182,16 +175,16 @@ class ClickController extends Controller
             $this->reqData['service_id'] .
             ClickData::SECRET_KEY .
             $this->reqData['merchant_trans_id'] .
-            (($this->reqData['action'] == 1) ? $this->reqData['merchant_prepare_id'] : '') .
+						(($this->reqData['action'] == 1) ? $this->reqData['merchant_prepare_id'] : '') .
             $this->reqData['amount'] .
             $this->reqData['action'] .
             $this->reqData['sign_time']
         );
-
-        //dd($sign_string_veryfied, $this->reqData['sign_string']);
+				Log::info('MINE  '. $sign_string_veryfied);
+				Log::info('FROM  ' . $this->reqData['sign_string']);
+      	//dd($sign_string_veryfied, $this->reqData['sign_string']);
 
         if ($this->reqData['sign_string'] != $sign_string_veryfied) {
-        //if ($this->reqData['sign_string'] != "60169ed9bedf35268e30f7edcede5358") {
             die(json_encode(ClickData::getMessage('1')));
         }
         // Check Actions: Action not found

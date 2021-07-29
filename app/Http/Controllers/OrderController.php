@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderController extends Controller
 {
@@ -15,12 +20,8 @@ class OrderController extends Controller
 	}
 
 	public function payment(Request $request) {
-		dd($request->all());
-		$arr = [];
-		foreach (Cart::content() as $key => $value) {
-				array_push($arr, $value->id);            
-		}
-		$order = Order::add($request->all(), $arr);
+		$order = Order::add($request->all());
+
 		if($request->payment_type == 'click') {
 				$user = User::where('name', $request->phone)->first();
 				if($user == null) {
@@ -32,29 +33,31 @@ class OrderController extends Controller
 					$new_user = User::where('name', $request->phone)->first();
 				}
 
+				$amount = 0;
+				foreach (Cart::content() as $key => $value) {
+					$amount += $value->model->price * $value->qty;
+				}
+
 				$url = 'https://my.click.uz/services/pay?service_id='
 				. '18877' . '&merchant_id=' . '13469' . 
-				'&amount=' . $request->amount . '&transaction_param=' . $request->phone . '&return_url=http://shatura.uz/payment-success/' . $request->phone;
+				'&amount=' . $amount . '&transaction_param=' . 512225 . '&return_url=http://shatura.uz/payment-success/' . $request->phone;
 
 				return redirect($url);
 		}
 
 		if($request->payment_type == 'cash') {
-				$order = Order::where('phone', $request->phone)->first();
-				$orders = Product::whereIn('id', json_decode($order->product_ids))->get();
+				$order = Order::where('phone', preg_replace("/[^a-zA-Z1-9]+/", "", $request->phone))->first();
 
 				$order->status = 1;
 				$order->save();
-				$date = Carbon::now();
-				$formatedDate = $date->format('d-m-Y H:i');
 
 				$arr = [
 					'Новая заявка с сайта: ' => 'msj.uz',
-					'Имя: ' => $name,
-					'Телефон: ' => $phone,
-					'Город: ' => $city,
-					'Адрес: ' => $address,
-					'Способ оплаты: ' => $payment_type,
+					'Имя: ' => $request->name,
+					'Телефон: ' => $request->phone,
+					'Город: ' => $request->city,
+					'Адрес: ' => $request->address,
+					'Способ оплаты: ' => $request->payment_type,
 				];
 				$txt = "";
 				foreach ($arr as $key => $value) {
@@ -75,16 +78,15 @@ class OrderController extends Controller
 						'text'=> $txt,
 						'parse_mode' => 'html'
 				];
-				$ch = curl_init($website . '/sendMessage');
-				curl_setopt($ch, CURLOPT_HEADER, false);
-				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				curl_setopt($ch, CURLOPT_POST, 1);
-				curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				$result = curl_exec($ch);
-				curl_close($ch);
-				$weRecallText = 'Спасибо за покупку! Наши менеджеры свяжутся с вами.';
-				return view('paymentSuccess', compact('weRecallText'));
+				// $ch = curl_init($website . '/sendMessage');
+				// curl_setopt($ch, CURLOPT_HEADER, false);
+				// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				// curl_setopt($ch, CURLOPT_POST, 1);
+				// curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+				// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				// $result = curl_exec($ch);
+				// curl_close($ch);
+				return view('front.success');
 		}
 	}
 }
