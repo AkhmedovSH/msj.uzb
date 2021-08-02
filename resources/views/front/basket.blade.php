@@ -42,25 +42,34 @@
 				<div class="col-md-2 col-sm-4 col-6">
 					<p class="basket__item basket__price basket__price-label">
 						<span class="basket__heading basket__heading-hidden">Цена за шт.</span>
-						{{ $item->model->price }}
+						{{ number_format($item->model->price, 0,","," ") }}
 					</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
 					<span class="basket__heading basket__heading-hidden">Количество</span>
 					<div class="basket__item basket__count basket__count-box">
-						<button class="basket__count-btn basket__count-btn--minus"></button>
-						<p class="basket__count-text">{{ $item->qty }}</p>
-						<button class="basket__count-btn basket__count-btn--plus"></button>
+					<select class="select--ys show-qty quantity" data-id="{{$item->rowId}}">
+							<option {{ $item->qty == 1 ? 'selected' : ''}}>1</option>
+							<option {{ $item->qty == 2 ? 'selected' : ''}}>2</option>
+							<option {{ $item->qty == 3 ? 'selected' : ''}}>3</option>
+							<option {{ $item->qty == 4 ? 'selected' : ''}}>4</option>
+							<option {{ $item->qty == 5 ? 'selected' : ''}}>5</option>
+							<option {{ $item->qty == 10 ? 'selected' : ''}}>10</option>
+					</select>
 					</div>
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
 					<p class="basket__item basket__total basket__total-label">
 						<span class="basket__heading basket__heading-hidden">Итого</span>
-						{{ $item->model->price * $item->qty }}
+						{{ number_format(($item->model->price * $item->qty), 0,","," ") }}
 					</p>
 				</div>
 				<div class="col-md-1 col-sm-4 col-6">
-					<button class="basket__delete-btn"></button>
+					<form action="{{route('cart.destroy',$item->rowId)}}" method="post">
+						{{csrf_field()}}
+						{{method_field('DELETE')}}
+						<button class="basket__delete-btn"></button>
+					</form>
 				</div>
 			</div>
 			@endforeach

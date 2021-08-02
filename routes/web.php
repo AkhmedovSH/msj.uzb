@@ -12,7 +12,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/locale/{locale}', function ($locale) {
+	App::setLocale($locale);
+	session(['language' => $locale]);
+	return redirect()->back();
+});
+
 Route::get('/category-products/{id}', [\App\Http\Controllers\MainController::class, 'categoryProducts'])->name('category.products');
+Route::get('/category-products-menu/{id}', [\App\Http\Controllers\MainController::class, 'categoryProductsMenu'])->name('category.products.menu');
+
 Route::get('/product/{id}', [\App\Http\Controllers\MainController::class, 'singleProduct'])->name('product');
 Route::get('/basket', [\App\Http\Controllers\CartController::class, 'index'])->name('basket');
 Route::get('/order', [\App\Http\Controllers\OrderController::class, 'index'])->name('order');
@@ -22,11 +31,12 @@ Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
 Route::get('/blog', [\App\Http\Controllers\MainController::class, 'blog']);
 Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery']);
 Route::get('/favourites', [\App\Http\Controllers\MainController::class, 'favourites']);
-Route::get('/for-boys', [\App\Http\Controllers\MainController::class, 'forBoys']);
-Route::get('/for-girls', [\App\Http\Controllers\MainController::class, 'forGirls']);
-Route::get('/for-men', [\App\Http\Controllers\MainController::class, 'forMen']);
-Route::get('/for-women', [\App\Http\Controllers\MainController::class, 'forWomen']);
 Route::get('/public-offer', [\App\Http\Controllers\MainController::class, 'publicOffer']);
+
+// Route::get('/for-boys/{id}', [\App\Http\Controllers\MainController::class, 'forBoys']);
+// Route::get('/for-girls/{id}', [\App\Http\Controllers\MainController::class, 'forGirls']);
+// Route::get('/for-men/{id}', [\App\Http\Controllers\MainController::class, 'forMen']);
+// Route::get('/for-women/{id}', [\App\Http\Controllers\MainController::class, 'forWomen']);
 
 Route::get('/cart', [\App\Http\Controllers\CartController::class, 'index'])->name('cart');
 Route::post('/cart', [\App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
@@ -42,7 +52,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
 	Route::get('/category/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);
 	Route::post('/category/store', [\App\Http\Controllers\Admin\CategoryController::class, 'store']);
-	Route::get('/subcategory/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'subCategory']);
+	Route::get('/category/child/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'childCreate']);
+	Route::post('/category/child/store', [\App\Http\Controllers\Admin\CategoryController::class, 'childStore']);
+	Route::get('/subcategory/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'subCategory'])->name('subcategory.index');
 	Route::delete('/category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
 
 	/* REST */

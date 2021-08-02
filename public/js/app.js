@@ -2768,6 +2768,7 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 /**
  * The following block of code may be used to automatically register your
@@ -22333,7 +22334,20 @@ var render = function() {
                 [_vm._v(_vm._s(_vm.category.name))]
               ),
               _vm._v(" "),
-              _vm._m(0)
+              _c(
+                "div",
+                { staticClass: "subcategories__form categories__form form" },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "categories__btn",
+                      attrs: { href: "/admin/category/child/create/" + _vm.id }
+                    },
+                    [_vm._v("Добавить подкатегорию")]
+                  )
+                ]
+              )
             ]
           )
         ]),
@@ -22354,7 +22368,7 @@ var render = function() {
                     _vm._v(_vm._s(item.name))
                   ]),
                   _vm._v(" "),
-                  _vm._m(1, true)
+                  _vm._m(0, true)
                 ]
               )
             }),
@@ -22366,22 +22380,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "subcategories__form categories__form form" },
-      [
-        _c(
-          "button",
-          { staticClass: "categories__btn", attrs: { type: "button" } },
-          [_vm._v("Добавить подкатегорию")]
-        )
-      ]
-    )
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

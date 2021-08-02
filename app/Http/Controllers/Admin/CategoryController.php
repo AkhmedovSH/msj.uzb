@@ -29,6 +29,10 @@ class CategoryController extends Controller
 			return view('admin.category.create', compact('id'));
     }
 
+		public function childCreate($id) {
+			return view('admin.category.createChildCategory', compact('id'));
+    }
+
 		public function subCategory($id) {
 			$category = Category::where('id', $id)->first();
 			return view('admin.category.childCategories', compact('id', 'category'));
@@ -42,9 +46,17 @@ class CategoryController extends Controller
         return redirect()->route('category.index');
     }
 
+		public function childStore(Request $request){
+			$this->validate($request,[
+					'name' => 'required',
+			]);
+			Category::create($request->all());
+			return redirect()->route('subcategory.index', $request->parent_id);
+		}
+
     public function edit($id){
         $category = Category::find($id);
-        return view('admin.category.edit', ['category' => $category]);
+        return view('admin.category.edit', compact('category'));
     }
 
     public function update(Request $request, $id){

@@ -7,7 +7,7 @@
 				<div class="col-xl-8 col-lg-10 col-12 offset-xl-2 offset-lg-1 offset-0 d-flex align-items-center">
 					<h1 class="categories__title categories__title--left">{{ category.name }}</h1>
 					<div class="subcategories__form categories__form form">
-						<button type="button" class="categories__btn">Добавить подкатегорию</button>
+						<a :href="'/admin/category/child/create/' + id" class="categories__btn">Добавить подкатегорию</a>
 					</div>
 				</div>
 			</div>

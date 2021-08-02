@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('/assets/styles/blog-inner.css')}}" />
 <main>
 	<section class="blog outer">
 		<div class="container-fluid">

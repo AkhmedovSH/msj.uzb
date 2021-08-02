@@ -35,7 +35,7 @@
 						</div>
 
 						<ul class="product-sidebar__price-list">
-							<li data-id="#xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">{{ $data->price }} сум</li>
+							<li data-id="#xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">{{ number_format($data->price, 0,","," ") }} сум</li>
 							<li data-id="#s-size" class="product-sidebar__price-item">250 000 сум</li>
 							<li data-id="#m-size" class="product-sidebar__price-item">300 000 сум</li>
 							<li data-id="#l-size" class="product-sidebar__price-item">350 000 сум</li>

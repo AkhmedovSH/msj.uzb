@@ -13,12 +13,13 @@
 	<link rel="stylesheet" href="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.theme.css')}}">
 	<link rel="stylesheet" href="{{ asset('/assets/libs/slick/slick.css')}}">
 	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
-	<link rel="stylesheet" href="{{ asset('/assets/styles/index.css')}}" />
+	
 
-	<link rel="stylesheet" href="{{ asset('/assets/styles/blog-inner.css')}}" />
+	
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css')}}" />
+	
 	<title>msj</title>
 </head>
 
@@ -53,7 +54,7 @@
 												<div class="nav__item--secondary-dropdown">
 													@foreach ($item2->childs as $item3)
 													<li class="nav__item nav__item--secondary">
-														<a href="{{ route('category.products', $item3->id) }}" class="nav__link nav__link--secondary">{{ $item3->name }}</a>
+														<a href="{{ route('category.products.menu', $item3->id) }}" class="nav__link nav__link--secondary">{{ $item3->name }}</a>
 													</li>
 													@endforeach
 												</div>
@@ -80,8 +81,13 @@
 									</li>
 								</ul>
 								<div class="change-language mobile-visible">
-									<a href="javascript:void(0);" class="uz-lang change-language__link">UZ</a>
-									<p href="#!" class="ru-lang change-language__link change-language__link--active">RU</p>
+									@if(App::isLocale('ru'))
+									<a href="/locale/uz" class="uz-lang change-language__link">UZ</a>
+									<a href="/locale/ru" class="ru-lang change-language__link">RU</a>
+									@else
+									<a href="/locale/uz" class="uz-lang change-language__link">UZ</a>
+									<a href="/locale/ru" class="ru-lang change-language__link">RU</a>
+									@endif
 								</div>
 							</nav>
 
@@ -93,8 +99,13 @@
 									</a>
 								</div>
 								<div class="change-language mobile-hidden">
-									<a href="javascript:void(0);" class="uz-lang change-language__link">UZ</a>
-									<p href="#!" class="ru-lang change-language__link change-language__link--active">RU</p>
+									@if(App::isLocale('ru'))
+									<a href="/locale/uz" class="uz-lang change-language__link">UZ</a>
+									<a href="/locale/ru" class="ru-lang change-language__link">RU</a>
+									@else
+									<a href="/locale/uz" class="uz-lang change-language__link">UZ</a>
+									<a href="/locale/ru" class="ru-lang change-language__link">RU</a>
+									@endif
 								</div>
 							</div>
 
@@ -117,16 +128,16 @@
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12 d-md-block d-none">
 						<ul class="footer__list footer__list--mobile-hidden">
 							<li class="footer__item">
-								<a href="/for-women" class="footer__link">Для женщин</a>
+								<a href="/category-products/1" class="footer__link">Для женщин</a>
 							</li>
 							<li class="footer__item">
-								<a href="/for-men" class="footer__link">Для мужчин</a>
+								<a href="/category-products/2" class="footer__link">Для мужчин</a>
 							</li>
 							<li class="footer__item">
-								<a href="/for-girls" class="footer__link">Для девочек</a>
+								<a href="/category-products/3" class="footer__link">Для девочек</a>
 							</li>
 							<li class="footer__item">
-								<a href="/for-boys" class="footer__link">Для мальчиков</a>
+								<a href="/category-products/4" class="footer__link">Для мальчиков</a>
 							</li>
 						</ul>
 					</div>
@@ -136,10 +147,10 @@
 								<a href="tel:+998993077622" class="footer__link">+998 99 307 76 22</a>
 							</li>
 							<li class="footer__item">
-								<a href="/delivery.php" class="footer__link">Доставка</a>
+								<a href="/delivery" class="footer__link">Доставка</a>
 							</li>
 							<li class="footer__item">
-								<a href="/public-offer.php" class="footer__link">Публичная оферта</a>
+								<a href="/public-offer" class="footer__link">Публичная оферта</a>
 							</li>
 						</ul>
 					</div>
@@ -180,6 +191,28 @@
 
 	<script src="{{ asset('/assets/scripts/index.js')}}"></script>
 	<script src="{{ asset('/assets/scripts/thumbnail-slider.js')}}"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+	<script>
+		(function(){
+        const  classname = document.querySelectorAll('.quantity')
+        Array.from(classname).forEach(function(element){
+            element.addEventListener('change', function(){
+                const id = element.getAttribute('data-id')
+                
+                console.log(this.value, id, 1);
+                axios.patch('/cart/update', {
+                    quantity: this.value,
+                    prodid: id,
+                }).then(function (response) {
+                    //console.log(success);
+                    window.location.href = '{{route('basket')}}'
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            })
+        })
+    })();
+	</script>
 
 </body>
 </html>

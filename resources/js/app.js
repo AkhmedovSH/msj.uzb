@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 
+window.axios = require('axios');
 window.Vue = require('vue').default;
 
 /**
@@ -24,11 +25,9 @@ Vue.component('product-create', require('./components/ProductCreate.vue').defaul
 Vue.component('category-index', require('./components/CategoryIndex.vue').default);
 Vue.component('child-categories', require('./components/ChildCategories.vue').default);
 
-
 Vue.component('brand-index', require('./components/BrandIndex.vue').default);
 Vue.component('brand-create', require('./components/BrandCreate.vue').default);
 Vue.component('brand-edit', require('./components/BrandEdit.vue').default);
-
 
 Vue.component('size-index', require('./components/SizeIndex.vue').default);
 Vue.component('size-create', require('./components/SizeCreate.vue').default);
