@@ -48,10 +48,17 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index']);
 	Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 	Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
+
+	Route::get('/product/destroy/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'destroy']);
+	Route::get('/product/edit/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'edit']);
 	
 	Route::get('/category', [\App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('category.index');
+	Route::get('/category/edit/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('category.edit');
 	Route::get('/category/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'create']);
 	Route::post('/category/store', [\App\Http\Controllers\Admin\CategoryController::class, 'store']);
+
+	Route::post('/category/update/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'update']);
+
 	Route::get('/category/child/create/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'childCreate']);
 	Route::post('/category/child/store', [\App\Http\Controllers\Admin\CategoryController::class, 'childStore']);
 	Route::get('/subcategory/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'subCategory'])->name('subcategory.index');
@@ -59,6 +66,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	/* REST */
 	Route::get('/get-products', [\App\Http\Controllers\Admin\ProductController::class, 'getProducts']);
+	Route::get('/get-product/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'getProduct']);
 
 	Route::get('/get-main-categories', [\App\Http\Controllers\Admin\CategoryController::class, 'getMainCategoriees']);
 	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);

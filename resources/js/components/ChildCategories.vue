@@ -17,11 +17,11 @@
 					<div class="categories__item" v-for="(item, index) in categories" :key="index">
 						<span class="categories__name">{{ item.name }}</span>
 						<div class="categories__actions actions subcategories__actions">
-							<form action="#!" method="#!" class="categories__form form">
+							<!-- <form action="#!" method="#!" class="categories__form form">
 								<button type="submit" class="actions__btn actions__btn--delete"></button>
-							</form>
+							</form> -->
 							<div class="categories__form form">
-								<button type="button" class="actions__btn actions__btn--edit"></button>
+								<button type="button" class="actions__btn actions__btn--edit" @click="redirectEdit(item.id)"></button>
 							</div>
 						</div>
 					</div>
@@ -42,8 +42,8 @@
 			};
     },
 		methods: {
-			redirect() {
-				window.location.href = window.location.origin + '/admin/category/create/' + this.activeTab
+			redirectEdit(id) {
+				window.location.href = window.location.origin + '/admin/category/edit/' + id
 			},
 			getChildCategories() {
 				axios.get('/admin/get-child-categories/' + this.id).then(response => {

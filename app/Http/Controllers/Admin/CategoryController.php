@@ -8,6 +8,11 @@ use App\Http\Controllers\Controller;
 
 class CategoryController extends Controller
 {
+		public function getCategories($id) {
+			$data = Category::all();
+			return response()->json($data, 200);
+		}
+
 		public function getMainCategoriees() {
 			$data = Category::where('parent_id', 0)
 			->with(['childs' => function ($query) {
@@ -60,14 +65,11 @@ class CategoryController extends Controller
     }
 
     public function update(Request $request, $id){
-        $this->validate($request,[
-            'title' => 'required',
-        ]);
         $category = Category::find($id);
-
-        $category->update($request->all());
-
-        return redirect()->route('categories.index');
+				
+        $newData = $category->edit($request->all());
+				//dd($newData);
+        return redirect()->route('category.index');
     }
 
     public function destroy($id){

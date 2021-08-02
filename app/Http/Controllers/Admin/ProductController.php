@@ -24,6 +24,13 @@ class ProductController extends Controller
 
         return response()->json($data, 200);
 		}
+
+		public function getProduct($id)
+    {
+        $data = Product::where('id', $id)->first();
+
+        return response()->json($data, 200);
+		}
 		
 		public function search(Request $request)
     {
@@ -61,7 +68,7 @@ class ProductController extends Controller
 
     public function edit($id)
     {
-        
+			return view('admin.product.edit', compact('id'));
     }
 
     /**

@@ -29,12 +29,12 @@
 					<div class="categories__item" v-for="(item, index) in childs" :key="index">
 						<span class="categories__name">{{ item.name }}</span>
 						<div class="actions__form form">
-							<a :href="'subcategory/' + item.id" class="actions__btn actions__btn--secondary">Посмотреть категорию</a>
+							<a :href="'/admin/subcategory/' + item.id" class="actions__btn actions__btn--secondary">Посмотреть категорию</a>
 						</div>
 						<div class="categories__actions actions">
-							<div class="categories__form form">
+							<!-- <div class="categories__form form">
 								<button type="button" class="actions__btn actions__btn--delete" @click="deleteCategory(item.id)"></button>
-							</div>
+							</div> -->
 							<div class="categories__form form">
 								<button type="button" class="actions__btn actions__btn--edit" @click="redirectEdit(item.id)"></button>
 							</div>
@@ -72,16 +72,16 @@
 			redirect() {
 				window.location.href = window.location.origin + '/admin/category/create/' + this.activeTab
 			},
-			redirectEdit() {
-				window.location.href = window.location.origin + '/admin/category/create/' + this.activeTab
+			redirectEdit(id) {
+				window.location.href = window.location.origin + '/admin/category/edit/' + id
 			},
 			deleteCategory(id) {
-				axios.delete('category/' + id).then(response => {
+				axios.delete('/admin/category/' + id).then(response => {
 					this.getMainCategories()
 				})
 			},
 			getMainCategories() {
-				axios.get('get-main-categories').then(response => {
+				axios.get('/admin/get-main-categories').then(response => {
 					this.mainCategories = response.data
 					this.childs = this.mainCategories[0]['childs']
 				})

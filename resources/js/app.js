@@ -22,6 +22,8 @@ window.Vue = require('vue').default;
 
 Vue.component('product-index', require('./components/ProductIndex.vue').default);
 Vue.component('product-create', require('./components/ProductCreate.vue').default);
+Vue.component('product-edit', require('./components/ProductEdit.vue').default);
+
 Vue.component('category-index', require('./components/CategoryIndex.vue').default);
 Vue.component('child-categories', require('./components/ChildCategories.vue').default);
 

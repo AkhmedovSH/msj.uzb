@@ -28,7 +28,7 @@
 							</form>
 							<a href="javascript:void(0);" class="products__link">
 								<span class="products__image">
-									<img src="/assets/img/product/1.jpg" alt="Product Image">
+									<img :src="'/uploads/products/' + item.image" alt="Product Image">
 								</span>
 								<span class="products__name">{{ item.name }}</span>
 							</a>
@@ -39,14 +39,14 @@
 									<span class="actions__text actions__text--visible">Скрыть с сайта</span>
 									<span class="actions__text actions__text--invisible">Вернуть на сайт</span>
 								</form>
-								<form action="/admin/actions/edit-product.php" method="#!" class="actions__form">
-									<button type="submit" name="edit-product" class="actions__btn actions__btn--edit"></button>
+								<div class="actions__form">
+									<a :href="'/admin/product/edit/' + item.id" class="actions__btn actions__btn--edit"></a>
 									<span class="actions__text">Ред-ть</span>
-								</form>
-								<form action="#!" method="#!" class="actions__form">
-									<button type="submit" name="delete-product" class="actions__btn actions__btn--delete delete-modal__btn"></button>
-									<span class="actions__text">Удалить</span>
-								</form>
+								</div>
+								<div class="actions__form">
+									<a :href="'/admin/product/destroy/' + item.id" class="actions__btn actions__btn--delete delete-modal__btn"></a>
+									<a :href="'/admin/product/destroy/' + item.id" class="actions__text">Удалить</a>
+								</div>
 							</div>
 						</div>
 	

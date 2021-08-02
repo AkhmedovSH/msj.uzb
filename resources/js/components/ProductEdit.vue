@@ -117,6 +117,7 @@
 
 <script>
 	export default {
+		props: ['id'],
 		data() {
 			return {
 				data: [],
@@ -130,7 +131,7 @@
 					brand_id: '',
 					category_id: '',
 					image: '',
-					categories1: 1,
+					categories1: null,
 					categories2: null,
 					sizes: [],
 				},
@@ -193,6 +194,11 @@
 					window.location.href = window.location.origin + '/admin/product'
 				})
 			},
+			getProduct() {
+				axios.get('/admin/get-product/' + this.id).then(response => {
+					this.sendData = response.data
+				})
+			},
 			getMainCategories() {
 				axios.get('/admin/get-main-categories').then(response => {
 					this.categories1 = response.data
@@ -219,6 +225,7 @@
 		async mounted() {
 			await this.getBrands()
 			await this.getSizes()
+			await this.getProduct()
 			await this.getMainCategories()
 
 		}
