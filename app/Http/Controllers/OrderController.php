@@ -43,7 +43,7 @@ class OrderController extends Controller
 
 				$url = 'https://my.click.uz/services/pay?service_id='
 				. '18877' . '&merchant_id=' . '13469' . 
-				'&amount=' . $amount . '&transaction_param=' . 512225 . '&return_url=http://msj.uz/payment-success/' . preg_replace("/[^a-zA-Z1-9]+/", "", $request->phone);
+				'&amount=' . $amount . '&transaction_param=' . preg_replace("/[^a-zA-Z1-9]+/", "", $request->phone) . '&return_url=http://msj.uz/payment-success/' . preg_replace("/[^a-zA-Z1-9]+/", "", $request->phone);
 
 				return redirect($url);
 		}
@@ -69,9 +69,8 @@ class OrderController extends Controller
 				$totalAmount = 0;
 				foreach (Cart::content() as $key => $value) {
 					$totalAmount += $value->model->price * $value->qty;
-					$txt .= "<b>" .  $value->name . "</b> "
-					. number_format($value->model->price, 0,","," ") . ' сум | ' . $value->qty . ' шт' . "\n" . 
-					$txt .= "<b>" .  'Размер' . $value->options['size'] . "</b> " . "\n";
+					$txt .= "<b>" .  $value->name . "</b> "	. number_format($value->model->price, 0,","," ") . ' сум | ' . $value->qty . ' шт' . "\n" . 
+					"<b>" .  'Размер' . $value->options['size'] . "</b> " . "\n";
 				}
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
 				
