@@ -29,6 +29,10 @@ $(document).ready(function () {
 	$('.form__input--mask').on('focus', function() {
 		$('.form__input--mask').val('+998')
 	})
+
+	var defaultSize = document.getElementsByClassName("product-sidebar__size-link--active");
+	var size = document.getElementById("size");
+	size.value = defaultSize[0].innerHTML.replaceAll(/\s/g,'')
 })
 
 // Mobile Menu

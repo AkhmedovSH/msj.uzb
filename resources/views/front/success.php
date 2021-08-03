@@ -1,6 +1,3 @@
-@extends('layout')
-@section('content')
-
 <style>
   body {
     height: 100vh;
@@ -101,5 +98,3 @@
   <h2>Наши менеджеры свяжутся с вами в ближайшее время</h2>
   <a href="/">Вернуться на главную</a>
 </main>
-
-@endsection

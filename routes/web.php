@@ -26,6 +26,8 @@ Route::get('/product/{id}', [\App\Http\Controllers\MainController::class, 'singl
 Route::get('/basket', [\App\Http\Controllers\CartController::class, 'index'])->name('basket');
 Route::get('/order', [\App\Http\Controllers\OrderController::class, 'index'])->name('order');
 Route::post('/payment', [\App\Http\Controllers\OrderController::class, 'payment'])->name('payment');
+Route::get('/payment-success/{phone}', [\App\Http\Controllers\OrderController::class, 'paymentSuccess'])->name('paymentSuccess');
+
 
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
 Route::get('/blog', [\App\Http\Controllers\MainController::class, 'blog']);

@@ -35,12 +35,7 @@
 						</div>
 
 						<ul class="product-sidebar__price-list">
-							<li data-id="#xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">{{ number_format($data->price, 0,","," ") }} сум</li>
-							<li data-id="#s-size" class="product-sidebar__price-item">250 000 сум</li>
-							<li data-id="#m-size" class="product-sidebar__price-item">300 000 сум</li>
-							<li data-id="#l-size" class="product-sidebar__price-item">350 000 сум</li>
-							<li data-id="#xl-size" class="product-sidebar__price-item">400 000 сум</li>
-							<li data-id="#2xl-size" class="product-sidebar__price-item">450 000 сум</li>
+							<li data-id="xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">{{ number_format($data->price, 0,","," ") }} сум</li>
 						</ul>
 
 						<!-- <div class="product-sidebar__slider-wrapper">
@@ -59,7 +54,12 @@
 						<ul class="product-sidebar__size-list">
 							@foreach(explode(",", $data->sizes) as $key => $size)
 							<li class="product-sidebar__size-item">
-								<a href="#xs-size" class="product-sidebar__size-link {{ $key == 0 ? 'product-sidebar__size-link--active' : ''}}">{{ $size }}</a>
+								<a class="product-sidebar__size-link 
+									{{ $key == 0 ? 'product-sidebar__size-link--active' : ''}}" 
+									onclick="setSize({{ json_encode($size) }})"
+								>
+								{{ $size }}
+							</a>
 							</li>
 							@endforeach
 						</ul>
@@ -70,45 +70,16 @@
 							<input type="hidden" name="id" value="{{ $data->id }}">
 							<input type="hidden" name="name" value="{{ $data->name }}">
 							<input type="hidden" name="price" value="{{ $data->price }}">
+							<input type="hidden" name="size" id="size" value="">
 							<button type="submit" class="product-sidebar__basket-btn">Положить в корзину</button>
 						</form>
 						
 
 						<ul class="product-sidebar__info-list">
-							<li class="product-sidebar__info-item"><span>Характеристики</span></li>
-							<li class="product-sidebar__info-item">
-								Основной материал: <span>54% вискоза, 46% хлопок</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Подкладка: <span>100% хлопок</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Цвет: <span>черный</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Вид застежки: <span>кнопки, молния</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Вырез горловины: <span>воротник-стойка</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Длина изделия, по спинке, см: <span>56</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Длина рукава: <span>длинные</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Покрой: <span>широкий</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Тип карманов: <span>прорезные</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Ширина изделия по груди, см: <span>59</span>
-							</li>
-							<li class="product-sidebar__info-item">
-								Ширина изделия по низу, см: <span>59</span>
-							</li>
+							<li class="product-sidebar__info-item"><span>
+								{{ $data->characteristics }}
+							</span></li> 
+							
 						</ul>
 
 						<div class="product-sidebar__description">

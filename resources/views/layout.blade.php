@@ -212,6 +212,11 @@
             })
         })
     })();
+
+		function setSize(size) {
+			var x = document.getElementById("size");
+			x.value = size
+		}
 	</script>
 
 </body>

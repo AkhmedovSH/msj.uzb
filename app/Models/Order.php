@@ -13,6 +13,10 @@ class Order extends Model
 
 		protected $fillable = ['phone', 'status', 'name', 'payment_type', 'city', 'address', 'total_amount'];
 
+		public function order_products() {
+			return $this->hasMany(Product::class, 'id', 'product_id');
+    }
+
     public static function add($fields)
     {
         $data = new static;
@@ -24,6 +28,7 @@ class Order extends Model
 					$order_products->order_id = $data->id;
 					$order_products->product_id = $value->model->id;
 					$order_products->quantity = $value->qty;
+					$order_products->size = $value->options['size'];
 					$order_products->save();
 				}
 

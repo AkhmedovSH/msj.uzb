@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use App\Models\OrderProducts;
+use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderController extends Controller
@@ -20,6 +22,7 @@ class OrderController extends Controller
 	}
 
 	public function payment(Request $request) {
+		
 		$order = Order::add($request->all());
 
 		if($request->payment_type == 'click') {
@@ -40,7 +43,7 @@ class OrderController extends Controller
 
 				$url = 'https://my.click.uz/services/pay?service_id='
 				. '18877' . '&merchant_id=' . '13469' . 
-				'&amount=' . $amount . '&transaction_param=' . 512225 . '&return_url=http://shatura.uz/payment-success/' . $request->phone;
+				'&amount=' . $amount . '&transaction_param=' . 512225 . '&return_url=http://msj.uz/payment-success/' . preg_replace("/[^a-zA-Z1-9]+/", "", $request->phone);
 
 				return redirect($url);
 		}
@@ -67,7 +70,8 @@ class OrderController extends Controller
 				foreach (Cart::content() as $key => $value) {
 					$totalAmount += $value->model->price * $value->qty;
 					$txt .= "<b>" .  $value->name . "</b> "
-					. number_format($value->model->price, 0,","," ") . ' сум | ' . $value->qty . ' шт' . "\n";
+					. number_format($value->model->price, 0,","," ") . ' сум | ' . $value->qty . ' шт' . "\n" . 
+					$txt .= "<b>" .  'Размер' . $value->options['size'] . "</b> " . "\n";
 				}
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
 				
@@ -78,15 +82,75 @@ class OrderController extends Controller
 						'text'=> $txt,
 						'parse_mode' => 'html'
 				];
-				// $ch = curl_init($website . '/sendMessage');
-				// curl_setopt($ch, CURLOPT_HEADER, false);
-				// curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-				// curl_setopt($ch, CURLOPT_POST, 1);
-				// curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-				// curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-				// $result = curl_exec($ch);
-				// curl_close($ch);
+				$ch = curl_init($website . '/sendMessage');
+				curl_setopt($ch, CURLOPT_HEADER, false);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				$result = curl_exec($ch);
+				curl_close($ch);
 				return view('front.success');
 		}
+	}
+
+	public function paymentSuccess($phone) {
+		$order = Order::where('phone', $phone)->latest('created_at')->first();
+		//$order_products = OrderProducts::where('order_id', $order->id);
+		$order_products = DB::table('order_products')
+		->join('products', 'products.id' , '=', 'order_products.product_id')
+		->where('order_id', $order->id)
+		->get();
+		//dd($join);
+		$count = count($order_products);
+		if($count > 0) {
+				$order->status = 1;
+				$order->save();
+				$date = Carbon::now();
+				$formatedDate = $date->format('d-m-Y H:i');
+
+				$arr = [
+					'Новая заявка с сайта: ' => 'msj.uz',
+					'Имя: ' => $order->name,
+					'Телефон: ' => $order->phone,
+					'Город: ' => $order->city,
+					'Адрес: ' => $order->address,
+					'Способ оплаты: ' => $order->payment_type,
+				];
+				$txt = "";
+				foreach ($arr as $key => $value) {
+					$txt .= "<b>" . $key . "</b> " . $value . "\n";
+				};
+				
+				$totalAmount = 0;
+
+				foreach ($order_products as $value) {
+					$totalAmount += $value->price;
+					$txt .= "<b>" .  'Размер: ' . $value->size . "</b> " . "\n" .
+					 "<b>" .  $value->name . "</b> " .  number_format($value->price, 0,","," ") . ' сум | ' . $value->quantity . ' шт' . "\n" ;
+				};
+				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
+				$website="https://api.telegram.org/bot".$this->token;
+				$chatId = $this->chat_id;
+				$params=[
+						'chat_id'=>$chatId, 
+						'text'=> $txt,
+						'parse_mode' => 'html'
+				];
+			
+			
+				$ch = curl_init($website . '/sendMessage');
+				curl_setopt($ch, CURLOPT_HEADER, false);
+				curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+				curl_setopt($ch, CURLOPT_POST, 1);
+				curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+				curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+				$result = curl_exec($ch);
+				
+				curl_close($ch);
+		}
+		Cart::destroy();
+		return view('front.success');
+		 
 	}
 }
