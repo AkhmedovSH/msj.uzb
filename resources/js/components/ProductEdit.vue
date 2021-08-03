@@ -4,7 +4,7 @@
 		<div class="container-fluid">
 			<form action="#!" method="#!" class="add-product__form row">
 
-				<div class="col-lg-3 col-md-6 col-12">
+				<!-- <div class="col-lg-3 col-md-6 col-12">
 					<select name="section" class="add-product__select" @change="selectCategory1()" v-model="sendData.categories1">
 						<option :value="item.id" v-for="(item, index) in categories1" :key="index">{{ item.name }}</option>
 					</select>
@@ -15,7 +15,7 @@
 						<option :value="item.id" v-for="(item, index) in categories2" :key="index">{{ item.name }}</option>
 					</select>
 				</div>
-				<!-- Подкатегория менятся в зависимости от выбора категории. При добавлении новых категорий value должны совпадать с data-target -->
+
 				<div class="col-lg-3 col-md-6 col-12">
 					<select name="category" class="add-product__select" @change="selectCategory2()" v-model="sendData.category_id">
 						<option :value="item.id" v-for="(item, index) in categories3" :key="index">{{ item.name }}</option>
@@ -26,7 +26,7 @@
 					<select name="category" class="add-product__select" v-model="sendData.brand_id">
 						<option :value="item.id" v-for="(item, index) in brands" :key="index">{{ item.name }}</option>
 					</select>
-				</div>
+				</div> -->
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
@@ -56,7 +56,7 @@
 					</label>
 				</div>
 
-				<div class="col-6">
+				<!-- <div class="col-6">
 					<span class="add-product__text">Размеры Одежды:</span>
 					<ul class="add-product__list">
 						<li class="add-product__item" v-for="(item, index) in sizes1" :key="index">
@@ -80,7 +80,7 @@
 						</li>
 					</ul>
 					<a href="/admin/size" class="add-product__link">Редактировать</a>
-				</div>
+				</div> -->
 
 				<!-- <div class="col-lg-6 col-12">
 					<label class="add-product__label">
@@ -104,7 +104,7 @@
 				</div>
 
 				<div class="col-xl-4 col-md-6 col-12 offset-xl-4 offset-md-3 offset-0" style="text-align:center; cursor: pointer;">
-					<a class="add-product__link" @click="create()">Опубликовать</a>
+					<a class="add-product__link" @click="edit()">Опубликовать</a>
 				</div>
 
 			</form>
@@ -170,7 +170,7 @@
 					}
 				}
 			},
-			create() {
+			edit() {
 				let formData = new FormData();
 				for (let i = 0; i < this.$refs.files.files.length; i++) {
 					formData.append('images[]', this.$refs.files.files[i])
@@ -188,10 +188,10 @@
 				formData.append('sizes', this.sendData.sizes)
 				formData.append('category_id', this.sendData.category_id)
 
-				axios.post('/admin/product', formData, {
+				axios.post('/admin/product/edit/' + this.sendData.id, formData, {
 					headers: {"Content-Type": "multipart/form-data","Accept": "application/json"},
 				}).then(response => {
-					window.location.href = window.location.origin + '/admin/product'
+					//window.location.href = window.location.origin + '/admin/product'
 				})
 			},
 			getProduct() {

@@ -57,24 +57,11 @@
 						</div> -->
 
 						<ul class="product-sidebar__size-list">
+							@foreach(explode(",", $data->sizes) as $key => $size)
 							<li class="product-sidebar__size-item">
-								<a href="#xs-size" class="product-sidebar__size-link product-sidebar__size-link--active">xs</a>
+								<a href="#xs-size" class="product-sidebar__size-link {{ $key == 0 ? 'product-sidebar__size-link--active' : ''}}">{{ $size }}</a>
 							</li>
-							<li class="product-sidebar__size-item">
-								<a href="#s-size" class="product-sidebar__size-link">s</a>
-							</li>
-							<li class="product-sidebar__size-item">
-								<a href="#m-size" class="product-sidebar__size-link">m</a>
-							</li>
-							<li class="product-sidebar__size-item">
-								<a href="#l-size" class="product-sidebar__size-link">l</a>
-							</li>
-							<li class="product-sidebar__size-item">
-								<a href="#xl-size" class="product-sidebar__size-link">xl</a>
-							</li>
-							<li class="product-sidebar__size-item">
-								<a href="#2xl-size" class="product-sidebar__size-link">2xl</a>
-							</li>
+							@endforeach
 						</ul>
 
 						<button class="product-sidebar__size-btn">Таблица размеров</button>

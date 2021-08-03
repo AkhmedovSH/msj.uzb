@@ -59,7 +59,7 @@ class ProductController extends Controller
             'category_id' => 'required',
             'image' => 'nullable|image',
         ]);
-
+				
         $data = Product::add($request->all());
         $data->uploadImage($request->file('image'));
         $data->uploadMultipleImages($request->file('images'));
@@ -90,7 +90,7 @@ class ProductController extends Controller
         $data->edit($request->all());
         $data->uploadImage($request->file('image'));
         $data->uploadMultipleImages($request->file('images'));
-        return redirect()->route('product.index');
+        return response()->json($data, 200);
     }
 
     /**

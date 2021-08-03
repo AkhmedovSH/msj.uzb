@@ -2450,6 +2450,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         formData.append('image', this.$refs.file.files[0]);
       }
 
+      console.log(this.sendData.sizes);
       formData.append('name', this.sendData.name);
       formData.append('price', this.sendData.price);
       formData.append('description', this.sendData.description);
@@ -2462,8 +2463,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           "Content-Type": "multipart/form-data",
           "Accept": "application/json"
         }
-      }).then(function (response) {
-        window.location.href = window.location.origin + '/admin/product';
+      }).then(function (response) {//window.location.href = window.location.origin + '/admin/product'
       });
     },
     getMainCategories: function getMainCategories() {
@@ -2718,7 +2718,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }
     },
-    create: function create() {
+    edit: function edit() {
       var formData = new FormData();
 
       for (var i = 0; i < this.$refs.files.files.length; i++) {
@@ -2736,13 +2736,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       formData.append('brand_id', this.sendData.brand_id);
       formData.append('sizes', this.sendData.sizes);
       formData.append('category_id', this.sendData.category_id);
-      axios.post('/admin/product', formData, {
+      axios.post('/admin/product/edit/' + this.sendData.id, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           "Accept": "application/json"
         }
-      }).then(function (response) {
-        window.location.href = window.location.origin + '/admin/product';
+      }).then(function (response) {//window.location.href = window.location.origin + '/admin/product'
       });
     },
     getProduct: function getProduct() {
@@ -23179,9 +23178,10 @@ var render = function() {
                               "add-product__input add-product__input-checkbox",
                             attrs: { type: "checkbox" },
                             domProps: {
-                              value: item.id,
+                              checked: false,
+                              value: item.name,
                               checked: Array.isArray(_vm.sendData.sizes)
-                                ? _vm._i(_vm.sendData.sizes, item.id) > -1
+                                ? _vm._i(_vm.sendData.sizes, item.name) > -1
                                 : _vm.sendData.sizes
                             },
                             on: {
@@ -23190,7 +23190,7 @@ var render = function() {
                                   $$el = $event.target,
                                   $$c = $$el.checked ? true : false
                                 if (Array.isArray($$a)) {
-                                  var $$v = item.id,
+                                  var $$v = item.name,
                                     $$i = _vm._i($$a, $$v)
                                   if ($$el.checked) {
                                     $$i < 0 &&
@@ -23271,9 +23271,9 @@ var render = function() {
                               "add-product__input add-product__input-checkbox",
                             attrs: { type: "checkbox" },
                             domProps: {
-                              value: item.id,
+                              value: item.name,
                               checked: Array.isArray(_vm.sendData.sizes)
-                                ? _vm._i(_vm.sendData.sizes, item.id) > -1
+                                ? _vm._i(_vm.sendData.sizes, item.name) > -1
                                 : _vm.sendData.sizes
                             },
                             on: {
@@ -23282,7 +23282,7 @@ var render = function() {
                                   $$el = $event.target,
                                   $$c = $$el.checked ? true : false
                                 if (Array.isArray($$a)) {
-                                  var $$v = item.id,
+                                  var $$v = item.name,
                                     $$i = _vm._i($$a, $$v)
                                   if ($$el.checked) {
                                     $$i < 0 &&
@@ -23412,201 +23412,6 @@ var render = function() {
             attrs: { action: "#!", method: "#!" }
           },
           [
-            _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.sendData.categories1,
-                      expression: "sendData.categories1"
-                    }
-                  ],
-                  staticClass: "add-product__select",
-                  attrs: { name: "section" },
-                  on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.sendData,
-                          "categories1",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      function($event) {
-                        return _vm.selectCategory1()
-                      }
-                    ]
-                  }
-                },
-                _vm._l(_vm.categories1, function(item, index) {
-                  return _c(
-                    "option",
-                    { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
-                  )
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.sendData.categories2,
-                      expression: "sendData.categories2"
-                    }
-                  ],
-                  staticClass: "add-product__select",
-                  attrs: { name: "category" },
-                  on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.sendData,
-                          "categories2",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      function($event) {
-                        return _vm.selectCategory2()
-                      }
-                    ]
-                  }
-                },
-                _vm._l(_vm.categories2, function(item, index) {
-                  return _c(
-                    "option",
-                    { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
-                  )
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.sendData.category_id,
-                      expression: "sendData.category_id"
-                    }
-                  ],
-                  staticClass: "add-product__select",
-                  attrs: { name: "category" },
-                  on: {
-                    change: [
-                      function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.sendData,
-                          "category_id",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      },
-                      function($event) {
-                        return _vm.selectCategory2()
-                      }
-                    ]
-                  }
-                },
-                _vm._l(_vm.categories3, function(item, index) {
-                  return _c(
-                    "option",
-                    { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
-                  )
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-lg-3 col-md-6 col-12" }, [
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.sendData.brand_id,
-                      expression: "sendData.brand_id"
-                    }
-                  ],
-                  staticClass: "add-product__select",
-                  attrs: { name: "category" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.sendData,
-                        "brand_id",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                _vm._l(_vm.brands, function(item, index) {
-                  return _c(
-                    "option",
-                    { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
-                  )
-                }),
-                0
-              )
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "col-md-6 col-12" }, [
               _c("label", { staticClass: "add-product__label" }, [
                 _vm._v("\r\n\t\t\t\t\t\tНазвание товара\r\n\t\t\t\t\t\t"),
@@ -23719,190 +23524,6 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _c("span", { staticClass: "add-product__text" }, [
-                _vm._v("Размеры Одежды:")
-              ]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "add-product__list" },
-                _vm._l(_vm.sizes1, function(item, index) {
-                  return _c(
-                    "li",
-                    { key: index, staticClass: "add-product__item" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "add-product__label add-product__label--row"
-                        },
-                        [
-                          _vm._v(
-                            "\r\n\t\t\t\t\t\t\t\t" +
-                              _vm._s(item.name) +
-                              "\r\n\t\t\t\t\t\t\t\t"
-                          ),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.sendData.sizes,
-                                expression: "sendData.sizes"
-                              }
-                            ],
-                            staticClass:
-                              "add-product__input add-product__input-checkbox",
-                            attrs: { type: "checkbox" },
-                            domProps: {
-                              value: item.id,
-                              checked: Array.isArray(_vm.sendData.sizes)
-                                ? _vm._i(_vm.sendData.sizes, item.id) > -1
-                                : _vm.sendData.sizes
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$a = _vm.sendData.sizes,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = item.id,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      _vm.$set(
-                                        _vm.sendData,
-                                        "sizes",
-                                        $$a.concat([$$v])
-                                      )
-                                  } else {
-                                    $$i > -1 &&
-                                      _vm.$set(
-                                        _vm.sendData,
-                                        "sizes",
-                                        $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1))
-                                      )
-                                  }
-                                } else {
-                                  _vm.$set(_vm.sendData, "sizes", $$c)
-                                }
-                              }
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "add-product__link",
-                  attrs: { href: "/admin/size" }
-                },
-                [_vm._v("Редактировать")]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _c("span", { staticClass: "add-product__text" }, [
-                _vm._v("Размеры Обуви:")
-              ]),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "add-product__list" },
-                _vm._l(_vm.sizes2, function(item, index) {
-                  return _c(
-                    "li",
-                    { key: index, staticClass: "add-product__item" },
-                    [
-                      _c(
-                        "label",
-                        {
-                          staticClass:
-                            "add-product__label add-product__label--row"
-                        },
-                        [
-                          _vm._v(
-                            "\r\n\t\t\t\t\t\t\t\t" +
-                              _vm._s(item.name) +
-                              "\r\n\t\t\t\t\t\t\t\t"
-                          ),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.sendData.sizes,
-                                expression: "sendData.sizes"
-                              }
-                            ],
-                            staticClass:
-                              "add-product__input add-product__input-checkbox",
-                            attrs: { type: "checkbox" },
-                            domProps: {
-                              value: item.id,
-                              checked: Array.isArray(_vm.sendData.sizes)
-                                ? _vm._i(_vm.sendData.sizes, item.id) > -1
-                                : _vm.sendData.sizes
-                            },
-                            on: {
-                              change: function($event) {
-                                var $$a = _vm.sendData.sizes,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = item.id,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      _vm.$set(
-                                        _vm.sendData,
-                                        "sizes",
-                                        $$a.concat([$$v])
-                                      )
-                                  } else {
-                                    $$i > -1 &&
-                                      _vm.$set(
-                                        _vm.sendData,
-                                        "sizes",
-                                        $$a
-                                          .slice(0, $$i)
-                                          .concat($$a.slice($$i + 1))
-                                      )
-                                  }
-                                } else {
-                                  _vm.$set(_vm.sendData, "sizes", $$c)
-                                }
-                              }
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _c(
-                "a",
-                {
-                  staticClass: "add-product__link",
-                  attrs: { href: "/admin/size" }
-                },
-                [_vm._v("Редактировать")]
-              )
-            ]),
-            _vm._v(" "),
             _c("div", { staticClass: "col-lg-6 col-12" }, [
               _c("label", { staticClass: "add-product__label" }, [
                 _vm._v(
@@ -23943,7 +23564,7 @@ var render = function() {
                     staticClass: "add-product__link",
                     on: {
                       click: function($event) {
-                        return _vm.create()
+                        return _vm.edit()
                       }
                     }
                   },

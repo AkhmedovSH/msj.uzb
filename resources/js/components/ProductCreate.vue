@@ -62,7 +62,7 @@
 						<li class="add-product__item" v-for="(item, index) in sizes1" :key="index">
 							<label class="add-product__label add-product__label--row">
 								{{ item.name }}
-								<input type="checkbox" class="add-product__input add-product__input-checkbox" :value="item.id" v-model="sendData.sizes">
+								<input type="checkbox" class="add-product__input add-product__input-checkbox" :checked="false" :value="item.name" v-model="sendData.sizes">
 							</label>
 						</li>
 					</ul>
@@ -75,7 +75,7 @@
 						<li class="add-product__item" v-for="(item, index) in sizes2" :key="index">
 							<label class="add-product__label add-product__label--row">
 								{{ item.name }}
-								<input type="checkbox" class="add-product__input add-product__input-checkbox" :value="item.id" v-model="sendData.sizes">
+								<input type="checkbox" class="add-product__input add-product__input-checkbox" :value="item.name" v-model="sendData.sizes">
 							</label>
 						</li>
 					</ul>
@@ -178,7 +178,7 @@
 				if(this.$refs.file.files.length) {
 					formData.append('image', this.$refs.file.files[0])
 				}
-
+				console.log(this.sendData.sizes);
 				formData.append('name', this.sendData.name)
 				formData.append('price', this.sendData.price)
 				formData.append('description', this.sendData.description)
@@ -190,7 +190,7 @@
 				axios.post('/admin/product', formData, {
 					headers: {"Content-Type": "multipart/form-data","Accept": "application/json"},
 				}).then(response => {
-					window.location.href = window.location.origin + '/admin/product'
+					//window.location.href = window.location.origin + '/admin/product'
 				})
 			},
 			getMainCategories() {

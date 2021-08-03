@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin'], function () {
 	/* REST */
 	Route::get('/get-products', [\App\Http\Controllers\Admin\ProductController::class, 'getProducts']);
 	Route::get('/get-product/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'getProduct']);
+	Route::post('/product/edit/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'update']);
 
 	Route::get('/get-main-categories', [\App\Http\Controllers\Admin\CategoryController::class, 'getMainCategoriees']);
 	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);

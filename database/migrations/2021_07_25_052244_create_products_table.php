@@ -22,8 +22,10 @@ class CreateProductsTable extends Migration
 						$table->string('image')->nullable();
 						$table->text('images')->nullable();
 						$table->text('sizes')->nullable();
+						$table->text('size_price')->nullable();
 						$table->text('description')->nullable();
 						$table->text('characteristics')->nullable();
+						$table->int('hide')->default(0);
             $table->timestamps();
         });
     }

@@ -20,6 +20,15 @@ class Product extends Model
     public static function add($fields){
         $data = new static;
         $data->fill($fields);
+				// if($fields['sizes']) {
+				// 	$size_price = array();
+				// 	$incI = 0;
+				// 	foreach($fields['sizes'] as $item) {
+				// 		$names[$incI]['size'] = $item[$incI];
+				// 		$names[$incI]['price'] = 0;
+        //     $incI++;
+				// 	}
+				// }
         $data->save();
         return $data;
     }

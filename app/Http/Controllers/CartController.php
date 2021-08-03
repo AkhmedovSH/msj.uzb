@@ -18,7 +18,7 @@ class CartController extends Controller
         $id = $request->id;
         $name = $request->name;
         $price = $request->price;
-				
+				//Cart::add('293ad', 'Product 1', 1, 9.99, ['size' => 'large']);
         if($price == null){ $price = 0; }
         Cart::add($id, $name, 1, $price)->associate('App\Models\Product');
         return redirect()->back();
