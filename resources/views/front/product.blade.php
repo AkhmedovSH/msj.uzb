@@ -11,11 +11,13 @@
 
 						<div class="product-content__slider-wrapper product-content__slider-wrapper--active">
 							<div class="product-content__slider">
-								@foreach(json_decode($data->images) as $item)
-								<div class="product-content__slider-item">
-									<img src="{{ '/uploads/products/' . $item->image }}" alt="Product Image">
-								</div>
-								@endforeach
+								@if($data->images)
+									@foreach(json_decode($data->images) as $item)
+									<div class="product-content__slider-item">
+										<img src="{{ '/uploads/products/' . $item->image }}" alt="Product Image">
+									</div>
+									@endforeach
+								@endif
 							</div>
 							<button class="product-content__slider-prev"></button>
 							<button class="product-content__slider-next"></button>
@@ -35,7 +37,7 @@
 						</div>
 
 						<ul class="product-sidebar__price-list">
-							<li data-id="xs-size" class="product-sidebar__price-item product-sidebar__price-item--active">{{ number_format($data->price, 0,","," ") }} сум</li>
+							<li class="product-sidebar__price-item product-sidebar__price-item--active">{{ number_format($data->price, 0,","," ") }} сум</li>
 						</ul>
 
 						<!-- <div class="product-sidebar__slider-wrapper">
@@ -52,16 +54,18 @@
 						</div> -->
 
 						<ul class="product-sidebar__size-list">
-							@foreach(explode(",", $data->sizes) as $key => $size)
-							<li class="product-sidebar__size-item">
-								<a class="product-sidebar__size-link 
-									{{ $key == 0 ? 'product-sidebar__size-link--active' : ''}}" 
-									onclick="setSize({{ json_encode($size) }})"
-								>
-								{{ $size }}
-							</a>
-							</li>
-							@endforeach
+							@if(strlen($data->sizes))
+								@foreach(explode(",", $data->sizes) as $key => $size)
+								<li class="product-sidebar__size-item">
+									<a class="product-sidebar__size-link 
+										{{ $key == 0 ? 'product-sidebar__size-link--active' : ''}}" 
+										onclick="setSize({{ json_encode($size) }})"
+									>
+									{{ $size }}
+								</a>
+								</li>
+								@endforeach
+							@endif
 						</ul>
 
 						<button class="product-sidebar__size-btn">Таблица размеров</button>
