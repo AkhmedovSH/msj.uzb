@@ -1,6 +1,22 @@
 @extends('layout')
 @section('content')
-
+<script>
+	function selectCity() {
+		var city = document.getElementById("city").value;
+		switch (city) {
+			case 'Самарканд':
+				document.getElementById("delivery_price").innerHTML = '40 000'
+				document.getElementById("total_price").innerHTML = '40 000'
+				break;
+			case 'Бухара':
+				document.getElementById("delivery_price").innerHTML = '40 000'
+				break;
+			case 'Ташкент':
+				document.getElementById("delivery_price").innerHTML = '25 000'
+				break;
+		}
+	}
+</script>
 <main>
 	<section class="ordering">
 		<div class="container-fluid">
@@ -15,16 +31,24 @@
 
 						<div class="form__input-group">
 							<div class="form__select-group">
-								<select class="form__select styler" name="city">
+								<select class="form__select styler" name="city" onchange="selectCity()" id="city">
 									<option value="" disabled>Выберите город</option>
 									<option selected value="Ташкент">Ташкент</option>
 									<option value="Самарканд">Самарканд</option>
 									<option value="Бухара">Бухара</option>
 								</select>
 								<div class="form__select-info">
-									<p class="form__select-text">Стоимость доставки: <span class="delivery-price">25 000 сум</span></p>
+									<p class="form__select-text">
+										Стоимость доставки: 
+										<span id="delivery_price" class="delivery-price">25 000</span>
+										<span class="delivery-price"> сум</span>
+									</p>
 									<p class="form__select-text">Стоимость товара: <span class="product-price">{{ Cart::subtotal(0, 0, ' ') }} сум</span></p>
-									<p class="form__select-text">Общая стоимость: <span class="total-price">{{ Cart::subtotal(0, 0, ' ') }} сум</span></p>
+									<p class="form__select-text">
+										Общая стоимость: 
+										<span id="total_price" class="total-price">{{ Cart::subtotal(0, 0, ' ') }}</span>
+										<span class="total-price"> сум</span>
+									</p>
 								</div>
 							</div>
 							<div class="form__radio-group">

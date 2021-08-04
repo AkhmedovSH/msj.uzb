@@ -74,7 +74,7 @@
 									</li>
 									@endforeach
 									<li class="nav__item">
-										<a href="/delivery.php" class="nav__link">Доставка</a>
+										<a href="/delivery" class="nav__link">Доставка</a>
 									</li>
 									<li class="nav__item">
 										<a href="tel:+998993077622" class="nav__link">+998 99 307 76 22</a>
@@ -93,7 +93,7 @@
 
 							<div class="header__box">
 								<div class="activities">
-									<a href="/favourites.php" class="favourites-icon activities__link"></a>
+									<a href="javascript:void(0);" class="favourites-icon activities__link"></a>
 									<a href="{{ route('basket') }}" class="basket-icon activities__link">
 										<span class="basket-icon__text">{{ Cart::count() }}</span>
 									</a>

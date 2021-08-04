@@ -101,6 +101,15 @@
 				</div>
 			</div>
 
+			<div class="modal sizes-modal">
+				<div class="modal__body">
+					<div class="modal__image">
+						<img src="/assets/img/product/size-table.jpg" alt="Table of sizes">
+					</div>
+					<button class="modal__close-btn sizes-modal-close"></button>
+				</div>
+			</div>
+
 
 		</div>
 	</section>

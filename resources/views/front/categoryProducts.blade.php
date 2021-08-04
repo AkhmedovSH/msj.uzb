@@ -13,13 +13,17 @@
 
 				@foreach ($data as $item)
 				<div class="col-lg-3 col-sm-6 col-12 d-flex">
-					<a href="{{ route('product', $item->id) }}" class="products__item products__item--is-fav">
+					<a href="{{ route('product', $item->id) }}" class="products__item">
 						<span class="products__image">
 							<img src="{{ '/uploads/products/' .  $item->image }}" alt="image">
 						</span>
 						<span class="products__name">{{ $item->name }}</span>
-						<span class="products__sizes">XS S M L XL 2XL</span>
-						<span class="products__price">{{ $item->price }} сум</span>
+						<span class="products__sizes">
+							@foreach(explode(",", $item->sizes) as $key => $size)
+							{{ $size }}
+							@endforeach
+						</span>
+						<span class="products__price">{{ number_format($item->price, 0,","," ") }} сум</span>
 						<button class="products__btn fav-btn"></button>
 					</a>
 				</div>
@@ -28,6 +32,7 @@
 			</div>
 		</div>
 	</section>
+
 	<!-- /.products -->
 </main>
 

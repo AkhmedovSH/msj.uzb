@@ -33,6 +33,8 @@ $(document).ready(function () {
 	var defaultSize = document.getElementsByClassName("product-sidebar__size-link--active");
 	var size = document.getElementById("size");
 	size.value = defaultSize[0].innerHTML.replaceAll(/\s/g,'')
+
+	
 })
 
 // Mobile Menu

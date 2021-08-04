@@ -58,7 +58,7 @@ class OrderController extends Controller
 					'Новая заявка с сайта: ' => 'msj.uz',
 					'Имя: ' => $request->name,
 					'Телефон: ' => $request->phone,
-					'Город: ' => $request->city,
+					'Доставка в город: ' => $request->city,
 					'Адрес: ' => $request->address,
 					'Способ оплаты: ' => $request->payment_type,
 				];
@@ -112,7 +112,7 @@ class OrderController extends Controller
 					'Новая заявка с сайта: ' => 'msj.uz',
 					'Имя: ' => $order->name,
 					'Телефон: ' => $order->phone,
-					'Город: ' => $order->city,
+					'Доставка в город: ' => $order->city,
 					'Адрес: ' => $order->address,
 					'Способ оплаты: ' => $order->payment_type,
 				];
