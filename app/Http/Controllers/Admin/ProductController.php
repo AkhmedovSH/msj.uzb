@@ -93,6 +93,24 @@ class ProductController extends Controller
         return response()->json($data, 200);
     }
 
+		public function hideProduct($id, Request $request)
+    {
+        $data = Product::find($id);
+        $data->hide = $data->hide ? 0 : 1;
+        $data->save();
+        return response()->json($data, 200);
+    }
+
+		public function hideProducts(Request $request)
+    {
+				foreach ($request->list as $key => $value) {
+					$data = Product::find($value);
+					$data->hide = $data->hide ? 0 : 1;
+					$data->save();
+				}
+        return response()->json([], 200);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -104,5 +122,14 @@ class ProductController extends Controller
         Product::find($id)->remove();
 
         return redirect()->route('product.index');
+    }
+
+		public function destroyProducts(Request $request)
+    {
+			foreach ($request->products as $key => $value) {
+				Product::find($value)->remove();
+			}
+
+			return response()->json($data, 200);
     }
 }

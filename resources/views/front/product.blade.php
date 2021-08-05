@@ -54,7 +54,7 @@
 						</div> -->
 
 						<ul class="product-sidebar__size-list">
-							@if(strlen($data->sizes))
+							@if($data->sizes)
 								@foreach(explode(",", $data->sizes) as $key => $size)
 								<li class="product-sidebar__size-item">
 									<a class="product-sidebar__size-link 

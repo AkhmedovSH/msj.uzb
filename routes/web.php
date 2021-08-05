@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Auth::routes();
+
 Route::get('/locale/{locale}', function ($locale) {
 	App::setLocale($locale);
 	session(['language' => $locale]);
@@ -29,7 +31,7 @@ Route::post('/payment', [\App\Http\Controllers\OrderController::class, 'payment'
 Route::get('/payment-success/{phone}', [\App\Http\Controllers\OrderController::class, 'paymentSuccess'])->name('paymentSuccess');
 
 
-Route::get('/', [\App\Http\Controllers\MainController::class, 'index']);
+Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
 Route::get('/blog', [\App\Http\Controllers\MainController::class, 'blog']);
 Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery']);
 Route::get('/favourites', [\App\Http\Controllers\MainController::class, 'favourites']);
@@ -46,8 +48,8 @@ Route::delete('/cart/{product}', [\App\Http\Controllers\CartController::class, '
 Route::patch('/cart/update', [\App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
 
 
-Route::group(['prefix' => 'admin'], function () {
-	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index']);
+Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
+	Route::get('/', [\App\Http\Controllers\Admin\ProductController::class, 'index'])->name('admin.index');
 	Route::resource('/slider', \App\Http\Controllers\Admin\SliderController::class);
 	Route::resource('/product', \App\Http\Controllers\Admin\ProductController::class);
 
@@ -70,6 +72,9 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/get-products', [\App\Http\Controllers\Admin\ProductController::class, 'getProducts']);
 	Route::get('/get-product/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'getProduct']);
 	Route::post('/product/edit/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'update']);
+	Route::post('/product/hide/{id}', [\App\Http\Controllers\Admin\ProductController::class, 'hideProduct']);
+	Route::post('/product/all/hide', [\App\Http\Controllers\Admin\ProductController::class, 'hideProducts']);
+	Route::post('/product/all/destroy', [\App\Http\Controllers\Admin\ProductController::class, 'destroyProducts']);
 
 	Route::get('/get-main-categories', [\App\Http\Controllers\Admin\CategoryController::class, 'getMainCategoriees']);
 	Route::get('/get-child-categories/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'getChildCategories']);
@@ -82,3 +87,6 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
 	Route::get('/get-brands', [\App\Http\Controllers\Admin\BrandController::class, 'getBrands']);
 });
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

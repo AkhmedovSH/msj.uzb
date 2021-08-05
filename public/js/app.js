@@ -2889,10 +2889,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      data: []
+      data: [],
+      productIdList: []
     };
   },
   methods: {
@@ -2905,6 +2909,39 @@ __webpack_require__.r(__webpack_exports__);
       axios.get('/admin/get-products').then(function (response) {
         _this.data = response.data.data;
       });
+    },
+    hideProduct: function hideProduct(id) {
+      var _this2 = this;
+
+      axios.post('/admin/product/hide/' + id).then(function (response) {
+        _this2.getProducts();
+      });
+    },
+    hideProducts: function hideProducts() {
+      var _this3 = this;
+
+      axios.post('/admin/product/all/hide', {
+        'list': this.productIdList
+      }).then(function (response) {
+        _this3.getProducts();
+      });
+    },
+    deleteSelected: function deleteSelected() {
+      var _this4 = this;
+
+      axios.post('/admin/product/all/destroy', {
+        'list': this.productIdList
+      }).then(function (response) {
+        _this4.getProducts();
+      });
+    },
+    selectProduct: function selectProduct(id) {
+      if (this.productIdList.includes(id)) {
+        var key = this.productIdList.indexOf(id);
+        this.productIdList.splice(key, 1);
+      } else {
+        this.productIdList.push(id);
+      }
     }
   },
   mounted: function mounted() {
@@ -23605,7 +23642,48 @@ var render = function() {
   return _c("main", [
     _c("section", { staticClass: "products" }, [
       _c("div", { staticClass: "container-fluid" }, [
-        _vm._m(0),
+        _c("div", { staticClass: "row" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass:
+                "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-4 offset-md-3 offset-0"
+            },
+            [
+              _c("div", { staticClass: "products__form form" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "products__btn hide-modal__btn",
+                    attrs: { type: "button", name: "hide-products" },
+                    on: { click: _vm.hideProducts }
+                  },
+                  [_vm._v("Скрыть товары")]
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "col-lg-2 col-md-3 col-sm-4 col-12 mt-sm-0 mt-3" },
+            [
+              _c("div", { staticClass: "products__form form" }, [
+                _c(
+                  "button",
+                  {
+                    staticClass: "products__btn delete-modal__btn",
+                    attrs: { type: "button", name: "delete-products" },
+                    on: { click: _vm.deleteSelected }
+                  },
+                  [_vm._v("Удалить")]
+                )
+              ])
+            ]
+          )
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "row mt-5" }, [
           _c(
@@ -23613,7 +23691,18 @@ var render = function() {
             { staticClass: "col-lg-10 col-12 offset-lg-1" },
             _vm._l(_vm.data, function(item, index) {
               return _c("div", { key: index, staticClass: "products__item" }, [
-                _vm._m(1, true),
+                _c("div", { staticClass: "products__form form" }, [
+                  _c("input", {
+                    staticClass: "products__input products__input-checkbox",
+                    attrs: { type: "checkbox", name: "current-product" },
+                    domProps: { checked: _vm.productIdList.includes(item.id) },
+                    on: {
+                      change: function($event) {
+                        return _vm.selectProduct(item.id)
+                      }
+                    }
+                  })
+                ]),
                 _vm._v(" "),
                 _c(
                   "a",
@@ -23638,7 +23727,34 @@ var render = function() {
                 ),
                 _vm._v(" "),
                 _c("div", { staticClass: "products__actions actions" }, [
-                  _vm._m(2, true),
+                  _c("div", { staticClass: "actions__form visible" }, [
+                    _c("button", {
+                      staticClass:
+                        "actions__btn actions__btn--visible hide-modal__btn",
+                      attrs: { type: "button", name: "hide-product" },
+                      on: {
+                        click: function($event) {
+                          return _vm.hideProduct(item.id)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    !item.hide
+                      ? _c(
+                          "span",
+                          {
+                            staticClass: "actions__text actions__text--visible"
+                          },
+                          [_vm._v("Скрыть с сайта")]
+                        )
+                      : _c(
+                          "span",
+                          {
+                            staticClass: "actions__text actions__text--visible"
+                          },
+                          [_vm._v("Вернуть на сайт")]
+                        )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "actions__form" }, [
                     _c("a", {
@@ -23682,117 +23798,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c(
-        "div",
-        {
-          staticClass: "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0"
-        },
-        [
-          _c(
-            "a",
-            {
-              staticClass: "header__link",
-              attrs: { href: "/admin/product/create" }
-            },
-            [_vm._v("Добавить товар")]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-4 offset-md-3 offset-0"
-        },
-        [
-          _c(
-            "form",
-            {
-              staticClass: "products__form form",
-              attrs: { action: "#!", method: "#!" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "products__btn hide-modal__btn",
-                  attrs: { type: "submit", name: "hide-products" }
-                },
-                [_vm._v("Скрыть товары")]
-              )
-            ]
-          )
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col-lg-2 col-md-3 col-sm-4 col-12 mt-sm-0 mt-3" },
-        [
-          _c(
-            "form",
-            {
-              staticClass: "products__form form",
-              attrs: { action: "#!", method: "#!" }
-            },
-            [
-              _c(
-                "button",
-                {
-                  staticClass: "products__btn delete-modal__btn",
-                  attrs: { type: "submit", name: "delete-products" }
-                },
-                [_vm._v("Удалить")]
-              )
-            ]
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
-      "form",
-      {
-        staticClass: "products__form form",
-        attrs: { action: "#!", method: "#!" }
-      },
+      "div",
+      { staticClass: "col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0" },
       [
-        _c("input", {
-          staticClass: "products__input products__input-checkbox",
-          attrs: { type: "checkbox", checked: "", name: "current-product" }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      {
-        staticClass: "actions__form visible",
-        attrs: { action: "#!", method: "#!" }
-      },
-      [
-        _c("button", {
-          staticClass: "actions__btn actions__btn--visible hide-modal__btn",
-          attrs: { type: "submit", name: "hide-product" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "actions__text actions__text--visible" }, [
-          _vm._v("Скрыть с сайта")
-        ]),
-        _vm._v(" "),
-        _c("span", { staticClass: "actions__text actions__text--invisible" }, [
-          _vm._v("Вернуть на сайт")
-        ])
+        _c(
+          "a",
+          {
+            staticClass: "header__link",
+            attrs: { href: "/admin/product/create" }
+          },
+          [_vm._v("Добавить товар")]
+        )
       ]
     )
   }

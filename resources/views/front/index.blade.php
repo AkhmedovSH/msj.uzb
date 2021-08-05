@@ -131,9 +131,11 @@
 						</span>
 						<span class="products__name">{{ $item->name }}</span>
 						<span class="products__sizes">
-							@foreach(explode(",", $item->sizes) as $size)
-							{{ $size }}
-							@endforeach
+							@if($item->sizes)
+								@foreach(explode(",", $item->sizes) as $size)
+								{{ $size }}
+								@endforeach
+							@endif
 						</span>
 						<span class="products__price">{{ number_format($item->price, 0,","," ") }} сум</span>
 						<button class="products__btn fav-btn"></button>
@@ -194,9 +196,11 @@
 						</span>
 						<span class="products__name">{{ $item->name }}</span>
 						<span class="products__sizes">
-							@foreach(explode(",", $item->sizes) as $size)
-							{{ $size }}
-							@endforeach
+							@if($item->sizes)
+								@foreach(explode(",", $item->sizes) as $size)
+								{{ $size }}
+								@endforeach
+							@endif
 						</span>
 						<span class="products__price">{{ number_format($item->price, 0,","," ") }} сум</span>
 						<button class="products__btn fav-btn"></button>
