@@ -191,7 +191,7 @@
 				axios.post('/admin/product/edit/' + this.sendData.id, formData, {
 					headers: {"Content-Type": "multipart/form-data","Accept": "application/json"},
 				}).then(response => {
-					//window.location.href = window.location.origin + '/admin/product'
+					window.location.href = window.location.origin + '/admin/product'
 				})
 			},
 			getProduct() {

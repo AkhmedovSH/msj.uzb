@@ -17,6 +17,11 @@ class Product extends Model
         'images' => 'array',
     ];
 
+		public function getHideAttribute($value)
+    {
+        return (int) $value;
+    }
+
     public static function add($fields){
         $data = new static;
         $data->fill($fields);

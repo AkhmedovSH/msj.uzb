@@ -2742,7 +2742,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           "Content-Type": "multipart/form-data",
           "Accept": "application/json"
         }
-      }).then(function (response) {//window.location.href = window.location.origin + '/admin/product'
+      }).then(function (response) {
+        window.location.href = window.location.origin + '/admin/product';
       });
     },
     getProduct: function getProduct() {
