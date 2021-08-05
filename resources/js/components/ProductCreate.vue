@@ -17,7 +17,7 @@
 				</div>
 				<!-- Подкатегория менятся в зависимости от выбора категории. При добавлении новых категорий value должны совпадать с data-target -->
 				<div class="col-lg-3 col-md-6 col-12">
-					<select name="category" class="add-product__select" @change="selectCategory2()" v-model="sendData.category_id">
+					<select name="category" class="add-product__select" @change="selectCategory3()" v-model="sendData.category_id">
 						<option :value="item.id" v-for="(item, index) in categories3" :key="index">{{ item.name }}</option>
 					</select>
 				</div>
@@ -147,25 +147,19 @@
 				for (let i = 0; i < this.categories1.length; i++) {
 					if(this.categories1[i]['id'] == this.sendData.categories1) {
 						this.categories2 = this.categories1[i]['childs']
-						this.sendData.categories2 = this.categories2[0]['id']
-
-						this.categories3 = this.categories1[i]['childs'][0]['childs']
-						this.sendData.category_id = this.categories1[i]['childs'][0]['childs'][0]['id']
 					}
 				}
 
 				for (let i = 0; i < this.brandsCopy.length; i++) {
-					if(this.categories1[i]['id'] == this.brandsCopy[i]['category_id']) {
+					if(this.sendData.categories1 == this.brandsCopy[i]['category_id']) {
 						this.brands.push(this.brandsCopy[i])
 					}
 				}
-				this.sendData.brand_id = this.brands[0]['category_id']
 			},
 			selectCategory2() {
 				for (let i = 0; i < this.categories2.length; i++) {
 					if(this.categories2[i]['id'] == this.sendData.categories2) {
 						this.categories3 = this.categories2[i]['childs']
-						this.sendData.category_id = this.categories2[0]['id']
 					}
 				}
 			},
@@ -178,7 +172,6 @@
 				if(this.$refs.file.files.length) {
 					formData.append('image', this.$refs.file.files[0])
 				}
-				console.log(this.sendData.sizes);
 				formData.append('name', this.sendData.name)
 				formData.append('price', this.sendData.price)
 				formData.append('description', this.sendData.description)

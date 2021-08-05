@@ -2417,25 +2417,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       for (var i = 0; i < this.categories1.length; i++) {
         if (this.categories1[i]['id'] == this.sendData.categories1) {
           this.categories2 = this.categories1[i]['childs'];
-          this.sendData.categories2 = this.categories2[0]['id'];
-          this.categories3 = this.categories1[i]['childs'][0]['childs'];
-          this.sendData.category_id = this.categories1[i]['childs'][0]['childs'][0]['id'];
         }
       }
 
       for (var _i = 0; _i < this.brandsCopy.length; _i++) {
-        if (this.categories1[_i]['id'] == this.brandsCopy[_i]['category_id']) {
+        if (this.sendData.categories1 == this.brandsCopy[_i]['category_id']) {
           this.brands.push(this.brandsCopy[_i]);
         }
       }
-
-      this.sendData.brand_id = this.brands[0]['category_id'];
     },
     selectCategory2: function selectCategory2() {
       for (var i = 0; i < this.categories2.length; i++) {
         if (this.categories2[i]['id'] == this.sendData.categories2) {
           this.categories3 = this.categories2[i]['childs'];
-          this.sendData.category_id = this.categories2[0]['id'];
         }
       }
     },
@@ -2450,7 +2444,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         formData.append('image', this.$refs.file.files[0]);
       }
 
-      console.log(this.sendData.sizes);
       formData.append('name', this.sendData.name);
       formData.append('price', this.sendData.price);
       formData.append('description', this.sendData.description);
@@ -23006,7 +22999,7 @@ var render = function() {
                         )
                       },
                       function($event) {
-                        return _vm.selectCategory2()
+                        return _vm.selectCategory3()
                       }
                     ]
                   }
