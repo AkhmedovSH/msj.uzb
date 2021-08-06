@@ -67,6 +67,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 	Route::post('/category/child/store', [\App\Http\Controllers\Admin\CategoryController::class, 'childStore']);
 	Route::get('/subcategory/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'subCategory'])->name('subcategory.index');
 	Route::delete('/category/{id}', [\App\Http\Controllers\Admin\CategoryController::class, 'destroy']);
+	Route::get('/category/destroy/{id}', [\App\Http\Controllers\Admin\BrandController::class, 'destroy']);
 
 	/* REST */
 	Route::get('/get-products', [\App\Http\Controllers\Admin\ProductController::class, 'getProducts']);
@@ -86,6 +87,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
 	Route::get('/get-brands', [\App\Http\Controllers\Admin\BrandController::class, 'getBrands']);
+	Route::get('/brand/destroy/{id}', [\App\Http\Controllers\Admin\BrandController::class, 'destroy']);
 });
 Auth::routes();
 

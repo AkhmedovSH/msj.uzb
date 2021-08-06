@@ -32,9 +32,9 @@
 							<a :href="'/admin/subcategory/' + item.id" class="actions__btn actions__btn--secondary">Посмотреть категорию</a>
 						</div>
 						<div class="categories__actions actions">
-							<!-- <div class="categories__form form">
+							<div class="categories__form form">
 								<button type="button" class="actions__btn actions__btn--delete" @click="deleteCategory(item.id)"></button>
-							</div> -->
+							</div>
 							<div class="categories__form form">
 								<button type="button" class="actions__btn actions__btn--edit" @click="redirectEdit(item.id)"></button>
 							</div>

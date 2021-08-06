@@ -17,9 +17,9 @@
 					<div class="categories__item" v-for="(item, index) in categories" :key="index">
 						<span class="categories__name">{{ item.name }}</span>
 						<div class="categories__actions actions subcategories__actions">
-							<!-- <form action="#!" method="#!" class="categories__form form">
-								<button type="submit" class="actions__btn actions__btn--delete"></button>
-							</form> -->
+							<div class="categories__form form">
+								<button type="button" class="actions__btn actions__btn--delete" @click="deleteCategory(item.id)"></button>
+							</div>
 							<div class="categories__form form">
 								<button type="button" class="actions__btn actions__btn--edit" @click="redirectEdit(item.id)"></button>
 							</div>
@@ -49,7 +49,12 @@
 				axios.get('/admin/get-child-categories/' + this.id).then(response => {
 					this.categories = response.data
 				})
-			}
+			},
+			deleteCategory(id) {
+				axios.delete('/admin/category/' + id).then(response => {
+					this.getChildCategories()
+				})
+			},
 		},
 		mounted() {
 			this.getChildCategories()

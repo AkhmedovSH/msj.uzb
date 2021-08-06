@@ -74,6 +74,7 @@ class CategoryController extends Controller
 
     public function destroy($id){
         Category::find($id)->delete();
-        return redirect()->route('category.index');
+				return response()->json(['success' => true], 200);
+        //return redirect()->route('category.index');
     }
 }

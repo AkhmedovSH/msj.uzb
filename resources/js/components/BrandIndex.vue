@@ -17,9 +17,9 @@
 					<div class="categories__item" v-for="(item, index) in data" :key="index">
 						<span class="categories__name">{{ item.name }}</span>
 						<div class="categories__actions actions subcategories__actions">
-							<!-- <form action="#!" method="#!" class="categories__form form">
-								<button type="submit" class="actions__btn actions__btn--delete"></button>
-							</form> -->
+							<div class="categories__form form">
+								<button type="button" class="actions__btn actions__btn--delete" @click="deleteItem(item.id)"></button>
+							</div>
 							<div class="categories__form form">
 								<button type="button" class="actions__btn actions__btn--edit" @click="redirect(item.id)"></button>
 							</div>
@@ -61,6 +61,9 @@
 		methods: {
 			redirect(id) {
 				window.location.href = window.location.origin + '/admin/brand/' + id + '/edit'
+			},
+			deleteItem(id) {
+				window.location.href = window.location.origin + '/admin/brand/destroy/' + id
 			},
 			getBrands() {
 				axios.get('/admin/get-brands').then(response => {

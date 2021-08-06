@@ -2051,6 +2051,9 @@ __webpack_require__.r(__webpack_exports__);
     redirect: function redirect(id) {
       window.location.href = window.location.origin + '/admin/brand/' + id + '/edit';
     },
+    deleteItem: function deleteItem(id) {
+      window.location.href = window.location.origin + '/admin/brand/destroy/' + id;
+    },
     getBrands: function getBrands() {
       var _this = this;
 
@@ -2239,6 +2242,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('/admin/get-child-categories/' + this.id).then(function (response) {
         _this.categories = response.data;
+      });
+    },
+    deleteCategory: function deleteCategory(id) {
+      var _this2 = this;
+
+      axios["delete"]('/admin/category/' + id).then(function (response) {
+        _this2.getChildCategories();
       });
     }
   },
@@ -22432,6 +22442,18 @@ var render = function() {
                     [
                       _c("div", { staticClass: "categories__form form" }, [
                         _c("button", {
+                          staticClass: "actions__btn actions__btn--delete",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteItem(item.id)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "categories__form form" }, [
+                        _c("button", {
                           staticClass: "actions__btn actions__btn--edit",
                           attrs: { type: "button" },
                           on: {
@@ -22671,6 +22693,18 @@ var render = function() {
                     _c("div", { staticClass: "categories__actions actions" }, [
                       _c("div", { staticClass: "categories__form form" }, [
                         _c("button", {
+                          staticClass: "actions__btn actions__btn--delete",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteCategory(item.id)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "categories__form form" }, [
+                        _c("button", {
                           staticClass: "actions__btn actions__btn--edit",
                           attrs: { type: "button" },
                           on: {
@@ -22809,6 +22843,18 @@ var render = function() {
                         "categories__actions actions subcategories__actions"
                     },
                     [
+                      _c("div", { staticClass: "categories__form form" }, [
+                        _c("button", {
+                          staticClass: "actions__btn actions__btn--delete",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteCategory(item.id)
+                            }
+                          }
+                        })
+                      ]),
+                      _vm._v(" "),
                       _c("div", { staticClass: "categories__form form" }, [
                         _c("button", {
                           staticClass: "actions__btn actions__btn--edit",
