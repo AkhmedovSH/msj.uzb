@@ -104,11 +104,10 @@
 					<button class="product-notify__close-btn"></button>
 				</div>
 			</div>
-
 			<div class="modal sizes-modal">
 				<div class="modal__body">
 					<div class="modal__image">
-						<img src="/assets/img/product/size-table.jpg" alt="Table of sizes">
+						<img src="{{ '/uploads/products/' . $data->size_image }}" alt="Table of sizes">
 					</div>
 					<button class="modal__close-btn sizes-modal-close"></button>
 				</div>

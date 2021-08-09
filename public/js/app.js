@@ -2454,6 +2454,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         formData.append('image', this.$refs.file.files[0]);
       }
 
+      if (this.$refs.size_image.files.length) {
+        formData.append('size_image', this.$refs.size_image.files[0]);
+      }
+
       formData.append('name', this.sendData.name);
       formData.append('price', this.sendData.price);
       formData.append('description', this.sendData.description);
@@ -2731,6 +2735,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (this.$refs.file.files.length) {
         formData.append('image', this.$refs.file.files[0]);
+      }
+
+      if (this.$refs.size_image.files.length) {
+        formData.append('size_image', this.$refs.size_image.files[0]);
       }
 
       formData.append('name', this.sendData.name);
@@ -3088,13 +3096,20 @@ __webpack_require__.r(__webpack_exports__);
     redirect: function redirect(id) {
       window.location.href = window.location.origin + '/admin/size/create/' + this.activeTab;
     },
-    getSizes: function getSizes() {
+    deleteItem: function deleteItem(id) {
       var _this = this;
 
-      axios.get('/admin/get-sizes').then(function (response) {
-        _this.dataCopy = response.data;
+      axios["delete"]('/admin/size/' + id).then(function (response) {
+        _this.getSizes();
+      });
+    },
+    getSizes: function getSizes() {
+      var _this2 = this;
 
-        _this.setActiveTab(1);
+      axios.get('/admin/get-sizes').then(function (response) {
+        _this2.dataCopy = response.data;
+
+        _this2.setActiveTab(_this2.activeTab);
       });
     }
   },
@@ -23406,6 +23421,19 @@ var render = function() {
             _c("div", { staticClass: "col-lg-6 col-12" }, [
               _c("label", { staticClass: "add-product__label" }, [
                 _vm._v(
+                  "\r\n\t\t\t\t\t\tДобавление фото (Таблицы размеров)\r\n\t\t\t\t\t\t"
+                ),
+                _c("input", {
+                  ref: "size_image",
+                  staticClass: "add-product__input",
+                  attrs: { type: "file", name: "table-size-image" }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-12" }, [
+              _c("label", { staticClass: "add-product__label" }, [
+                _vm._v(
                   "\r\n\t\t\t\t\t\tДобавление фото (Главная)\r\n\t\t\t\t\t\t"
                 ),
                 _c("input", {
@@ -23598,6 +23626,19 @@ var render = function() {
                       _vm.$set(_vm.sendData, "description", $event.target.value)
                     }
                   }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-lg-6 col-12" }, [
+              _c("label", { staticClass: "add-product__label" }, [
+                _vm._v(
+                  "\r\n\t\t\t\t\t\tДобавление фото (Таблицы размеров)\r\n\t\t\t\t\t\t"
+                ),
+                _c("input", {
+                  ref: "size_image",
+                  staticClass: "add-product__input",
+                  attrs: { type: "file", name: "table-size-image" }
                 })
               ])
             ]),
@@ -24033,7 +24074,23 @@ var render = function() {
                     _vm._v(_vm._s(item.name))
                   ]),
                   _vm._v(" "),
-                  _vm._m(1, true)
+                  _c(
+                    "div",
+                    {
+                      staticClass: "sizes__form form",
+                      on: {
+                        click: function($event) {
+                          return _vm.deleteItem(item.id)
+                        }
+                      }
+                    },
+                    [
+                      _c("button", {
+                        staticClass: "sizes__delete-btn",
+                        attrs: { type: "button", name: "delete-size" }
+                      })
+                    ]
+                  )
                 ])
               ]
             )
@@ -24090,17 +24147,6 @@ var staticRenderFns = [
           _vm._v("Выберите раздел")
         ])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "sizes__form form" }, [
-      _c("button", {
-        staticClass: "sizes__delete-btn",
-        attrs: { type: "button", name: "delete-size" }
-      })
     ])
   }
 ]

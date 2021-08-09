@@ -72,6 +72,22 @@ class Product extends Model
         $this->image = $filename;
         $this->save();
     }
+
+		public function removeSizeImage(){
+				if ($this->size_image != null) {
+						unlink('uploads/products/'. $this->size_image);
+				}
+		}
+
+		function uploadSizeImage($image){
+				if ($image == null) { return; }
+				$this->removeSizeImage();
+				$filename = rand(1000, 1000000000). '.' . $image->extension();
+
+				$image->move('uploads/products/', $filename);
+				$this->size_image = $filename;
+				$this->save();
+		}
     
     public function uploadMultipleImages($images) {
         if ($images == null) { return; }

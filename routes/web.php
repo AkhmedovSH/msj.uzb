@@ -84,6 +84,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 	Route::get('/size/create/{id}', [\App\Http\Controllers\Admin\SizeController::class, 'create']);
 	Route::put('/size/store/{id}', [\App\Http\Controllers\Admin\SizeController::class, 'store']);
 	Route::get('/get-sizes', [\App\Http\Controllers\Admin\SizeController::class, 'getSizes']);
+	Route::delete('/size/{id}', [\App\Http\Controllers\Admin\SizeController::class, 'destroy']);
 
 	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
 	Route::get('/get-brands', [\App\Http\Controllers\Admin\BrandController::class, 'getBrands']);

@@ -62,6 +62,7 @@ class ProductController extends Controller
 				
         $data = Product::add($request->all());
         $data->uploadImage($request->file('image'));
+        $data->uploadSizeImage($request->file('size_image'));
         $data->uploadMultipleImages($request->file('images'));
         return response()->json($data, 200);
     }
@@ -85,10 +86,10 @@ class ProductController extends Controller
             'category_id' => 'required',
             'image' => 'nullable|image'
         ]);
-
         $data = Product::find($id);
         $data->edit($request->all());
         $data->uploadImage($request->file('image'));
+				$data->uploadSizeImage($request->file('size_image'));
         $data->uploadMultipleImages($request->file('images'));
         return response()->json($data, 200);
     }

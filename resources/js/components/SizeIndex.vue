@@ -22,7 +22,7 @@
 				<div class="col-lg-2 col-md-3 col-sm-4 col-6" v-for="(item, index) in data" :key="index">
 					<div class="sizes__item">
 						<span class="sizes__text">{{ item.name }}</span>
-						<div class="sizes__form form">
+						<div class="sizes__form form" @click="deleteItem(item.id)">
 							<button type="button" name="delete-size" class="sizes__delete-btn"></button>
 						</div>
 					</div>
@@ -66,10 +66,15 @@
 			redirect(id) {
 				window.location.href = window.location.origin + '/admin/size/create/' + this.activeTab
 			},
+			deleteItem(id) {
+				axios.delete('/admin/size/' + id).then(response => {
+					this.getSizes()
+				})
+			},
 			getSizes() {
 				axios.get('/admin/get-sizes').then(response => {
 					this.dataCopy = response.data
-					this.setActiveTab(1)
+					this.setActiveTab(this.activeTab)
 				})
 			}
 		},

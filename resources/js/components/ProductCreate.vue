@@ -82,12 +82,12 @@
 					<a href="/admin/size" class="add-product__link">Редактировать</a>
 				</div>
 
-				<!-- <div class="col-lg-6 col-12">
+				<div class="col-lg-6 col-12">
 					<label class="add-product__label">
 						Добавление фото (Таблицы размеров)
-						<input type="file" name="table-size-image" class="add-product__input">
+						<input type="file" name="table-size-image" class="add-product__input" ref="size_image">
 					</label>
-				</div> -->
+				</div>
 
 				<div class="col-lg-6 col-12">
 					<label class="add-product__label">
@@ -172,6 +172,11 @@
 				if(this.$refs.file.files.length) {
 					formData.append('image', this.$refs.file.files[0])
 				}
+
+				if(this.$refs.size_image.files.length) {
+					formData.append('size_image', this.$refs.size_image.files[0])
+				}
+
 				formData.append('name', this.sendData.name)
 				formData.append('price', this.sendData.price)
 				formData.append('description', this.sendData.description)
