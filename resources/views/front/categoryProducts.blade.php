@@ -1,6 +1,6 @@
 @extends('layout')
 @section('content')
-<link rel="stylesheet" href="{{ asset('/assets/styles/index.css')}}" />
+<link rel="stylesheet" href="{{ asset('/assets/styles/index.css?ver=1')}}" />
 <main>
 	<section class="products products-inner">
 		<div class="container-fluid">
