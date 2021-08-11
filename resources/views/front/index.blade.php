@@ -240,7 +240,7 @@
 							</li>
 							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
 								<div class="blog__item">
-									<a href="innerpages/blog/blog-1.php" class="blog__link">
+									<a href="/blog" class="blog__link">
 										<span class="blog__image">
 											<img src="/public/assets/img/blog/blog-2.jpg" alt="Blog Preview Image">
 										</span>
@@ -253,7 +253,7 @@
 							</li>
 							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
 								<div class="blog__item">
-									<a href="innerpages/blog/blog-1.php" class="blog__link">
+									<a href="/blog" class="blog__link">
 										<span class="blog__image">
 											<img src="/public/assets/img/blog/blog-3.jpg" alt="Blog Preview Image">
 										</span>
@@ -267,7 +267,7 @@
 							</li>
 							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
 								<div class="blog__item">
-									<a href="innerpages/blog/blog-1.php" class="blog__link">
+									<a href="/blog" class="blog__link">
 										<span class="blog__image">
 											<img src="/public/assets/img/blog/blog-4.jpg" alt="Blog Preview Image">
 										</span>
@@ -280,7 +280,7 @@
 							</li>
 							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
 								<div class="blog__item">
-									<a href="innerpages/blog/blog-1.php" class="blog__link">
+									<a href="/blog" class="blog__link">
 										<span class="blog__image">
 											<img src="/public/assets/img/blog/blog-5.jpg" alt="Blog Preview Image">
 										</span>
@@ -293,7 +293,7 @@
 							</li>
 							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
 								<div class="blog__item">
-									<a href="innerpages/blog/blog-1.php" class="blog__link">
+									<a href="/blog" class="blog__link">
 										<span class="blog__image">
 											<img src="/public/assets/img/blog/blog-6.jpg" alt="Blog Preview Image">
 										</span>
