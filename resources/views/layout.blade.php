@@ -65,7 +65,7 @@
 												<div class="nav__item--secondary-dropdown">
 													@foreach ($item->brands as $brand)
 													<li class="nav__item nav__item--secondary">
-														<a href="/for-women" class="nav__link nav__link--secondary">{{ $brand->name }}</a>
+														<a href="{{ route('brand.products', $brand->id) }}" class="nav__link nav__link--secondary">{{ $brand->name }}</a>
 													</li>
 													@endforeach
 												</div>

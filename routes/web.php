@@ -23,6 +23,7 @@ Route::get('/locale/{locale}', function ($locale) {
 
 Route::get('/category-products/{id}', [\App\Http\Controllers\MainController::class, 'categoryProducts'])->name('category.products');
 Route::get('/category-products-menu/{id}', [\App\Http\Controllers\MainController::class, 'categoryProductsMenu'])->name('category.products.menu');
+Route::get('/brand-products/{id}', [\App\Http\Controllers\MainController::class, 'brandProducts'])->name('brand.products');
 
 Route::get('/product/{id}', [\App\Http\Controllers\MainController::class, 'singleProduct'])->name('product');
 Route::get('/basket', [\App\Http\Controllers\CartController::class, 'index'])->name('basket');

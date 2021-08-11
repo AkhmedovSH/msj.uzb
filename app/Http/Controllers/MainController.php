@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
@@ -39,10 +40,11 @@ class MainController extends Controller
 		return view('front.product', compact('data'));
 	}
 
-	public function brandProducts($id)
+	public function brandProducts($brand_id)
 	{
-		$data = Product::where('brand_id', $id)->where('hide', 0)->paginate(12);
-		return view('front.brandProducts');
+		$brand = Brand::where('id', $brand_id)->first();
+		$data = Product::where('brand_id', $brand_id)->where('hide', 0)->paginate(12);
+		return view('front.brandProducts', compact('brand', 'data'));
 	}
 
 	public function blog()
