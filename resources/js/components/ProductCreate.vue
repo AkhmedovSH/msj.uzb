@@ -45,14 +45,44 @@
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Характеристики
-						<textarea name="characteristics" class="add-product__input" v-model="sendData.characteristics"></textarea>
+						<editor
+							v-model="sendData.characteristics"
+							api-key="0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4"
+							:init="{
+								menubar: false,
+								plugins: [
+									'advlist autolink lists link image charmap print preview anchor',
+									'searchreplace visualblocks code fullscreen',
+									'insertdatetime media table paste code help wordcount'
+								],
+								toolbar:
+									'undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help'
+							}"
+						/>
 					</label>
 				</div>
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Описание
-						<textarea name="description" class="add-product__input" v-model="sendData.description"></textarea>
+						<editor
+							v-model="sendData.description"
+							api-key="0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4"
+							:init="{
+								menubar: false,
+								plugins: [
+									'advlist autolink lists link image charmap print preview anchor',
+									'searchreplace visualblocks code fullscreen',
+									'insertdatetime media table paste code help wordcount'
+								],
+								toolbar:
+									'undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help'
+							}"
+						/>
 					</label>
 				</div>
 
@@ -116,7 +146,11 @@
 </template>
 
 <script>
+import Editor from '@tinymce/tinymce-vue'
 	export default {
+		components: {
+     'editor': Editor
+		},
 		data() {
 			return {
 				data: [],

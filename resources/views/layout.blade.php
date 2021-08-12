@@ -18,7 +18,7 @@
 	
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
-	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=1')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=2')}}" />
 	
 	<title>msj</title>
 </head>

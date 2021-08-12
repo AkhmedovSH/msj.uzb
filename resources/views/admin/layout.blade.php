@@ -45,7 +45,7 @@
 	
 	<script src="{{ asset('/assets/libs/jquery/jquery.min.js')}}"></script>
 	<script src="{{ asset('/assets/scripts/admin.js')}}"></script>
-	<script src="{{ asset('/js/app.js?ver=1')}}"></script>
+	<script src="{{ asset('/js/app.js?ver=2')}}"></script>
 	
 </body>
 	

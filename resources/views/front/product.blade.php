@@ -81,7 +81,7 @@
 
 						<ul class="product-sidebar__info-list">
 							<li class="product-sidebar__info-item"><span>
-								{{ $data->characteristics }}
+								{!! $data->characteristics !!}
 							</span></li> 
 							
 						</ul>
@@ -89,7 +89,7 @@
 						<div class="product-sidebar__description">
 							<p class="product-sidebar__description-title">Описание</p>
 							<p class="product-sidebar__description-text">
-								{{ $data->description }}
+								{!! $data->description !!}
 							</p>
 						</div>
 
