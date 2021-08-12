@@ -80,7 +80,7 @@
 						
 
 						<ul class="product-sidebar__info-list">
-							<li class="product-sidebar__info-item"><span>Характеристики</span></li>
+							<p class="product-sidebar__description-title">Характеристики</p>
 							<li class="product-sidebar__info-item"><span>
 								{!! $data->characteristics !!}
 							</span>
