@@ -80,9 +80,11 @@
 						
 
 						<ul class="product-sidebar__info-list">
+							<li class="product-sidebar__info-item"><span>Характеристики</span></li>
 							<li class="product-sidebar__info-item"><span>
 								{!! $data->characteristics !!}
-							</span></li> 
+							</span>
+						</li> 
 							
 						</ul>
 
