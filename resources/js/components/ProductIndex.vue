@@ -55,19 +55,49 @@
 	
 					</div>
 				</div>
+
+				<div class="VuePagination w-100 d-flex justify-content-center">
+					<paginate
+						:page-count="count"
+						:initial-page="0"
+						:page-range="3"
+						:margin-pages="2"
+						:click-handler="getCurrentPage"
+						:prev-text="'<'"
+						:next-text="'>'"
+						:container-class="'pagination'"
+						:page-class="'page-item'"
+						:page-link-class="'page-link-item'"
+						:prev-class="'prev-pagination'"
+						:prev-link-class="'prev-link-pagination'"
+						:next-class="'next-pagination'"
+						:next-link-class="'next-link-pagination'"
+					></paginate>
+				</div>
 	
 			</div>
 		</section>
+
+		
 	
 	</main>
 </template>
 
 <script>
+	import Paginate from "vuejs-paginate";
 	export default {
+		components: {
+     'paginate': Paginate
+		},
 		data() {
 			return {
 				data: [],
-				productIdList: []
+				productIdList: [],
+				count: 0,
+				pagination: {
+					page: 0,
+					size: 20
+				},
 			};
     },
 		methods: {
@@ -77,7 +107,14 @@
 			getProducts() {
 				axios.get('/admin/get-products').then(response => {
 					this.data = response.data.data
+					this.count = response.data.total / this.pagination.size
 				})
+			},
+			getCurrentPage(pageNumber) {
+				axios.get('/admin/get-products?page=' + pageNumber).then(response => {
+					this.data = response.data.data
+					this.count = response.data.total / this.pagination.size
+				});
 			},
 			hideProduct(id) {
 				axios.post('/admin/product/hide/' + id).then(response => {

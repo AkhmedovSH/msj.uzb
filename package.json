@@ -27,6 +27,7 @@
     "dependencies": {
         "@tinymce/tinymce-vue": "^3.2.8",
         "less-loader": "^10.0.1",
-        "stylus-loader": "^6.1.0"
+        "stylus-loader": "^6.1.0",
+        "vuejs-paginate": "^2.1.0"
     }
 }
