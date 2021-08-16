@@ -12,10 +12,9 @@
 	<link rel="stylesheet" href="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.css')}}">
 	<link rel="stylesheet" href="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.theme.css')}}">
 	<link rel="stylesheet" href="{{ asset('/assets/libs/slick/slick.css')}}">
-	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
-	
+	<link rel="stylesheet" href="{{ asset('/assets/libs/lightgallery/lightgallery-bundle.min.css')}}">
 
-	
+	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=3')}}" />
@@ -187,6 +186,7 @@
 	<script src="{{ asset('/assets/libs/jq-form-styler/jquery.formstyler.min.js')}}"></script>
 	<script src="{{ asset('/assets/libs/slick/slick.min.js')}}"></script>
 	<script src="{{ asset('/assets/libs/jquery-mask/jquery-mask-min.js')}}"></script>
+	<script src="{{ asset('/assets/libs/lightgallery/lightgallery.min.js')}}"></script>
 	<script src="{{ asset('/assets/scripts/main.js')}}"></script>
 
 	<script src="{{ asset('/assets/scripts/index.js')}}"></script>

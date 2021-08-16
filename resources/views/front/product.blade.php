@@ -13,9 +13,9 @@
 							<div class="product-content__slider">
 								@if($data->images)
 									@foreach(json_decode($data->images) as $item)
-									<div class="product-content__slider-item">
+									<a href="{{ '/uploads/products/' . $item->image }}" class="product-content__slider-item">
 										<img src="{{ '/uploads/products/' . $item->image }}" alt="Product Image">
-									</div>
+									</a>
 									@endforeach
 								@endif
 							</div>
