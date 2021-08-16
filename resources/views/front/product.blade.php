@@ -10,7 +10,7 @@
 					<div class="product-content">
 
 						<div class="product-content__slider-wrapper product-content__slider-wrapper--active">
-							<div class="product-content__slider">
+							<div class="product-content__slider" id="lightgallery">
 								@if($data->images)
 									@foreach(json_decode($data->images) as $item)
 									<a href="{{ '/uploads/products/' . $item->image }}" class="product-content__slider-item">

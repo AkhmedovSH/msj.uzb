@@ -193,6 +193,7 @@
 	<script src="{{ asset('/assets/scripts/thumbnail-slider.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 	<script>
+		lightGallery(document.getElementById('lightgallery'), {});
 		(function(){
         const  classname = document.querySelectorAll('.quantity')
         Array.from(classname).forEach(function(element){
