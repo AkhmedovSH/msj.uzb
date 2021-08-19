@@ -90,7 +90,17 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 	Route::resource('/brand', \App\Http\Controllers\Admin\BrandController::class);
 	Route::get('/get-brands', [\App\Http\Controllers\Admin\BrandController::class, 'getBrands']);
 	Route::get('/brand/destroy/{id}', [\App\Http\Controllers\Admin\BrandController::class, 'destroy']);
+
+	Route::resource('/post', \App\Http\Controllers\Admin\PostController::class);
+	Route::get('/post/destroy/{id}', [\App\Http\Controllers\Admin\PostController::class, 'destroy']);
 });
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+Route::group(['middleware' => 'web'], function () {
+	Route::get('/laravel-filemanager', '\UniSharp\LaravelFilemanager\Controllers\LfmController@show');
+	Route::post('/laravel-filemanager/upload', '\UniSharp\LaravelFilemanager\Controllers\UploadController@upload');
+	// list all lfm routes here...
+});

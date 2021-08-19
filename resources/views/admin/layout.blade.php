@@ -18,7 +18,7 @@
 		<header class="header">
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-2 col-md-3 col-sm-4 col-6 offset-lg-1 offset-0">
+					<div class="col-lg-2 col-md-3 col-sm-4 col-6">
 						<a href="/admin" class="header__link">Все товары</a> 
 						<!-- header__link--active -->
 					</div>
@@ -30,6 +30,9 @@
 					</div>
 					<div class="col-lg-2 col-md-3 col-6 mt-md-0 mt-3">
 						<a href="/admin/size" class="header__link">Все размеры</a>
+					</div>
+					<div class="col-lg-2 col-md-3 col-6 mt-md-0 mt-3">
+						<a href="/admin/post" class="header__link">Посты</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-6 col-12 mt-lg-0 mt-3">
 						<a href="/" class="header__link">Выйти</a>
@@ -46,7 +49,22 @@
 	<script src="{{ asset('/assets/libs/jquery/jquery.min.js')}}"></script>
 	<script src="{{ asset('/assets/scripts/admin.js')}}"></script>
 	<script src="{{ asset('/js/app.js?ver=3')}}"></script>
-	
+
+	<script src="/plugins/ckeditor/ckeditor.js"></script>
+	<script src="/plugins/ckfinder/ckfinder.js"></script>
+	<script>
+    var options = {
+        filebrowserImageBrowseUrl: '/laravel-filemanager?type=Images',
+        filebrowserImageUploadUrl: '/laravel-filemanager/upload?type=Images&_token=',
+        filebrowserBrowseUrl: '/laravel-filemanager?type=Files',
+        filebrowserUploadUrl: '/laravel-filemanager/upload?type=Files&_token='
+    };
+	</script>
+	<script>
+			$("textarea").each(function(){
+					CKEDITOR.replace('my-editor', options);
+			});
+	</script>
 </body>
 	
 </html>
