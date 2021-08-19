@@ -20,7 +20,8 @@ class PostController extends Controller
 	}
 
 	public function edit($id) {
-		return view('admin.post.edit');
+		$data = Post::where('id', $id)->first();
+		return view('admin.post.edit', compact('data'));
 	}
 
 	public function store(Request $request){

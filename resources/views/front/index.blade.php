@@ -225,85 +225,21 @@
 				<div class="blog__splide splide">
 					<div class="splide__track">
 						<ul class="splide__list">
+							@foreach ($posts as $item)
 							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
 								<div class="blog__item">
-									<a href="/blog" class="blog__link">
+									<a href="/blog/{{ $item->id }}" class="blog__link">
 										<span class="blog__image">
 											<img src="/public/assets/img/blog/blog-1.jpg" alt="Blog Preview Image">
 										</span>
-										<span class="blog__caption">4 главные вещи в летнем гардеробе</span>
+										<span class="blog__caption">{{ $item->title }}</span>
 										<span class="blog__subtitle">
-											Что обязательно должно оказаться в стильном женском гардеробе этим летом?
+											{{ $item->subtitle }}
 										</span>
 									</a>
 								</div>
 							</li>
-							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
-								<div class="blog__item">
-									<a href="/blog" class="blog__link">
-										<span class="blog__image">
-											<img src="/public/assets/img/blog/blog-2.jpg" alt="Blog Preview Image">
-										</span>
-										<span class="blog__caption">Какую одежду купить ребенку на лето?</span>
-										<span class="blog__subtitle">
-											Составляем список
-										</span>
-									</a>
-								</div>
-							</li>
-							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
-								<div class="blog__item">
-									<a href="/blog" class="blog__link">
-										<span class="blog__image">
-											<img src="/public/assets/img/blog/blog-3.jpg" alt="Blog Preview Image">
-										</span>
-										<span class="blog__caption">Собираемся в отпуск!</span>
-										<span class="blog__subtitle">
-											Что должно оказаться
-											в чемодане?
-										</span>
-									</a>
-								</div>
-							</li>
-							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
-								<div class="blog__item">
-									<a href="/blog" class="blog__link">
-										<span class="blog__image">
-											<img src="/public/assets/img/blog/blog-4.jpg" alt="Blog Preview Image">
-										</span>
-										<span class="blog__caption">Выбираем платье для пикника!</span>
-										<span class="blog__subtitle">
-											4 стильных варианта
-										</span>
-									</a>
-								</div>
-							</li>
-							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
-								<div class="blog__item">
-									<a href="/blog" class="blog__link">
-										<span class="blog__image">
-											<img src="/public/assets/img/blog/blog-5.jpg" alt="Blog Preview Image">
-										</span>
-										<span class="blog__caption">Как носить джоггеры?</span>
-										<span class="blog__subtitle">
-											3 совета для мужчин
-										</span>
-									</a>
-								</div>
-							</li>
-							<li class="col-lg-4 col-sm-6 col-12 splide__slide">
-								<div class="blog__item">
-									<a href="/blog" class="blog__link">
-										<span class="blog__image">
-											<img src="/public/assets/img/blog/blog-6.jpg" alt="Blog Preview Image">
-										</span>
-										<span class="blog__caption">Что носить на пляже?</span>
-										<span class="blog__subtitle">
-											5 мужских комплектов с шортами
-										</span>
-									</a>
-								</div>
-							</li>
+							@endforeach
 						</ul>
 					</div>
 				</div>

@@ -7,9 +7,11 @@
 			<div class="row">
 				<div class="col-xl-8 col-lg-6 col-md-8 col-12 offset-xl-2 offset-lg-3 offset-md-2 offset-0">
 					<h1 class="categories__title">Добавить пост</h1>
-					<form action="/admin/post" method="post" class="categories__form form" autocomplete="off">
+					<form action="/admin/post/update/{{ $data->id }}" method="post" class="categories__form form" autocomplete="off" enctype="multipart/form-data">
 						@csrf
 						<input type="text" placeholder="Введите заголовок" name="title" class="categories__input add-product__label" required value="{{ $data->title }}">
+						
+						<input type="text" placeholder="Введите мини описание" name="subtitle" class="categories__input add-product__label" value="{{ $data->subtitle }}">
 
 						<label class="add-product__label">
 							Описание
@@ -18,7 +20,7 @@
 
 						<label class="add-product__label">
 							Добавление фото
-							<input type="file" name="table-size-image" class="add-product__input" name="image">
+							<input type="file" class="add-product__input" name="image">
 						</label>
 
 						<div class="categories__btn-wrapper">

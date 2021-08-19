@@ -33,7 +33,7 @@ Route::get('/payment-success/{phone}', [\App\Http\Controllers\OrderController::c
 
 
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
-Route::get('/blog', [\App\Http\Controllers\MainController::class, 'blog']);
+Route::get('/blog/{id}', [\App\Http\Controllers\MainController::class, 'blog']);
 Route::get('/delivery', [\App\Http\Controllers\MainController::class, 'delivery']);
 Route::get('/favourites', [\App\Http\Controllers\MainController::class, 'favourites']);
 Route::get('/public-offer', [\App\Http\Controllers\MainController::class, 'publicOffer']);
@@ -93,6 +93,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth']], function () {
 
 	Route::resource('/post', \App\Http\Controllers\Admin\PostController::class);
 	Route::get('/post/destroy/{id}', [\App\Http\Controllers\Admin\PostController::class, 'destroy']);
+	Route::post('/post/update/{id}', [\App\Http\Controllers\Admin\PostController::class, 'update']);
 });
 Auth::routes();
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
@@ -13,7 +14,8 @@ class MainController extends Controller
 	{
 		$recommended = Product::where('hide', 0)->inRandomOrder()->limit(4)->get();
 		$newProducts = Product::where('hide', 0)->orderBy('id', 'desc')->limit(8)->get();
-		return view('front.index', compact('newProducts', 'recommended'));
+		$posts = Post::limit(8)->orderBy('id', 'DESC')->get();
+		return view('front.index', compact('newProducts', 'recommended', 'posts'));
 	}
 
 	public function categoryProductsMenu($id)
@@ -47,9 +49,10 @@ class MainController extends Controller
 		return view('front.brandProducts', compact('brand', 'data'));
 	}
 
-	public function blog()
+	public function blog($id)
 	{
-		return view('front.blog');
+		$data = Post::where('id', $id)->first();
+		return view('front.blog', compact('data'));
 	}
 
 	public function delivery()

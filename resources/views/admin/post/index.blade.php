@@ -23,9 +23,9 @@
 							<form action="/admin/post/destroy/{{ $item->id }}" class="categories__form form" method="get">
 								<button type="submit" class="actions__btn actions__btn--delete"></button>
 							</form>
-							<div class="categories__form form">
-								<button type="button" class="actions__btn actions__btn--edit" ></button>
-							</div>
+							<form action="/admin/post/{{ $item->id }}/edit"  class="categories__form form">
+								<button type="submit" class="actions__btn actions__btn--edit" ></button>
+							</form>
 						</div>
 					</div>
 					@endforeach
