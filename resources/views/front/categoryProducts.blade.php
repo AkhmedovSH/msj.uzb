@@ -31,7 +31,12 @@
 				</div>
 				@endforeach
 
+				
 			</div>
+
+			<div class="d-flex justify-content-center my-5">
+					{{ $data->links("pagination::bootstrap-4") }}
+				</div>
 		</div>
 	</section>
 
