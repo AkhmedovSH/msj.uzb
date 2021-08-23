@@ -1,7 +1,7 @@
 @extends('layout')
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('/assets/styles/index.css?ver=3')}}" />
+<link rel="stylesheet" href="{{ asset('/assets/styles/index.css?ver=4')}}" />
 
 <main>
 
