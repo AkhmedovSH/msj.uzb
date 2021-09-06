@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
-	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=4')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=5')}}" />
 	
 	<title>msj</title>
 </head>
@@ -154,7 +154,7 @@
 						</ul>
 					</div>
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12">
-						<p class="footer__socials-title">Мы с соц. сетях</p>
+						<p class="footer__socials-title">Мы в соц. сетях</p>
 						<ul class="footer__socials-list">
 							<!-- <li class="footer__socials-item">
 								<a href="javascript:void(0);" class="footer__socials-link">
