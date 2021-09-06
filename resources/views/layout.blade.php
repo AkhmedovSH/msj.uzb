@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
-	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=5')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=7')}}" />
 	
 	<title>msj</title>
 </head>
@@ -187,13 +187,16 @@
 	<script src="{{ asset('/assets/libs/slick/slick.min.js')}}"></script>
 	<script src="{{ asset('/assets/libs/jquery-mask/jquery-mask-min.js')}}"></script>
 	<script src="{{ asset('/assets/libs/lightgallery/lightgallery.min.js')}}"></script>
+	<script src="{{ asset('/assets/libs/lightgallery/lg-zoom.umd.js') }}"></script>
 	<script src="{{ asset('/assets/scripts/main.js')}}"></script>
 
 	<script src="{{ asset('/assets/scripts/index.js')}}"></script>
 	<script src="{{ asset('/assets/scripts/thumbnail-slider.js')}}"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 	<script>
-		lightGallery(document.getElementById('lightgallery'), {});
+		lightGallery(document.getElementById('lightgallery'), {
+			plugins: [lgZoom],
+		});
 		(function(){
         const  classname = document.querySelectorAll('.quantity')
         Array.from(classname).forEach(function(element){
