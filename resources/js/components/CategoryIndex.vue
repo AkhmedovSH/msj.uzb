@@ -27,7 +27,7 @@
 			<div class="row mt-5 tab__content tab__content--active">
 				<div class="col-lg-8 col-12 offset-lg-2 offset-0">
 					<div class="categories__item" v-for="(item, index) in childs" :key="index">
-						<span class="categories__name">{{ item.name }}</span>
+						<span class="categories__name">{{ item.name_ru }}</span>
 						<div class="actions__form form">
 							<a :href="'/admin/subcategory/' + item.id" class="actions__btn actions__btn--secondary">Посмотреть категорию</a>
 						</div>

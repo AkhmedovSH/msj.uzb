@@ -33,7 +33,7 @@
 								<span class="products__image">
 									<img :src="'/uploads/products/' + item.image" alt="Product Image">
 								</span>
-								<span class="products__name">{{ item.name }}</span>
+								<span class="products__name">{{ item.name_ru }}</span>
 							</a>
 							<div class="products__actions actions">
 								<!-- Класс для переключения состояния - visible / invisible -->

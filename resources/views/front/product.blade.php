@@ -68,7 +68,9 @@
 							@endif
 						</ul>
 
+						@if($data->size_image)
 						<button class="product-sidebar__size-btn">{{ __('translation.table_size') }}</button>
+						@endif
 						<form action="/cart" method="post">
 							@csrf
 							<input type="hidden" name="id" value="{{ $data->id }}">

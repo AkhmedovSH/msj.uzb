@@ -6,19 +6,19 @@
 
 				<!-- <div class="col-lg-3 col-md-6 col-12">
 					<select name="section" class="add-product__select" @change="selectCategory1()" v-model="sendData.categories1">
-						<option :value="item.id" v-for="(item, index) in categories1" :key="index">{{ item.name }}</option>
+						<option :value="item.id" v-for="(item, index) in categories1" :key="index">{{ item.name_ru }}</option>
 					</select>
 				</div>
 
 				<div class="col-lg-3 col-md-6 col-12">
 					<select name="category" class="add-product__select" @change="selectCategory2()" v-model="sendData.categories2">
-						<option :value="item.id" v-for="(item, index) in categories2" :key="index">{{ item.name }}</option>
+						<option :value="item.id" v-for="(item, index) in categories2" :key="index">{{ item.name_ru }}</option>
 					</select>
 				</div>
 
 				<div class="col-lg-3 col-md-6 col-12">
 					<select name="category" class="add-product__select" @change="selectCategory2()" v-model="sendData.category_id">
-						<option :value="item.id" v-for="(item, index) in categories3" :key="index">{{ item.name }}</option>
+						<option :value="item.id" v-for="(item, index) in categories3" :key="index">{{ item.name_ru }}</option>
 					</select>
 				</div>
 
@@ -31,7 +31,7 @@
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
 						Название товара
-						<input type="text" name="product-name" class="add-product__input" v-model="sendData.name">
+						<input type="text" name="product-name" class="add-product__input" v-model="sendData.name_ru">
 					</label>
 				</div>
 
@@ -158,7 +158,7 @@ import Editor from '@tinymce/tinymce-vue'
 				brands: [],
 				brandsCopy: [],
 				sendData: {
-					name: '',
+					name_ru: '',
 					price: '',
 					description: '',
 					characteristics: '',
@@ -218,7 +218,7 @@ import Editor from '@tinymce/tinymce-vue'
 					formData.append('size_image', this.$refs.size_image.files[0])
 				}
 
-				formData.append('name', this.sendData.name)
+				formData.append('name_ru', this.sendData.name_ru)
 				formData.append('price', this.sendData.price)
 				formData.append('description', this.sendData.description)
 				formData.append('characteristics', this.sendData.characteristics)

@@ -22,6 +22,13 @@ class OrderController extends Controller
 	}
 
 	public function payment(Request $request) {
+
+		$deliveryPrice = 0;
+		if($request->city == 'Ташкент') {
+			$deliveryPrice = 25000;
+		} else {
+			$deliveryPrice = 40000;
+		}
 		
 		$order = Order::add($request->all());
 
@@ -36,7 +43,7 @@ class OrderController extends Controller
 					$new_user = User::where('name', $request->phone)->first();
 				}
 
-				$amount = 0;
+				$amount = $deliveryPrice;
 				foreach (Cart::content() as $key => $value) {
 					$amount += $value->model->price * $value->qty;
 				}
@@ -66,12 +73,13 @@ class OrderController extends Controller
 				foreach ($arr as $key => $value) {
 					$txt .= "<b>" . $key . "</b> " . $value . "\n";
 				};
-				$totalAmount = 0;
+				$totalAmount = $deliveryPrice;
 				foreach (Cart::content() as $key => $value) {
 					$totalAmount += $value->model->price * $value->qty;
 					$txt .= "<b>" .  $value->name . "</b> "	. number_format($value->model->price, 0,","," ") . ' сум | ' . $value->qty . ' шт' . "\n" . 
 					"<b>" .  'Размер' . $value->options['size'] . "</b> " . "\n";
 				}
+				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум";
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
 				
 				$website="https://api.telegram.org/bot".$this->token;
@@ -95,12 +103,18 @@ class OrderController extends Controller
 
 	public function paymentSuccess($phone) {
 		$order = Order::where('phone', $phone)->latest('created_at')->first();
-		//$order_products = OrderProducts::where('order_id', $order->id);
 		$order_products = DB::table('order_products')
 		->join('products', 'products.id' , '=', 'order_products.product_id')
 		->where('order_id', $order->id)
 		->get();
-		//dd($join);
+
+		$deliveryPrice = 0;
+		if($order->city == 'Ташкент') {
+			$deliveryPrice = 25000;
+		} else {
+			$deliveryPrice = 40000;
+		}
+		
 		$count = count($order_products);
 		if($count > 0) {
 				$order->status = 1;
@@ -121,13 +135,14 @@ class OrderController extends Controller
 					$txt .= "<b>" . $key . "</b> " . $value . "\n";
 				};
 				
-				$totalAmount = 0;
+				$totalAmount = $deliveryPrice;
 
 				foreach ($order_products as $value) {
 					$totalAmount += $value->price;
 					$txt .= "<b>" .  'Размер: ' . $value->size . "</b> " . "\n" .
-					 "<b>" .  $value->name . "</b> " .  number_format($value->price, 0,","," ") . ' сум | ' . $value->quantity . ' шт' . "\n" ;
+					 "<b>" .  $value->name . "</b> " .  number_format($value->price, 0,","," ") . ' сум | ' . $value->quantity . ' шт' . "\n";
 				};
+				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум";
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
 				$website="https://api.telegram.org/bot".$this->token;
 				$chatId = $this->chat_id;

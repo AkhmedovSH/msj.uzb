@@ -2872,7 +2872,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       brands: [],
       brandsCopy: [],
       sendData: {
-        name: '',
+        name_ru: '',
         price: '',
         description: '',
         characteristics: '',
@@ -2928,7 +2928,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         formData.append('size_image', this.$refs.size_image.files[0]);
       }
 
-      formData.append('name', this.sendData.name);
+      formData.append('name_ru', this.sendData.name_ru);
       formData.append('price', this.sendData.price);
       formData.append('description', this.sendData.description);
       formData.append('characteristics', this.sendData.characteristics);
@@ -3184,7 +3184,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       brands: [],
       brandsCopy: [],
       sendData: {
-        name: '',
+        name_ru: '',
         price: '',
         description: '',
         characteristics: '',
@@ -3246,7 +3246,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         formData.append('size_image', this.$refs.size_image.files[0]);
       }
 
-      formData.append('name', this.sendData.name);
+      formData.append('name_ru', this.sendData.name_ru);
       formData.append('price', this.sendData.price);
       formData.append('description', this.sendData.description);
       formData.append('characteristics', this.sendData.characteristics);
@@ -23237,7 +23237,7 @@ var render = function() {
                   { key: index, staticClass: "categories__item" },
                   [
                     _c("span", { staticClass: "categories__name" }, [
-                      _vm._v(_vm._s(item.name))
+                      _vm._v(_vm._s(item.name_ru))
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "actions__form form" }, [
@@ -23360,7 +23360,7 @@ var render = function() {
               _c(
                 "h1",
                 { staticClass: "categories__title categories__title--left" },
-                [_vm._v(_vm._s(_vm.category.name))]
+                [_vm._v(_vm._s(_vm.category.name_ru))]
               ),
               _vm._v(" "),
               _c(
@@ -23394,7 +23394,7 @@ var render = function() {
                 { key: index, staticClass: "categories__item" },
                 [
                   _c("span", { staticClass: "categories__name" }, [
-                    _vm._v(_vm._s(item.name))
+                    _vm._v(_vm._s(item.name_ru))
                   ]),
                   _vm._v(" "),
                   _c(
@@ -23515,7 +23515,7 @@ var render = function() {
                   return _c(
                     "option",
                     { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
+                    [_vm._v(_vm._s(item.name_ru))]
                   )
                 }),
                 0
@@ -23565,7 +23565,7 @@ var render = function() {
                   return _c(
                     "option",
                     { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
+                    [_vm._v(_vm._s(item.name_ru))]
                   )
                 }),
                 0
@@ -23615,7 +23615,7 @@ var render = function() {
                   return _c(
                     "option",
                     { key: index, domProps: { value: item.id } },
-                    [_vm._v(_vm._s(item.name))]
+                    [_vm._v(_vm._s(item.name_ru))]
                   )
                 }),
                 0
@@ -23675,19 +23675,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.sendData.name,
-                      expression: "sendData.name"
+                      value: _vm.sendData.name_ru,
+                      expression: "sendData.name_ru"
                     }
                   ],
                   staticClass: "add-product__input",
                   attrs: { type: "text", name: "product-name" },
-                  domProps: { value: _vm.sendData.name },
+                  domProps: { value: _vm.sendData.name_ru },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.sendData, "name", $event.target.value)
+                      _vm.$set(_vm.sendData, "name_ru", $event.target.value)
                     }
                   }
                 })
@@ -24086,19 +24086,19 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.sendData.name,
-                      expression: "sendData.name"
+                      value: _vm.sendData.name_ru,
+                      expression: "sendData.name_ru"
                     }
                   ],
                   staticClass: "add-product__input",
                   attrs: { type: "text", name: "product-name" },
-                  domProps: { value: _vm.sendData.name },
+                  domProps: { value: _vm.sendData.name_ru },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.$set(_vm.sendData, "name", $event.target.value)
+                      _vm.$set(_vm.sendData, "name_ru", $event.target.value)
                     }
                   }
                 })
@@ -24376,7 +24376,7 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("span", { staticClass: "products__name" }, [
-                      _vm._v(_vm._s(item.name))
+                      _vm._v(_vm._s(item.name_ru))
                     ])
                   ]
                 ),

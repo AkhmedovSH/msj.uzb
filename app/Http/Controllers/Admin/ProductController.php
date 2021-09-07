@@ -34,7 +34,7 @@ class ProductController extends Controller
 		
 		public function search(Request $request)
     {
-        $data = Product::where('title', 'like', '%' . $request->title . '%')->paginate(30);
+        $data = Product::where('name_ru', 'like', '%' . $request->title . '%')->paginate(30);
 
         return view('admin.product.index', compact('data'));
     }
@@ -46,8 +46,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $categories = Category::pluck('name', 'id')->all();
-        $products = Product::pluck('name', 'id')->all();
+        $categories = Category::pluck('name_ru', 'name_uz', 'id')->all();
+        $products = Product::pluck('name_ru', 'name_uz', 'id')->all();
         return view('admin.product.create', compact('categories', 'products'));
     }
 
@@ -55,7 +55,7 @@ class ProductController extends Controller
     {
         //dd($request->all());
         $this->validate($request, [
-            'name' => 'required',
+            'name_ru' => 'required',
             'category_id' => 'required',
             'image' => 'nullable|image',
         ]);
@@ -82,7 +82,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name_ru' => 'required',
             'category_id' => 'required',
             'image' => 'nullable|image'
         ]);
