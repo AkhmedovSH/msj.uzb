@@ -63,6 +63,7 @@
 	<script>
 			$("textarea").each(function(){
 					CKEDITOR.replace('my-editor', options);
+					CKEDITOR.replace('my-editor2', options);
 			});
 	</script>
 </body>

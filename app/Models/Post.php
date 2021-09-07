@@ -9,7 +9,7 @@ class Post extends Model
 {
     use HasFactory;
 
-		protected $fillable = ['title', 'subtitle', 'description'];
+		protected $fillable = ['title_ru', 'title_uz', 'subtitle_ru', 'subtitle_uz', 'description_ru', 'description_uz',];
 
 		public static function add($fields)
     {

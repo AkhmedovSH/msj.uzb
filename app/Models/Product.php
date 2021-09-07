@@ -10,7 +10,8 @@ class Product extends Model
 {
 
     protected $fillable = [
-        'name_ru', 'name_uz', 'category_id', 'price', 'characteristics', 'description', 'brand_id' , 'sizes'
+        'name_ru', 'name_uz', 'category_id', 'price', 'characteristics_ru', 'characteristics_uz', 'description_ru',
+				'description_uz', 'brand_id' , 'sizes'
     ];
 
     protected $casts = [
@@ -25,15 +26,6 @@ class Product extends Model
     public static function add($fields){
         $data = new static;
         $data->fill($fields);
-				// if($fields['sizes']) {
-				// 	$size_price = array();
-				// 	$incI = 0;
-				// 	foreach($fields['sizes'] as $item) {
-				// 		$names[$incI]['size'] = $item[$incI];
-				// 		$names[$incI]['price'] = 0;
-        //     $incI++;
-				// 	}
-				// }
         $data->save();
         return $data;
     }

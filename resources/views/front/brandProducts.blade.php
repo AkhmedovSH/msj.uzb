@@ -17,7 +17,7 @@
 						<span class="products__image">
 							<img src="{{ '/uploads/products/' .  $item->image }}" alt="image">
 						</span>
-						<span class="products__name">{{ $item->name }}</span>
+						<span class="products__name">{{ $item['name_' . app()->getLocale()] }}</span>
 						<span class="products__sizes">
 							@if($item->sizes)
 								@foreach(explode(",", $item->sizes) as $size)

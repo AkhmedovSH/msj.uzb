@@ -31,7 +31,7 @@
 
 						<div class="product-sidebar__head">
 							<p class="product-sidebar__title">
-								{{ $data->name }}
+								{{ $data['name_' . app()->getLocale()] }}
 							</p>
 							<button class="product-sidebar__wishlist-btn"></button>
 						</div>
@@ -74,7 +74,7 @@
 						<form action="/cart" method="post">
 							@csrf
 							<input type="hidden" name="id" value="{{ $data->id }}">
-							<input type="hidden" name="name" value="{{ $data->name }}">
+							<input type="hidden" name="name" value="{{ $data->name_ru }}">
 							<input type="hidden" name="price" value="{{ $data->price }}">
 							<input type="hidden" name="size" id="size" value="">
 							<button type="submit" class="product-sidebar__basket-btn">{{ __('translation.put_to_card') }}</button>

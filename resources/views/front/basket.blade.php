@@ -36,7 +36,7 @@
 				<div class="col-lg-2 col-md-3 col-sm-4 col-6">
 					<p class="basket__item basket__description basket__description-text">
 						<span class="basket__heading basket__heading-hidden">{{ __('translation.b_description') }}</span>
-						{{ $item->model->name }}
+						{{ $item->model['name_' . app()->getLocale()] }}
 					</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
@@ -46,6 +46,16 @@
 					</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
+					<span class="basket__heading basket__heading-hidden">Количество</span>
+					<div class="basket__item basket__count basket__count-box">
+						<button class="basket__count-btn basket__count-btn--minus" data-id="{{$item->rowId}}" data-qty="{{$item->qty}}"
+							onclick="decrementItem(event, {{ $item->model->id }})"></button>
+						<p id="{{ $item->model->id }}" class="basket__count-text">{{ $item->qty }}</p>
+						<button class="basket__count-btn basket__count-btn--plus" data-id="{{$item->rowId}}" data-qty="{{$item->qty}}"
+						onclick="incrementItem(event, {{ $item->model->id }})"></button>
+					</div>
+				</div>
+				{{-- <div class="col-md-2 col-sm-4 col-6">
 					<span class="basket__heading basket__heading-hidden">{{ __('translation.b_count') }}</span>
 					<div class="basket__item basket__count basket__count-box">
 					<select class="select--ys show-qty quantity" data-id="{{$item->rowId}}">
@@ -57,7 +67,7 @@
 							<option {{ $item->qty == 10 ? 'selected' : ''}}>10</option>
 					</select>
 					</div>
-				</div>
+				</div> --}}
 				<div class="col-md-2 col-sm-4 col-6">
 					<p class="basket__item basket__total basket__total-label">
 						<span class="basket__heading basket__heading-hidden">{{ __('translation.b_total') }}</span>

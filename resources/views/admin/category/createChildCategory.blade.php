@@ -9,7 +9,8 @@
 					<h1 class="categories__title">Добавить категорию</h1>
 					<form action="/admin/category/child/store" method="post" class="categories__form form" autocomplete="off">
 						@csrf
-						<input type="text" placeholder="Введите название" name="name" class="categories__input" required>
+						<input type="text" placeholder="Введите название ru" name="name_ru" class="categories__input mb-4" required>
+						<input type="text" placeholder="Введите название uz" name="name_uz" class="categories__input" required>
 						<input type="hidden" name="parent_id" class="categories__input" value="{{ $id }}" required>
 						<div class="categories__btn-wrapper">
 							<button type="submit" name="save-category" class="categories__btn">Сохранить</button>

@@ -30,8 +30,15 @@
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
-						Название товара
+						Название товара ru
 						<input type="text" name="product-name" class="add-product__input" v-model="sendData.name_ru">
+					</label>
+				</div>
+
+				<div class="col-md-6 col-12">
+					<label class="add-product__label">
+						Название товара uz
+						<input type="text" name="product-name" class="add-product__input" v-model="sendData.name_uz">
 					</label>
 				</div>
 
@@ -41,12 +48,14 @@
 						<input type="number" name="product-price" class="add-product__input" v-model="sendData.price">
 					</label>
 				</div>
+				<div class="col-md-6 col-12">
+				</div>
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
-						Характеристики
+						Характеристики ru
 						<editor
-							v-model="sendData.characteristics"
+							v-model="sendData.characteristics_ru"
 							api-key="0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4"
 							:init="{
 								menubar: false,
@@ -66,9 +75,53 @@
 
 				<div class="col-md-6 col-12">
 					<label class="add-product__label">
-						Описание
+						Характеристики uz
 						<editor
-							v-model="sendData.description"
+							v-model="sendData.characteristics_uz"
+							api-key="0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4"
+							:init="{
+								menubar: false,
+								plugins: [
+									'advlist autolink lists link image charmap print preview anchor',
+									'searchreplace visualblocks code fullscreen',
+									'insertdatetime media table paste code help wordcount'
+								],
+								toolbar:
+									'undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help'
+							}"
+						/>
+					</label>
+				</div>
+
+				<div class="col-md-6 col-12">
+					<label class="add-product__label">
+						Описание ru
+						<editor
+							v-model="sendData.description_ru"
+							api-key="0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4"
+							:init="{
+								menubar: false,
+								plugins: [
+									'advlist autolink lists link image charmap print preview anchor',
+									'searchreplace visualblocks code fullscreen',
+									'insertdatetime media table paste code help wordcount'
+								],
+								toolbar:
+									'undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help'
+							}"
+						/>
+					</label>
+				</div>
+
+				<div class="col-md-6 col-12">
+					<label class="add-product__label">
+						Описание uz
+						<editor
+							v-model="sendData.description_uz"
 							api-key="0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4"
 							:init="{
 								menubar: false,
@@ -158,10 +211,13 @@ import Editor from '@tinymce/tinymce-vue'
 				brands: [],
 				brandsCopy: [],
 				sendData: {
-					name_ru: '',
 					price: '',
-					description: '',
-					characteristics: '',
+					name_ru: '',
+					name_uz: '',
+					description_ru: '',
+					description_uz: '',
+					characteristics_ru: '',
+					characteristics_uz: '',
 					brand_id: '',
 					category_id: '',
 					image: '',

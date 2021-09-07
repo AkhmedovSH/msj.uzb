@@ -44,16 +44,16 @@
 								<ul class="nav__list">
 									@foreach ($categories as $item)
 									<li class="nav__item nav__item--dropdown">
-										<a href="javascript:void(0);" class="nav__link">{{ $item->name }}</a>
+										<a href="javascript:void(0);" class="nav__link">{{ $item['name_' . app()->getLocale()] }}</a>
 										<button class="dropdown-btn mobile-visible"></button>
 										<div class="nav--secondary">
 											@foreach ($item->childs as $item2)
 											<ul class="nav__list nav__list--secondary offset-lg-1">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">{{ $item2->name }}</li>
+												<li class="nav__item nav__item--secondary nav__item--secondary-title">{{ $item2['name_' . app()->getLocale()] }}</li>
 												<div class="nav__item--secondary-dropdown">
 													@foreach ($item2->childs as $item3)
 													<li class="nav__item nav__item--secondary">
-														<a href="{{ route('category.products.menu', $item3->id) }}" class="nav__link nav__link--secondary">{{ $item3->name }}</a>
+														<a href="{{ route('category.products.menu', $item3->id) }}" class="nav__link nav__link--secondary">{{ $item3['name_' . app()->getLocale()] }}</a>
 													</li>
 													@endforeach
 												</div>
@@ -197,25 +197,37 @@
 		lightGallery(document.getElementById('lightgallery'), {
 			plugins: [lgZoom],
 		});
-		(function(){
-        const  classname = document.querySelectorAll('.quantity')
-        Array.from(classname).forEach(function(element){
-            element.addEventListener('change', function(){
-                const id = element.getAttribute('data-id')
-                
-                console.log(this.value, id, 1);
-                axios.patch('/cart/update', {
-                    quantity: this.value,
-                    prodid: id,
-                }).then(function (response) {
-                    //console.log(success);
-                    window.location.href = '{{route('basket')}}'
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            })
-        })
-    })();
+		function incrementItem(e, productId) {
+			const id = e.target.getAttribute('data-id');
+			const quantity = e.target.getAttribute('data-qty');
+			//const element = document.getElementById(productId)
+			//element.innerHTML = Number(quantity) + 1
+			
+			axios.patch('/cart/update', {
+				quantity: Number(quantity) + 1,
+				prodid: id,
+			}).then(function (response) {
+				window.location.href = '{{route('basket')}}'
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
+
+		function decrementItem(e, productId) {
+			const id = e.target.getAttribute('data-id');
+			const quantity = e.target.getAttribute('data-qty');
+			//const element = document.getElementById(productId)
+			//element.innerHTML = Number(quantity) + 1
+			
+			axios.patch('/cart/update', {
+				quantity: Number(quantity) - 1,
+				prodid: id,
+			}).then(function (response) {
+				window.location.href = '{{route('basket')}}'
+			}).catch(function (error) {
+				console.log(error);
+			});
+		}
 
 		function setSize(size) {
 			var x = document.getElementById("size");

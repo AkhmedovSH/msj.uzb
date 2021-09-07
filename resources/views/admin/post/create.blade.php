@@ -9,13 +9,20 @@
 					<h1 class="categories__title">Добавить пост</h1>
 					<form action="/admin/post" method="post" class="categories__form form" autocomplete="off" enctype="multipart/form-data">
 						@csrf
-						<input type="text" placeholder="Введите заголовок" name="title" class="categories__input add-product__label" required>
+						<input type="text" placeholder="Введите заголовок ru" name="title_ru" class="categories__input add-product__label mb-4">
+						<input type="text" placeholder="Введите заголовок uz" name="title_uz" class="categories__input add-product__label">
 
-						<input type="text" placeholder="Введите мини описание" name="subtitle" class="categories__input add-product__label">
+						<input type="text" placeholder="Введите мини описание ru" name="subtitle_ru" class="categories__input add-product__label mb-4">
+						<input type="text" placeholder="Введите мини описание uz" name="subtitle_uz" class="categories__input add-product__label">
+
+						<label class="add-product__label mb-4">
+							Описание ru
+							<textarea name="description_ru" id="my-editor" cols="30" rows="10" class="form-control add-product__label"></textarea>
+						</label>
 
 						<label class="add-product__label">
-							Описание
-							<textarea name="description" id="my-editor" cols="30" rows="10" class="form-control add-product__label"></textarea>
+							Описание uz
+							<textarea name="description_uz" id="my-editor2" cols="30" rows="10" class="form-control add-product__label"></textarea>
 						</label>
 
 						<label class="add-product__label">

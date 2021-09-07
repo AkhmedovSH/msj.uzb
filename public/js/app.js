@@ -2861,6 +2861,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -2872,10 +2925,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       brands: [],
       brandsCopy: [],
       sendData: {
-        name_ru: '',
         price: '',
-        description: '',
-        characteristics: '',
+        name_ru: '',
+        name_uz: '',
+        description_ru: '',
+        description_uz: '',
+        characteristics_ru: '',
+        characteristics_uz: '',
         brand_id: '',
         category_id: '',
         image: '',
@@ -3172,6 +3228,59 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   components: {
@@ -3184,10 +3293,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       brands: [],
       brandsCopy: [],
       sendData: {
-        name_ru: '',
         price: '',
-        description: '',
-        characteristics: '',
+        name_ru: '',
+        name_uz: '',
+        description_ru: '',
+        description_uz: '',
+        characteristics_ru: '',
+        characteristics_uz: '',
         brand_id: '',
         category_id: '',
         image: '',
@@ -23669,7 +23781,7 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col-md-6 col-12" }, [
               _c("label", { staticClass: "add-product__label" }, [
-                _vm._v("\r\n\t\t\t\t\t\tНазвание товара\r\n\t\t\t\t\t\t"),
+                _vm._v("\r\n\t\t\t\t\t\tНазвание товара ru\r\n\t\t\t\t\t\t"),
                 _c("input", {
                   directives: [
                     {
@@ -23688,6 +23800,33 @@ var render = function() {
                         return
                       }
                       _vm.$set(_vm.sendData, "name_ru", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }, [
+              _c("label", { staticClass: "add-product__label" }, [
+                _vm._v("\r\n\t\t\t\t\t\tНазвание товара uz\r\n\t\t\t\t\t\t"),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.sendData.name_uz,
+                      expression: "sendData.name_uz"
+                    }
+                  ],
+                  staticClass: "add-product__input",
+                  attrs: { type: "text", name: "product-name" },
+                  domProps: { value: _vm.sendData.name_uz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.sendData, "name_uz", $event.target.value)
                     }
                   }
                 })
@@ -23721,12 +23860,14 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }),
+            _vm._v(" "),
             _c("div", { staticClass: "col-md-6 col-12" }, [
               _c(
                 "label",
                 { staticClass: "add-product__label" },
                 [
-                  _vm._v("\r\n\t\t\t\t\t\tХарактеристики\r\n\t\t\t\t\t\t"),
+                  _vm._v("\r\n\t\t\t\t\t\tХарактеристики ru\r\n\t\t\t\t\t\t"),
                   _c("editor", {
                     attrs: {
                       "api-key":
@@ -23745,11 +23886,11 @@ var render = function() {
                       }
                     },
                     model: {
-                      value: _vm.sendData.characteristics,
+                      value: _vm.sendData.characteristics_ru,
                       callback: function($$v) {
-                        _vm.$set(_vm.sendData, "characteristics", $$v)
+                        _vm.$set(_vm.sendData, "characteristics_ru", $$v)
                       },
-                      expression: "sendData.characteristics"
+                      expression: "sendData.characteristics_ru"
                     }
                   })
                 ],
@@ -23762,7 +23903,7 @@ var render = function() {
                 "label",
                 { staticClass: "add-product__label" },
                 [
-                  _vm._v("\r\n\t\t\t\t\t\tОписание\r\n\t\t\t\t\t\t"),
+                  _vm._v("\r\n\t\t\t\t\t\tХарактеристики uz\r\n\t\t\t\t\t\t"),
                   _c("editor", {
                     attrs: {
                       "api-key":
@@ -23781,11 +23922,83 @@ var render = function() {
                       }
                     },
                     model: {
-                      value: _vm.sendData.description,
+                      value: _vm.sendData.characteristics_uz,
                       callback: function($$v) {
-                        _vm.$set(_vm.sendData, "description", $$v)
+                        _vm.$set(_vm.sendData, "characteristics_uz", $$v)
                       },
-                      expression: "sendData.description"
+                      expression: "sendData.characteristics_uz"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }, [
+              _c(
+                "label",
+                { staticClass: "add-product__label" },
+                [
+                  _vm._v("\r\n\t\t\t\t\t\tОписание ru\r\n\t\t\t\t\t\t"),
+                  _c("editor", {
+                    attrs: {
+                      "api-key":
+                        "0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4",
+                      init: {
+                        menubar: false,
+                        plugins: [
+                          "advlist autolink lists link image charmap print preview anchor",
+                          "searchreplace visualblocks code fullscreen",
+                          "insertdatetime media table paste code help wordcount"
+                        ],
+                        toolbar:
+                          "undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help"
+                      }
+                    },
+                    model: {
+                      value: _vm.sendData.description_ru,
+                      callback: function($$v) {
+                        _vm.$set(_vm.sendData, "description_ru", $$v)
+                      },
+                      expression: "sendData.description_ru"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }, [
+              _c(
+                "label",
+                { staticClass: "add-product__label" },
+                [
+                  _vm._v("\r\n\t\t\t\t\t\tОписание uz\r\n\t\t\t\t\t\t"),
+                  _c("editor", {
+                    attrs: {
+                      "api-key":
+                        "0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4",
+                      init: {
+                        menubar: false,
+                        plugins: [
+                          "advlist autolink lists link image charmap print preview anchor",
+                          "searchreplace visualblocks code fullscreen",
+                          "insertdatetime media table paste code help wordcount"
+                        ],
+                        toolbar:
+                          "undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help"
+                      }
+                    },
+                    model: {
+                      value: _vm.sendData.description_uz,
+                      callback: function($$v) {
+                        _vm.$set(_vm.sendData, "description_uz", $$v)
+                      },
+                      expression: "sendData.description_uz"
                     }
                   })
                 ],
@@ -24080,7 +24293,7 @@ var render = function() {
           [
             _c("div", { staticClass: "col-md-6 col-12" }, [
               _c("label", { staticClass: "add-product__label" }, [
-                _vm._v("\r\n\t\t\t\t\t\tНазвание товара\r\n\t\t\t\t\t\t"),
+                _vm._v("\r\n\t\t\t\t\t\tНазвание товара ru\r\n\t\t\t\t\t\t"),
                 _c("input", {
                   directives: [
                     {
@@ -24099,6 +24312,33 @@ var render = function() {
                         return
                       }
                       _vm.$set(_vm.sendData, "name_ru", $event.target.value)
+                    }
+                  }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }, [
+              _c("label", { staticClass: "add-product__label" }, [
+                _vm._v("\r\n\t\t\t\t\t\tНазвание товара uz\r\n\t\t\t\t\t\t"),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.sendData.name_uz,
+                      expression: "sendData.name_uz"
+                    }
+                  ],
+                  staticClass: "add-product__input",
+                  attrs: { type: "text", name: "product-name" },
+                  domProps: { value: _vm.sendData.name_uz },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.sendData, "name_uz", $event.target.value)
                     }
                   }
                 })
@@ -24132,12 +24372,14 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }),
+            _vm._v(" "),
             _c("div", { staticClass: "col-md-6 col-12" }, [
               _c(
                 "label",
                 { staticClass: "add-product__label" },
                 [
-                  _vm._v("\r\n\t\t\t\t\t\tХарактеристики\r\n\t\t\t\t\t\t"),
+                  _vm._v("\r\n\t\t\t\t\t\tХарактеристики ru\r\n\t\t\t\t\t\t"),
                   _c("editor", {
                     attrs: {
                       "api-key":
@@ -24156,11 +24398,11 @@ var render = function() {
                       }
                     },
                     model: {
-                      value: _vm.sendData.characteristics,
+                      value: _vm.sendData.characteristics_ru,
                       callback: function($$v) {
-                        _vm.$set(_vm.sendData, "characteristics", $$v)
+                        _vm.$set(_vm.sendData, "characteristics_ru", $$v)
                       },
-                      expression: "sendData.characteristics"
+                      expression: "sendData.characteristics_ru"
                     }
                   })
                 ],
@@ -24173,7 +24415,7 @@ var render = function() {
                 "label",
                 { staticClass: "add-product__label" },
                 [
-                  _vm._v("\r\n\t\t\t\t\t\tОписание\r\n\t\t\t\t\t\t"),
+                  _vm._v("\r\n\t\t\t\t\t\tХарактеристики uz\r\n\t\t\t\t\t\t"),
                   _c("editor", {
                     attrs: {
                       "api-key":
@@ -24192,11 +24434,83 @@ var render = function() {
                       }
                     },
                     model: {
-                      value: _vm.sendData.description,
+                      value: _vm.sendData.characteristics_uz,
                       callback: function($$v) {
-                        _vm.$set(_vm.sendData, "description", $$v)
+                        _vm.$set(_vm.sendData, "characteristics_uz", $$v)
                       },
-                      expression: "sendData.description"
+                      expression: "sendData.characteristics_uz"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }, [
+              _c(
+                "label",
+                { staticClass: "add-product__label" },
+                [
+                  _vm._v("\r\n\t\t\t\t\t\tОписание ru\r\n\t\t\t\t\t\t"),
+                  _c("editor", {
+                    attrs: {
+                      "api-key":
+                        "0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4",
+                      init: {
+                        menubar: false,
+                        plugins: [
+                          "advlist autolink lists link image charmap print preview anchor",
+                          "searchreplace visualblocks code fullscreen",
+                          "insertdatetime media table paste code help wordcount"
+                        ],
+                        toolbar:
+                          "undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help"
+                      }
+                    },
+                    model: {
+                      value: _vm.sendData.description_ru,
+                      callback: function($$v) {
+                        _vm.$set(_vm.sendData, "description_ru", $$v)
+                      },
+                      expression: "sendData.description_ru"
+                    }
+                  })
+                ],
+                1
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-md-6 col-12" }, [
+              _c(
+                "label",
+                { staticClass: "add-product__label" },
+                [
+                  _vm._v("\r\n\t\t\t\t\t\tОписание uz\r\n\t\t\t\t\t\t"),
+                  _c("editor", {
+                    attrs: {
+                      "api-key":
+                        "0xe5b06q8q8cq3rwaxkhfgt2zi9y1ivbmjqz657m20zpiuz4",
+                      init: {
+                        menubar: false,
+                        plugins: [
+                          "advlist autolink lists link image charmap print preview anchor",
+                          "searchreplace visualblocks code fullscreen",
+                          "insertdatetime media table paste code help wordcount"
+                        ],
+                        toolbar:
+                          "undo redo | formatselect | bold italic backcolor | \
+									alignleft aligncenter alignright alignjustify | \
+									bullist numlist outdent indent | removeformat | help"
+                      }
+                    },
+                    model: {
+                      value: _vm.sendData.description_uz,
+                      callback: function($$v) {
+                        _vm.$set(_vm.sendData, "description_uz", $$v)
+                      },
+                      expression: "sendData.description_uz"
                     }
                   })
                 ],
