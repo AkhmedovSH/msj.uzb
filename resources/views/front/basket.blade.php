@@ -7,19 +7,19 @@
 
 			<div class="basket__heading-row row">
 				<div class="col-2 offset-lg-1">
-					<h4 class="basket__heading basket__product">Товар</h4>
+					<h4 class="basket__heading basket__product">{{ __('translation.b_product') }}</h4>
 				</div>
 				<div class="col-lg-2 col-3">
-					<h4 class="basket__heading basket__description">Описание</h4>
+					<h4 class="basket__heading basket__description">{{ __('translation.b_description') }}</h4>
 				</div>
 				<div class="col-2">
-					<h4 class="basket__heading basket__price">Цена за шт.</h4>
+					<h4 class="basket__heading basket__price">{{ __('translation.b_price') }}</h4>
 				</div>
 				<div class="col-2">
-					<h4 class="basket__heading basket__count">Количество</h4>
+					<h4 class="basket__heading basket__count">{{ __('translation.b_count') }}</h4>
 				</div>
 				<div class="col-2">
-					<h4 class="basket__heading basket__total">Итого</h4>
+					<h4 class="basket__heading basket__total">{{ __('translation.b_total') }}</h4>
 				</div>
 			</div>
 
@@ -28,25 +28,25 @@
 				<div class="col-md-2 col-sm-4 col-6 offset-lg-1">
 					<div class="basket__item basket__product">
 						<div class="basket__product-image">
-							<span class="basket__heading basket__heading-hidden">Товар</span>
+							<span class="basket__heading basket__heading-hidden">{{ __('translation.b_product') }}</span>
 							<img src="/uploads/products/{{$item->model->image}}" alt="image">
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-2 col-md-3 col-sm-4 col-6">
 					<p class="basket__item basket__description basket__description-text">
-						<span class="basket__heading basket__heading-hidden">Описание</span>
+						<span class="basket__heading basket__heading-hidden">{{ __('translation.b_description') }}</span>
 						{{ $item->model->name }}
 					</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
 					<p class="basket__item basket__price basket__price-label">
-						<span class="basket__heading basket__heading-hidden">Цена за шт.</span>
+						<span class="basket__heading basket__heading-hidden">{{ __('translation.b_price') }}</span>
 						{{ number_format($item->model->price, 0,","," ") }}
 					</p>
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
-					<span class="basket__heading basket__heading-hidden">Количество</span>
+					<span class="basket__heading basket__heading-hidden">{{ __('translation.b_count') }}</span>
 					<div class="basket__item basket__count basket__count-box">
 					<select class="select--ys show-qty quantity" data-id="{{$item->rowId}}">
 							<option {{ $item->qty == 1 ? 'selected' : ''}}>1</option>
@@ -60,7 +60,7 @@
 				</div>
 				<div class="col-md-2 col-sm-4 col-6">
 					<p class="basket__item basket__total basket__total-label">
-						<span class="basket__heading basket__heading-hidden">Итого</span>
+						<span class="basket__heading basket__heading-hidden">{{ __('translation.b_total') }}</span>
 						{{ number_format(($item->model->price * $item->qty), 0,","," ") }}
 					</p>
 				</div>
@@ -76,8 +76,8 @@
 
 			<div class="basket__total-row row">
 				<div class="col-12">
-					<div class="basket__total-text">Общая сумма: <span>{{ Cart::subtotal(0, 0, ' ') }} сум</span></div>
-					<a href="{{ route('order') }}" class="basket__total-btn">Перейти к оформлению</a>
+					<div class="basket__total-text">{{ __('translation.b_main_total') }}<span>{{ Cart::subtotal(0, 0, ' ') }} {{ __('translation.soum') }}</span></div>
+					<a href="{{ route('order') }}" class="basket__total-btn">{{ __('translation.go_to_ordering') }}</a>
 				</div>
 			</div>
 

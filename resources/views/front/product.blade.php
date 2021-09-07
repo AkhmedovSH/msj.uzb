@@ -68,19 +68,19 @@
 							@endif
 						</ul>
 
-						<button class="product-sidebar__size-btn">Таблица размеров</button>
+						<button class="product-sidebar__size-btn">{{ __('translation.table_size') }}</button>
 						<form action="/cart" method="post">
 							@csrf
 							<input type="hidden" name="id" value="{{ $data->id }}">
 							<input type="hidden" name="name" value="{{ $data->name }}">
 							<input type="hidden" name="price" value="{{ $data->price }}">
 							<input type="hidden" name="size" id="size" value="">
-							<button type="submit" class="product-sidebar__basket-btn">Положить в корзину</button>
+							<button type="submit" class="product-sidebar__basket-btn">{{ __('translation.put_to_card') }}</button>
 						</form>
 						
 
 						<ul class="product-sidebar__info-list">
-							<p class="product-sidebar__description-title">Характеристики</p>
+							<p class="product-sidebar__description-title">{{ __('translation.characteristics_title') }}</p>
 							<li class="product-sidebar__info-item"><span>
 								{!! $data->characteristics !!}
 							</span>
@@ -89,7 +89,7 @@
 						</ul>
 
 						<div class="product-sidebar__description">
-							<p class="product-sidebar__description-title">Описание</p>
+							<p class="product-sidebar__description-title">{{ __('translation.desc_title') }}</p>
 							<p class="product-sidebar__description-text">
 								{!! $data->description !!}
 							</p>
@@ -102,7 +102,7 @@
 
 			<div class="product-notify">
 				<div class="product-notify__body">
-					<p class="product-notify__text">Товар успешно добавлен в корзину</p>
+					<p class="product-notify__text">{{ __('translation.successfully_added_to_basket') }}</p>
 					<button class="product-notify__close-btn"></button>
 				</div>
 			</div>

@@ -14,28 +14,28 @@
 							<ul class="splide__list">
 								<li class="splide__slide splide__slide--first">
 									<div class="hero__box offset-1">
-										<h2 class="hero__title">Акцент на комфорт и стиль</h2>
-										<h3 class="hero__subtitle">Новая коллекция женской одежды</h3>
+										<h2 class="hero__title">{{ __('translation.accent_to_comfort_and_style') }}</h2>
+										<h3 class="hero__subtitle">{{ __('translation.new_women_collection') }}</h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/1" class="hero__btn">Перейти в магазин</a>
+											<a href="/category-products/1" class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
 								<li class="splide__slide splide__slide--second">
 									<div class="hero__box offset-1">
-										<h2 class="hero__title">50% скидки на летнюю коллекцию</h2>
+										<h2 class="hero__title">{{ __('translation.discount_to_summer_collection') }}</h2>
 										<h3 class="hero__subtitle"></h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/1" class="hero__btn">Перейти в магазин</a>
+											<a href="/category-products/1" class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
 								<li class="splide__slide splide__slide--third">
 									<div class="hero__box offset-1">
-										<h2 class="hero__title">Cоздайте брутальный мужской стиль</h2>
+										<h2 class="hero__title">{{ __('translation.create_brutal_style') }}</h2>
 										<h3 class="hero__subtitle"></h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/2" class="hero__btn">Перейти в магазин</a>
+											<a href="/category-products/2" class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
@@ -137,7 +137,7 @@
 								@endforeach
 							@endif
 						</span>
-						<span class="products__price">{{ number_format($item->price, 0,","," ") }} сум</span>
+						<span class="products__price">{{ number_format($item->price, 0,","," ") }} {{ __('translation.soum') }}</span>
 						<button class="products__btn fav-btn"></button>
 					</a>
 				</div>
@@ -202,7 +202,7 @@
 								@endforeach
 							@endif
 						</span>
-						<span class="products__price">{{ number_format($item->price, 0,","," ") }} сум</span>
+						<span class="products__price">{{ number_format($item->price, 0,","," ") }} {{ __('translation.soum') }}</span>
 						<button class="products__btn fav-btn"></button>
 					</a>
 				</div>

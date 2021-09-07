@@ -8,16 +8,16 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-lg-9 offset-lg-1 col-12">
-					<h3 class="delivery__title">Доставка</h3>
+					<h3 class="delivery__title">{{ __('translation.delivery') }}</h3>
 					<ul class="delivery__list">
 						<li class="delivery__item">
-							Стоимость доставки по городу Ташкент - 25 000 сум
+							{{ __('translation.delivery_city') }}
 						</li>
 						<li class="delivery__item">
-							Доставка в регионы - 40 000 сум
+							{{ __('translation.delivery_region') }}
 						</li>
 						<li class="delivery__item">
-							Способы оплаты: Наличные, Click
+							{{ __('translation.delivery_payment_method') }}
 						</li>
 					</ul>
 				</div>

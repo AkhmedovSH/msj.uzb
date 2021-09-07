@@ -60,7 +60,7 @@
 											</ul>
 											@endforeach
 											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">Бренды</li>
+												<li class="nav__item nav__item--secondary nav__item--secondary-title">{{ __('translation.brands') }}</li>
 												<div class="nav__item--secondary-dropdown">
 													@foreach ($item->brands as $brand)
 													<li class="nav__item nav__item--secondary">
@@ -73,7 +73,7 @@
 									</li>
 									@endforeach
 									<li class="nav__item">
-										<a href="/delivery" class="nav__link">Доставка</a>
+										<a href="/delivery" class="nav__link">{{ __('translation.delivery') }}</a>
 									</li>
 									<li class="nav__item">
 										<a href="tel:+998993077622" class="nav__link">+998 99 307 76 22</a>
@@ -127,16 +127,16 @@
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12 d-md-block d-none">
 						<ul class="footer__list footer__list--mobile-hidden">
 							<li class="footer__item">
-								<a href="/category-products/1" class="footer__link">Для женщин</a>
+								<a href="/category-products/1" class="footer__link">{{ __('translation.for_women') }}</a>
 							</li>
 							<li class="footer__item">
-								<a href="/category-products/2" class="footer__link">Для мужчин</a>
+								<a href="/category-products/2" class="footer__link">{{ __('translation.for_men') }}</a>
 							</li>
 							<li class="footer__item">
-								<a href="/category-products/3" class="footer__link">Для девочек</a>
+								<a href="/category-products/3" class="footer__link">{{ __('translation.for_girls') }}</a>
 							</li>
 							<li class="footer__item">
-								<a href="/category-products/4" class="footer__link">Для мальчиков</a>
+								<a href="/category-products/4" class="footer__link">{{ __('translation.for_boys') }}</a>
 							</li>
 						</ul>
 					</div>
@@ -146,15 +146,15 @@
 								<a href="tel:+998993077622" class="footer__link">+998 99 307 76 22</a>
 							</li>
 							<li class="footer__item">
-								<a href="/delivery" class="footer__link">Доставка</a>
+								<a href="/delivery" class="footer__link">{{ __('translation.delivery') }}</a>
 							</li>
 							<li class="footer__item">
-								<a href="/public-offer" class="footer__link">Публичная оферта</a>
+								<a href="/public-offer" class="footer__link">{{ __('translation.offer') }}</a>
 							</li>
 						</ul>
 					</div>
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12">
-						<p class="footer__socials-title">Мы в соц. сетях</p>
+						<p class="footer__socials-title">{{ __('translation.socials') }}</p>
 						<ul class="footer__socials-list">
 							<!-- <li class="footer__socials-item">
 								<a href="javascript:void(0);" class="footer__socials-link">
@@ -173,7 +173,7 @@
 							</li>
 						</ul>
 						<div class="developer">
-							<a href="https://kirano.uz">Разработано в Кирано</a>
+							<a href="https://kirano.uz">{{ __('translation.developer') }}</a>
 						</div>
 					</div>
 				</div>

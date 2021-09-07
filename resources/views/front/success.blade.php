@@ -94,7 +94,7 @@
 </style>
 
 <main>
-  <h1>Поздравляем! <br> Ваш заказ успешно оформлен</h1>
-  <h2>Наши менеджеры свяжутся с вами в ближайшее время</h2>
-  <a href="/">Вернуться на главную</a>
+  <h1>{{ __('translation.ordered') }}</h1>
+  <h2>{{ __('translation.ordered_managers') }}</h2>
+  <a href="/">{{ __('translation.go_home') }}</a>
 </main>
