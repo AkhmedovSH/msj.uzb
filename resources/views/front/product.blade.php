@@ -84,7 +84,7 @@
 						<ul class="product-sidebar__info-list">
 							<p class="product-sidebar__description-title">{{ __('translation.characteristics_title') }}</p>
 							<li class="product-sidebar__info-item"><span>
-								{!! $data->characteristics !!}
+								{!! $data['characteristics_' . app()->getLocale()] !!}
 							</span>
 						</li> 
 							
@@ -93,7 +93,7 @@
 						<div class="product-sidebar__description">
 							<p class="product-sidebar__description-title">{{ __('translation.desc_title') }}</p>
 							<p class="product-sidebar__description-text">
-								{!! $data->description !!}
+								{!! $data['description_' . app()->getLocale()] !!}
 							</p>
 						</div>
 
