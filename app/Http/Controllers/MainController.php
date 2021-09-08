@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class MainController extends Controller
 {
@@ -55,6 +56,32 @@ class MainController extends Controller
 		return view('front.blog', compact('data'));
 	}
 
+	public function addFavourite($id)
+	{
+		if(Session::get('favourites')) {
+
+			$array = Session::get('favourites');
+			$exist = in_array($id, $array);
+
+			if($exist) {
+				if (($key = array_search($id, $array)) !== false) {
+					unset($array[$key]);
+				}
+			} else {
+				array_push($array, $id);
+			}
+
+			Session::put('favourites', $array);
+		} else {
+			$array = array();
+			array_push($array, $id);
+			Session::put('favourites', $array);
+		}
+
+		return response()->json(['success' => 'success']);
+		// return redirect()->back();
+	}
+
 	public function delivery()
 	{
 		return view('front.delivery');
@@ -62,7 +89,12 @@ class MainController extends Controller
 
 	public function favourites()
 	{
-		return view('front.favourites');
+		$array = [];
+		if(Session::get('favourites') != null) {
+			$array = Session::get('favourites');
+		}
+		$data = Product::whereIn('id', $array)->get();
+		return view('front.favourites', compact('data'));
 	}
 	
 	public function publicOffer()

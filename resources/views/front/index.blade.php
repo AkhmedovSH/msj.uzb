@@ -138,7 +138,8 @@
 							@endif
 						</span>
 						<span class="products__price">{{ number_format($item->price, 0,","," ") }} {{ __('translation.soum') }}</span>
-						<button class="products__btn fav-btn"></button>
+						<button class="products__btn fav-btn" onclick="selectFavourite({{$item->id}})"></button>
+						<!-- <a href="{{ route('add.favourite', $item->id) }}">favourite</a> -->
 					</a>
 				</div>
 				@endforeach

@@ -92,7 +92,7 @@
 
 							<div class="header__box">
 								<div class="activities">
-									<a href="javascript:void(0);" class="favourites-icon activities__link"></a>
+									<a href="/favourites" class="favourites-icon activities__link"></a>
 									<a href="{{ route('basket') }}" class="basket-icon activities__link">
 										<span class="basket-icon__text">{{ Cart::count() }}</span>
 									</a>
@@ -227,6 +227,18 @@
 			}).catch(function (error) {
 				console.log(error);
 			});
+		}
+
+		function selectFavourite(id) {
+			console.log(id);
+			axios.get('/add/favourite/' + id).then(function (response) {
+				// window.location.href = '{{route('basket')}}'
+			})
+
+			// axios.get('/add/favourite', {
+			// 	quantity: Number(quantity) - 1,
+			// 	prodid: id,
+			// })
 		}
 
 		function setSize(size) {

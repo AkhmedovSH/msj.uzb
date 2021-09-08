@@ -31,6 +31,8 @@ Route::get('/order', [\App\Http\Controllers\OrderController::class, 'index'])->n
 Route::post('/payment', [\App\Http\Controllers\OrderController::class, 'payment'])->name('payment');
 Route::get('/payment-success/{phone}', [\App\Http\Controllers\OrderController::class, 'paymentSuccess'])->name('paymentSuccess');
 
+Route::get('/add/favourite/{id}', [\App\Http\Controllers\MainController::class, 'addFavourite'])->name('add.favourite');
+
 
 Route::get('/', [\App\Http\Controllers\MainController::class, 'index'])->name('index');
 Route::get('/blog/{id}', [\App\Http\Controllers\MainController::class, 'blog']);

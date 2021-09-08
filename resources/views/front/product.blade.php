@@ -33,7 +33,7 @@
 							<p class="product-sidebar__title">
 								{{ $data['name_' . app()->getLocale()] }}
 							</p>
-							<button class="product-sidebar__wishlist-btn"></button>
+							<button class="product-sidebar__wishlist-btn" onclick="selectFavourite({{$data->id}})"></button>
 						</div>
 
 						<ul class="product-sidebar__price-list">
