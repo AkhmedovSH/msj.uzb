@@ -32,7 +32,7 @@
 						<a href="/admin/size" class="header__link">Все размеры</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-6 mt-md-0 mt-3">
-						<a href="/admin/post" class="header__link">Посты</a>
+						<a href="/admin/post" class="header__link">Все статьи</a>
 					</div>
 					<div class="col-lg-2 col-md-3 col-sm-6 col-12 mt-lg-0 mt-3">
 						<a href="/" class="header__link">Выйти</a>
