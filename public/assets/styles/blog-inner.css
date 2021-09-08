@@ -1,37 +1,37 @@
 .banner {
-  position: relative;
+  height: 600px;
   margin: 80px 0 0;
-  padding: 320px 0;
-  background-image: url("/assets/img/blog/blog-1/banner.jpg");
   background-repeat: no-repeat;
-  background-size: cover;
   background-position: center center;
+  background-size: cover;
 }
 
-.banner .container-fluid {
-  padding: 0;
-}
-
-.banner__title {
-  position: absolute;
-  top: -280px;
-  left: 0;
+.banner__label {
   max-width: 520px;
-  font-size: 40px;
-  color: #fff;
-  margin: 0;
-  padding: 40px 50px;
+  padding: 30px 50px;
+  margin: 50px 0 0;
   background-color: #252525;
 }
 
-.description {
+.banner__text {
+  font-family: "Playfair Display";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 105%;
+  color: #fff;
+}
+
+.desc {
   margin: 50px 0;
 }
 
-.description__text {
+.desc__text {
+  font-weight: 400;
   font-size: 18px;
+  line-height: 150%;
   text-align: center;
-  color: #000;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .info {
@@ -41,100 +41,92 @@
 .info__title {
   font-weight: 500;
   font-size: 30px;
-  margin: 0 0 30px;
+  line-height: 35px;
+  color: #4f4f4f;
 }
 
 .info__text {
   font-weight: 500;
   font-size: 18px;
+  line-height: 145%;
+  color: #4f4f4f;
+  margin: 30px 0;
+  max-width: 1000px;
 }
 
-.images__row {
-  padding: 50px 0;
+.info__image {
+  max-height: 550px;
+  overflow: hidden;
 }
 
-.images__item--top {
-  margin-top: -50px;
+.info__image img {
+  margin: 0 auto;
+  height: 100%;
 }
 
-.images__item img {
-  width: 100%;
+@media (max-width: 1400px) {
+  .banner {
+    height: 500px;
+  }
+  .banner__label {
+    max-width: 450px;
+  }
+  .banner__text {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .banner__label {
+    max-width: 400px;
+  }
 }
 
 @media (max-width: 992px) {
-  .banner {
-    background-position: 40% center;
+  .banner__label {
+    max-width: 370px;
+    padding: 20px 30px;
   }
-  .banner__title {
-    top: -220px;
-    font-size: 30px;
-    padding: 30px 40px;
-  }
-  .images__item {
-    margin-bottom: 30px;
-  }
-}
-
-@media (max-width: 768px) {
-  .banner {
-    padding: 250px 0;
-    background-position: 45% center;
-  }
-  .banner__title {
-    font-size: 30px;
-    padding: 25px 35px;
-    max-width: 400px;
-  }
-  .description {
+  .desc {
     margin: 30px 0;
   }
-  .description__text {
+  .desc__text {
     font-size: 16px;
+  }
+  .info {
+    margin: 0 0 30px;
   }
   .info__title {
     font-size: 24px;
-    margin: 0 0 20px;
   }
   .info__text {
     font-size: 16px;
+    margin: 20px 0;
+  }
+  .info__image {
+    max-height: 450px;
   }
 }
 
 @media (max-width: 576px) {
   .banner {
-    padding: 200px 0;
-    background-position: 35% center;
+    height: 320px;
   }
-  .banner__title {
-    top: -180px;
+  .banner__label {
+    max-width: 220px;
+    padding: 14px;
+  }
+  .banner__text {
     font-size: 20px;
-    text-align: left;
-    padding: 15px 25px;
-    max-width: 300px;
   }
-  .description {
-    margin: 30px 0;
-  }
-  .description__text {
+  .desc__text {
     font-size: 14px;
-  }
-  .info {
-    margin: 30px 0;
   }
   .info__title {
     font-size: 18px;
-    margin: 0 0 15px;
   }
   .info__text {
     font-size: 14px;
-  }
-  .images__row {
-    padding: 0;
-  }
-  .images__item {
-    margin: 0 0 15px;
-  }
-  .images__item--top {
-    display: none;
+    margin: 15px 0;
   }
 }
