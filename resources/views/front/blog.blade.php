@@ -5,10 +5,10 @@
 
 <main>
 
-	<section class="banner" style="background-image: url('{{ asset('assets/img/blog/blog-1/banner.jpg') }}')">
+	<section class="banner" style="background-image: url('{{ asset('/uploads/posts/' . $data->image) }}')">
 		<div class="banner__label">
 			<p class="banner__text">
-				4 главные вещи в летнем гардеробе
+				{{ $data['title_' . app()->getLocale()] }}
 			</p>
 		</div>
 	</section>
@@ -16,84 +16,82 @@
 	<section class="desc">
 		<div class="container-fluid">
 			<p class="desc__text">
-				Что обязательно должно оказаться в стильном женском гардеробе этим летом?
-				Отвечают эксперты MSJ! Проанализировав модные показы сезона весна-лето 2021 и самые актуальные стрит-луки,
-				удалось выяснить, на какие шорты, платья, футболки и брюки стоит обратить внимание прямо сейчас.
+				{{ $data['mini_description_' . app()->getLocale()] }}
 			</p>
 		</div>
 	</section>
 
+	@if($data->block_1_subtitle_ru)
 	<section class="info">
 		<div class="container-fluid">
-			<h2 class="info__title">Шорты с высокой посадкой</h2>
+			<h2 class="info__title">{{ $data['block_1_subtitle_' . app()->getLocale()] }}</h2>
 			<p class="info__text">
-				Такая модель выгодно подчеркнёт талию и визуально удлинит ноги. В зависимости от выбора цвета и фактуры, эти
-				шорты можно надевать на прогулки, на пляж и даже в офис! Деним отлично подойдет для активного отдыха,
-				а сдержанный хлопковый вариант будет прекрасно смотреться в паре с элегантным пиджаком.
+				{{ $data['block_1_description_' . app()->getLocale()] }}
 			</p>
 			<div class="row">
 				<div class="col-12 px-sm-3 px-0">
 					<div class="info__image">
-						<img src="{{ asset('assets/img/blog/blog-1/1.png') }}">
+						<img src="{{ '/uploads/posts/' . $data->block_1_image }}">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	@endif
 
+	@if($data->block_2_subtitle_ru)
 	<section class="info">
 		<div class="container-fluid">
-			<h2 class="info__title">Шорты с высокой посадкой</h2>
+			<h2 class="info__title">{{ $data['block_2_subtitle_' . app()->getLocale()] }}</h2>
 			<p class="info__text">
-				Такая модель выгодно подчеркнёт талию и визуально удлинит ноги. В зависимости от выбора цвета и фактуры, эти
-				шорты можно надевать на прогулки, на пляж и даже в офис! Деним отлично подойдет для активного отдыха,
-				а сдержанный хлопковый вариант будет прекрасно смотреться в паре с элегантным пиджаком.
+				{{ $data['block_2_description_' . app()->getLocale()] }}
 			</p>
 			<div class="row">
 				<div class="col-12 px-sm-3 px-0">
 					<div class="info__image">
-						<img src="{{ asset('assets/img/blog/blog-1/1.png') }}">
+						<img src="{{ '/uploads/posts/' . $data->block_2_image }}">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	@endif
 
+	@if($data->block_3_subtitle_ru)
 	<section class="info">
 		<div class="container-fluid">
-			<h2 class="info__title">Шорты с высокой посадкой</h2>
+			<h2 class="info__title">{{ $data['block_3_subtitle_' . app()->getLocale()] }}</h2>
 			<p class="info__text">
-				Такая модель выгодно подчеркнёт талию и визуально удлинит ноги. В зависимости от выбора цвета и фактуры, эти
-				шорты можно надевать на прогулки, на пляж и даже в офис! Деним отлично подойдет для активного отдыха,
-				а сдержанный хлопковый вариант будет прекрасно смотреться в паре с элегантным пиджаком.
+				{{ $data['block_3_description_' . app()->getLocale()] }}
 			</p>
 			<div class="row">
 				<div class="col-12 px-sm-3 px-0">
 					<div class="info__image">
-						<img src="{{ asset('assets/img/blog/blog-1/1.png') }}">
+						<img src="{{ '/uploads/posts/' . $data->block_3_image }}">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	@endif
 
+	@if($data->block_4_subtitle_ru)
 	<section class="info">
 		<div class="container-fluid">
-			<h2 class="info__title">Шорты с высокой посадкой</h2>
+			<h2 class="info__title">{{ $data['block_4_subtitle_' . app()->getLocale()] }}</h2>
 			<p class="info__text">
-				Такая модель выгодно подчеркнёт талию и визуально удлинит ноги. В зависимости от выбора цвета и фактуры, эти
-				шорты можно надевать на прогулки, на пляж и даже в офис! Деним отлично подойдет для активного отдыха,
-				а сдержанный хлопковый вариант будет прекрасно смотреться в паре с элегантным пиджаком.
+				{{ $data['block_4_description_' . app()->getLocale()] }}
 			</p>
 			<div class="row">
 				<div class="col-12 px-sm-3 px-0">
 					<div class="info__image">
-						<img src="{{ asset('assets/img/blog/blog-1/1.png') }}">
+						<img src="{{ '/uploads/posts/' . $data->block_4_image }}">
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	@endif
 
 </main>
 

@@ -231,12 +231,12 @@
 								<div class="blog__item">
 									<a href="/blog/{{ $item->id }}" class="blog__link">
 										<span class="blog__image">
-											<img src="/public/assets/img/blog/blog-1.jpg" alt="Blog Preview Image">
+											<img src="{{ '/uploads/posts/' . $item->image_preview }}" alt="Blog Image">
 										</span>
-										<span class="blog__caption">{{ $item->title }}</span>
-										<span class="blog__subtitle">
-											{{ $item->subtitle }}
-										</span>
+										<span class="blog__caption">{{ $item['title_' . app()->getLocale()] }}</span>
+										<!-- <span class="blog__subtitle">
+											{{ $item['mini_description_' . app()->getLocale()] }}
+										</span> -->
 									</a>
 								</div>
 							</li>

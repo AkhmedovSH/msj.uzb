@@ -16,27 +16,27 @@
 						</h2>
 						<label class="add-product__label mb-4">
 							Добавление фотографии (превью)
-							<input type="file" class="add-product__input">
+							<input type="file" class="add-product__input" name="image_preview">
 						</label>
 						<label class="add-product__label mb-4">
 							Введите заголовок (Ru)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="title_ru" value="{{ $data->title_ru }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Введите заголовок (Uz)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="title_uz" value="{{ $data->title_uz }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Мини описание (Ru)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="mini_description_ru" value="{{ $data->mini_description_ru }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Мини описание (Uz)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="mini_description_uz" value="{{ $data->mini_description_uz }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Превью внутренней страницы
-							<input type="file" class="add-product__input">
+							<input type="file" class="add-product__input" name="image_preview_inner">
 						</label>
 
 						<h2 class="categories__title categories__title--left" style="color: #000">
@@ -44,24 +44,24 @@
 						</h2>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Ru)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_1_subtitle_ru" value="{{ $data->block_1_subtitle_ru }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Uz)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_1_subtitle_uz" value="{{ $data->block_1_subtitle_uz }}">
 						</label>
 
 						<label class="add-product__label mb-4">
 							Описание (Ru)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_1_description_ru">{{ $data->block_1_description_ru }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Описание (Uz)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_1_description_uz">{{ $data->block_1_description_uz }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Фотография к блоку (1)
-							<input type="file" class="add-product__input">
+							<input type="file" class="add-product__input" name="block_1_image">
 						</label>
 
 						<h2 class="categories__title categories__title--left" style="color: #000">
@@ -69,24 +69,24 @@
 						</h2>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Ru)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_2_subtitle_ru" value="{{ $data->block_2_subtitle_ru }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Uz)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_2_subtitle_uz" value="{{ $data->block_2_subtitle_uz }}">
 						</label>
 
 						<label class="add-product__label mb-4">
 							Описание (Ru)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_2_description_ru">{{ $data->block_2_description_ru }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Описание (Uz)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_2_description_uz">{{ $data->block_2_description_uz }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Фотография к блоку (2)
-							<input type="file" class="add-product__input">
+							<input type="file" class="add-product__input" name="block_2_image">
 						</label>
 
 						<h2 class="categories__title categories__title--left" style="color: #000">
@@ -94,24 +94,24 @@
 						</h2>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Ru)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_3_subtitle_ru" value="{{ $data->block_3_subtitle_ru }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Uz)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_3_subtitle_uz" value="{{ $data->block_3_subtitle_uz }}">
 						</label>
 
 						<label class="add-product__label mb-4">
 							Описание (Ru)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_3_description_ru">{{ $data->block_3_description_ru }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Описание (Uz)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_3_description_uz">{{ $data->block_3_description_uz }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Фотография к блоку (3)
-							<input type="file" class="add-product__input">
+							<input type="file" class="add-product__input" name="block_3_image">
 						</label>
 
 						<h2 class="categories__title categories__title--left" style="color: #000">
@@ -119,24 +119,24 @@
 						</h2>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Ru)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_4_subtitle_ru" value="{{ $data->block_4_subtitle_ru }}">
 						</label>
 						<label class="add-product__label mb-4">
 							Подзаголовок (Uz)
-							<input type="text" placeholder="Введите текст" class="add-product__input">
+							<input type="text" placeholder="Введите текст" class="add-product__input" name="block_4_subtitle_uz" value="{{ $data->block_4_subtitle_ru }}">
 						</label>
 
 						<label class="add-product__label mb-4">
 							Описание (Ru)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_4_description_ru">{{ $data->block_4_description_ru }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Описание (Uz)
-							<textarea class="add-product__input"></textarea>
+							<textarea class="add-product__input" name="block_4_description_uz">{{ $data->block_4_description_uz }}</textarea>
 						</label>
 						<label class="add-product__label mb-4">
 							Фотография к блоку (4)
-							<input type="file" class="add-product__input">
+							<input type="file" class="add-product__input" name="block_4_image">
 						</label>
 
 						<div class="categories__btn-wrapper">
