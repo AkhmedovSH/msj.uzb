@@ -79,7 +79,7 @@ class OrderController extends Controller
 					$txt .= "<b>" .  $value->name . "</b> "	. number_format($value->model->price, 0,","," ") . ' сум | ' . $value->qty . ' шт' . "\n" . 
 					"<b>" .  'Размер' . $value->options['size'] . "</b> " . "\n";
 				}
-				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум";
+				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум" . "\n";
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
 				
 				$website="https://api.telegram.org/bot".$this->token;
@@ -142,7 +142,7 @@ class OrderController extends Controller
 					$txt .= "<b>" .  'Размер: ' . $value->size . "</b> " . "\n" .
 					 "<b>" .  $value->name . "</b> " .  number_format($value->price, 0,","," ") . ' сум | ' . $value->quantity . ' шт' . "\n";
 				};
-				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум";
+				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум" . "\n";
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
 				$website="https://api.telegram.org/bot".$this->token;
 				$chatId = $this->chat_id;

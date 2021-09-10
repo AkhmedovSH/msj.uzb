@@ -2985,9 +2985,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       formData.append('name_ru', this.sendData.name_ru);
+      formData.append('name_ru', this.sendData.name_uz);
       formData.append('price', this.sendData.price);
-      formData.append('description', this.sendData.description);
-      formData.append('characteristics', this.sendData.characteristics);
+      formData.append('description_ru', this.sendData.description_ru);
+      formData.append('description_uz', this.sendData.description_uz);
+      formData.append('characteristics_ru', this.sendData.characteristics_ru);
+      formData.append('characteristics_uz', this.sendData.characteristics_uz);
       formData.append('brand_id', this.sendData.brand_id);
       formData.append('sizes', this.sendData.sizes);
       formData.append('category_id', this.sendData.category_id);
@@ -3359,9 +3362,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       formData.append('name_ru', this.sendData.name_ru);
+      formData.append('name_uz', this.sendData.name_uz);
       formData.append('price', this.sendData.price);
-      formData.append('description', this.sendData.description);
-      formData.append('characteristics', this.sendData.characteristics);
+      formData.append('description_ru', this.sendData.description_ru);
+      formData.append('description_uz', this.sendData.description_uz);
+      formData.append('characteristics_ru', this.sendData.characteristics_ru);
+      formData.append('characteristics_uz', this.sendData.characteristics_uz);
       formData.append('brand_id', this.sendData.brand_id);
       formData.append('sizes', this.sendData.sizes);
       formData.append('category_id', this.sendData.category_id);

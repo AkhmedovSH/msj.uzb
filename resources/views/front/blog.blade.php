@@ -5,7 +5,7 @@
 
 <main>
 
-	<section class="banner" style="background-image: url('{{ asset('/uploads/posts/' . $data->image) }}')">
+	<section class="banner" style="background-image: url('{{ asset('/uploads/posts/' . $data->image_preview_inner) }}')">
 		<div class="banner__label">
 			<p class="banner__text">
 				{{ $data['title_' . app()->getLocale()] }}
