@@ -5,6 +5,11 @@ $(document).ready(function () {
 		$(this).parent('.products__item').toggleClass('products__item--is-fav')
 	})
 
+	$('.product-sidebar__wishlist-btn').on('click', function (e) {
+		e.preventDefault()
+		$(this).toggleClass('active')
+	})
+
 	// Dropdowns
 	if ($(window).width() <= 992) {
 		$('.nav__item--dropdown .nav__link').on('click', function (e) {

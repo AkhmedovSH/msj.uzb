@@ -49,6 +49,7 @@ return [
     'characteristics_title' => 'Xususiyatlar',
     'desc_title' => 'Tavsif',
     'successfully_added_to_basket' => 'Mahsulot savatga muvaffaqiyatli qo\'shildi',
+    'successfully_added_to_fav' => 'Mahsulot tanlangan muvaffaqiyatli qo\'shildi',
     'ordered' => 'Tabriklaymiz! <br> Sizning buyurtmangiz muvaffaqiyatli yakunlandi',
     'ordered_managers' => 'Bizning menejerlar tez orada siz bilan bog\'lanishadi',
     'go_home' => 'Asosiy sahifaga qaytish',

@@ -102,9 +102,15 @@
 
 			</div>
 
-			<div class="product-notify">
+			<div class="product-notify product-notify--basket">
 				<div class="product-notify__body">
 					<p class="product-notify__text">{{ __('translation.successfully_added_to_basket') }}</p>
+					<button class="product-notify__close-btn"></button>
+				</div>
+			</div>
+			<div class="product-notify product-notify--fav">
+				<div class="product-notify__body">
+					<p class="product-notify__text">{{ __('translation.successfully_added_to_fav') }}</p>
 					<button class="product-notify__close-btn"></button>
 				</div>
 			</div>

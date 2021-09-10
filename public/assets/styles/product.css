@@ -123,6 +123,10 @@
     background-position: center center;
 }
 
+.product-sidebar__wishlist-btn.active {
+    background-image: url("/assets/icons/heart-filled.svg");
+}
+
 .product-sidebar__price-item {
     font-family: "Playfair Display";
     font-size: 36px;
@@ -280,9 +284,14 @@ div.lg-outer.lg-zoomed img.lg-object.lg-image {
     height: 220px;
     -webkit-transition: right 0.3s ease;
     transition: right 0.3s ease;
+    z-index: 999;
 }
 
-.product-notify--active {
+.product-notify--basket.active {
+    right: 0;
+}
+
+.product-notify--fav.active {
     right: 0;
 }
 

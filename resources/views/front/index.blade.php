@@ -17,7 +17,8 @@
 										<h2 class="hero__title">{{ __('translation.accent_to_comfort_and_style') }}</h2>
 										<h3 class="hero__subtitle">{{ __('translation.new_women_collection') }}</h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/1" class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
+											<a href="/category-products/1"
+												class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
@@ -26,7 +27,8 @@
 										<h2 class="hero__title">{{ __('translation.discount_to_summer_collection') }}</h2>
 										<h3 class="hero__subtitle"></h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/1" class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
+											<a href="/category-products/1"
+												class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
@@ -35,7 +37,8 @@
 										<h2 class="hero__title">{{ __('translation.create_brutal_style') }}</h2>
 										<h3 class="hero__subtitle"></h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/2" class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
+											<a href="/category-products/2"
+												class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
@@ -115,6 +118,13 @@
 	</section>
 	<!-- /.catalogue -->
 
+	<div class="product-notify product-notify--fav">
+		<div class="product-notify__body">
+			<p class="product-notify__text">{{ __('translation.successfully_added_to_fav') }}</p>
+			<button class="product-notify__close-btn"></button>
+		</div>
+	</div>
+
 	<section class="products">
 		<div class="container-fluid">
 			<div class="row">
@@ -132,12 +142,13 @@
 						<span class="products__name">{{ $item['name_' . app()->getLocale()] }}</span>
 						<span class="products__sizes">
 							@if($item->sizes)
-								@foreach(explode(",", $item->sizes) as $size)
-								{{ $size }}
-								@endforeach
+							@foreach(explode(",", $item->sizes) as $size)
+							{{ $size }}
+							@endforeach
 							@endif
 						</span>
-						<span class="products__price">{{ number_format($item->price, 0,","," ") }} {{ __('translation.soum') }}</span>
+						<span class="products__price">{{ number_format($item->price, 0,","," ") }}
+							{{ __('translation.soum') }}</span>
 						<button class="products__btn fav-btn" onclick="selectFavourite({{$item->id}})"></button>
 						<!-- <a href="{{ route('add.favourite', $item->id) }}">favourite</a> -->
 					</a>
@@ -170,7 +181,8 @@
 			<div class="row">
 				<div class="col-xl-5 col-md-6">
 					<div class="banner__info banner__info--secondary">
-						<h2 class="banner__title banner__title--white">{{ __('translation.summer_discounts_on_all_men_polos') }}</h2>
+						<h2 class="banner__title banner__title--white">
+							{{ __('translation.summer_discounts_on_all_men_polos') }}</h2>
 						<div class="banner__btn-group">
 							<a href="/category-products/2" class="banner__btn">{{ __('translation.go_to_the_store') }}</a>
 						</div>
@@ -198,12 +210,13 @@
 						<span class="products__name">{{ $item['name_' . app()->getLocale()] }}</span>
 						<span class="products__sizes">
 							@if($item->sizes)
-								@foreach(explode(",", $item->sizes) as $size)
-								{{ $size }}
-								@endforeach
+							@foreach(explode(",", $item->sizes) as $size)
+							{{ $size }}
+							@endforeach
 							@endif
 						</span>
-						<span class="products__price">{{ number_format($item->price, 0,","," ") }} {{ __('translation.soum') }}</span>
+						<span class="products__price">{{ number_format($item->price, 0,","," ") }}
+							{{ __('translation.soum') }}</span>
 						<button class="products__btn fav-btn"></button>
 					</a>
 				</div>

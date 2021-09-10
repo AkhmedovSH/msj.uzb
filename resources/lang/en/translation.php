@@ -49,6 +49,7 @@ return [
     'characteristics_title' => 'Характеристики',
     'desc_title' => 'Описание',
     'successfully_added_to_basket' => 'Товар успешно добавлен в корзину',
+    'successfully_added_to_fav' => 'Товар успешно добавлен в избранное',
     'ordered' => 'Поздравляем! <br> Ваш заказ успешно оформлен',
     'ordered_managers' => 'Наши менеджеры свяжутся с вами в ближайшее время',
     'go_home' => 'Вернуться на главную',

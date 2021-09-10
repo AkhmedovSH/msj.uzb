@@ -55,13 +55,14 @@
 }
 
 .info__image {
-  max-height: 550px;
+  height: 550px;
   overflow: hidden;
 }
 
 .info__image img {
   margin: 0 auto;
   height: 100%;
+  object-fit: contain;
 }
 
 @media (max-width: 1400px) {
@@ -104,7 +105,7 @@
     margin: 20px 0;
   }
   .info__image {
-    max-height: 450px;
+    height: 450px;
   }
 }
 

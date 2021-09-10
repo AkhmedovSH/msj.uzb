@@ -17,8 +17,9 @@
 	<link rel="stylesheet" href="{{ asset('/assets/styles/navfooter.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
-	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=10')}}" />
+	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=11')}}" />
 	
+
 	<title>msj</title>
 </head>
 
@@ -44,27 +45,32 @@
 								<ul class="nav__list">
 									@foreach ($categories as $item)
 									<li class="nav__item nav__item--dropdown">
-										<a href="javascript:void(0);" class="nav__link">{{ $item['name_' . app()->getLocale()] }}</a>
+										<a href="javascript:void(0);"
+											class="nav__link">{{ $item['name_' . app()->getLocale()] }}</a>
 										<button class="dropdown-btn mobile-visible"></button>
 										<div class="nav--secondary">
 											@foreach ($item->childs as $item2)
 											<ul class="nav__list nav__list--secondary offset-lg-1">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">{{ $item2['name_' . app()->getLocale()] }}</li>
+												<li class="nav__item nav__item--secondary nav__item--secondary-title">
+													{{ $item2['name_' . app()->getLocale()] }}</li>
 												<div class="nav__item--secondary-dropdown">
 													@foreach ($item2->childs as $item3)
 													<li class="nav__item nav__item--secondary">
-														<a href="{{ route('category.products.menu', $item3->id) }}" class="nav__link nav__link--secondary">{{ $item3['name_' . app()->getLocale()] }}</a>
+														<a href="{{ route('category.products.menu', $item3->id) }}"
+															class="nav__link nav__link--secondary">{{ $item3['name_' . app()->getLocale()] }}</a>
 													</li>
 													@endforeach
 												</div>
 											</ul>
 											@endforeach
 											<ul class="nav__list nav__list--secondary">
-												<li class="nav__item nav__item--secondary nav__item--secondary-title">{{ __('translation.brands') }}</li>
+												<li class="nav__item nav__item--secondary nav__item--secondary-title">
+													{{ __('translation.brands') }}</li>
 												<div class="nav__item--secondary-dropdown">
 													@foreach ($item->brands as $brand)
 													<li class="nav__item nav__item--secondary">
-														<a href="{{ route('brand.products', $brand->id) }}" class="nav__link nav__link--secondary">{{ $brand->name }}</a>
+														<a href="{{ route('brand.products', $brand->id) }}"
+															class="nav__link nav__link--secondary">{{ $brand->name }}</a>
 													</li>
 													@endforeach
 												</div>
@@ -92,7 +98,11 @@
 
 							<div class="header__box">
 								<div class="activities">
-									<a href="/favourites" class="favourites-icon activities__link"></a>
+									<a href="/favourites" class="favourites-icon activities__link">
+										@if (Session::get('favourites'))
+										<span class="basket-icon__text"></span>
+										@endif
+									</a>
 									<a href="{{ route('basket') }}" class="basket-icon activities__link">
 										<span class="basket-icon__text">{{ Cart::count() }}</span>
 									</a>
@@ -248,4 +258,5 @@
 	</script>
 
 </body>
+
 </html>
