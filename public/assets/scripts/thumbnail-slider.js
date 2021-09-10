@@ -133,7 +133,7 @@ const addBtn = document.querySelector(".product-sidebar__basket-btn");
 const notifyModal = document.querySelector(".product-notify--basket");
 
 addBtn.addEventListener("click", () => {
-    notifyModal.classList.add("basket");
+    notifyModal.classList.add("active");
 
     setTimeout(() => {
         notifyModal.classList.remove("active");
