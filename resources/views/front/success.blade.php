@@ -94,7 +94,8 @@
 </style>
 
 <main>
-  <h1>{{ __('translation.ordered') }}</h1>
+  <h1>{{ __('translation.congratulation') }}</h1> <br>
+  <h1>{{ __('translation.ordered') }}</h1> <br>
   <h2>{{ __('translation.ordered_managers') }}</h2>
   <a href="/">{{ __('translation.go_home') }}</a>
 </main>

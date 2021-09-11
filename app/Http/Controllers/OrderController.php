@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\OrderProducts;
+use App\Models\ClickTransaction;
 use Illuminate\Support\Facades\DB;
 use Gloudemans\Shoppingcart\Facades\Cart;
 
@@ -103,6 +104,7 @@ class OrderController extends Controller
 
 	public function paymentSuccess($phone) {
 		$order = Order::where('phone', $phone)->latest('created_at')->first();
+		$transaction = ClickTransaction::where('phone',$order->phone)->latest('created_at')->first();
 		$order_products = DB::table('order_products')
 		->join('products', 'products.id' , '=', 'order_products.product_id')
 		->where('order_id', $order->id)
@@ -140,7 +142,7 @@ class OrderController extends Controller
 				foreach ($order_products as $value) {
 					$totalAmount += $value->price;
 					$txt .= "<b>" .  'Размер: ' . $value->size . "</b> " . "\n" .
-					 "<b>" .  $value->name . "</b> " .  number_format($value->price, 0,","," ") . ' сум | ' . $value->quantity . ' шт' . "\n";
+					 "<b>" .  $value->name_ru . "</b> " .  number_format($value->price, 0,","," ") . ' сум | ' . $value->quantity . ' шт' . "\n";
 				};
 				$txt .= "<b>" . "Стоимость доставки: " . "</b> " . number_format($deliveryPrice, 0,","," ") . " сум" . "\n";
 				$txt .= "<b>" . "Общая сумма: " . "</b> " . number_format($totalAmount, 0,","," ") . " сум";
@@ -163,8 +165,12 @@ class OrderController extends Controller
 				
 				curl_close($ch);
 		}
-		Cart::destroy();
-		return view('front.success');
-		 
+
+		if($transaction != null) {
+			Cart::destroy();
+			return view('front.success');
+		} else {
+			return view('front.basket');
+		}
 	}
 }

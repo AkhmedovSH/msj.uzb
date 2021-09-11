@@ -50,11 +50,12 @@ return [
     'desc_title' => 'Tavsif',
     'successfully_added_to_basket' => 'Mahsulot savatga muvaffaqiyatli qo\'shildi',
     'successfully_added_to_fav' => 'Mahsulot tanlangan muvaffaqiyatli qo\'shildi',
-    'ordered' => 'Tabriklaymiz! <br> Sizning buyurtmangiz muvaffaqiyatli yakunlandi',
+    'ordered' => 'Sizning buyurtmangiz muvaffaqiyatli yakunlandi',
     'ordered_managers' => 'Bizning menejerlar tez orada siz bilan bog\'lanishadi',
     'go_home' => 'Asosiy sahifaga qaytish',
     'accent_to_comfort_and_style' => 'Komfort va stil',
     'new_women_collection' => 'Ayollar kiyimlarining yangi to\'plami',
     'discount_to_summer_collection' => 'Yozgi kolleksiyaga 50% chegirma',
-    'create_brutal_style' => 'Shafqatsiz erkaklik uslubini yarating'
+    'create_brutal_style' => 'Shafqatsiz erkaklik uslubini yarating',
+		'congratulation' => 'Табриклаймиз!',
 ];
