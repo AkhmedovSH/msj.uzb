@@ -247,9 +247,9 @@
 											<img src="{{ '/uploads/posts/' . $item->image_preview }}" alt="Blog Image">
 										</span>
 										<span class="blog__caption">{{ $item['title_' . app()->getLocale()] }}</span>
-										<!-- <span class="blog__subtitle">
+										<span class="blog__subtitle">
 											{{ $item['mini_description_' . app()->getLocale()] }}
-										</span> -->
+										</span>
 									</a>
 								</div>
 							</li>
