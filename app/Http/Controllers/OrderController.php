@@ -103,7 +103,13 @@ class OrderController extends Controller
 	}
 
 	public function paymentSuccess($phone) {
-		$order = Order::where('phone', $phone)->latest('created_at')->first();
+	
+		$order = Order::where('phone', $phone)->latest('created_at')->where('status', 1)->first();
+
+		if(!isset($order)) {
+			return redirect()->route('basket');
+		}
+
 		$transaction = ClickTransaction::where('phone',$order->phone)->latest('created_at')->first();
 		$order_products = DB::table('order_products')
 		->join('products', 'products.id' , '=', 'order_products.product_id')
@@ -116,7 +122,7 @@ class OrderController extends Controller
 		} else {
 			$deliveryPrice = 40000;
 		}
-		
+		dd($order, $transaction);
 		$count = count($order_products);
 		if($count > 0) {
 				$order->status = 1;
@@ -169,8 +175,6 @@ class OrderController extends Controller
 		if($transaction != null) {
 			Cart::destroy();
 			return view('front.success');
-		} else {
-			return view('front.basket');
 		}
 	}
 }
