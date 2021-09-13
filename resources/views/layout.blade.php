@@ -47,7 +47,6 @@
 									<li class="nav__item nav__item--dropdown">
 										<a href="javascript:void(0);"
 											class="nav__link">{{ $item['name_' . app()->getLocale()] }}</a>
-										<button class="dropdown-btn mobile-visible"></button>
 										<div class="nav--secondary">
 											@foreach ($item->childs as $item2)
 											<ul class="nav__list nav__list--secondary offset-lg-1">

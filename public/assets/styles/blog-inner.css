@@ -60,7 +60,6 @@
 }
 
 .info__image img {
-  margin: 0 auto;
   height: 100%;
   object-fit: contain;
 }

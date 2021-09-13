@@ -701,6 +701,35 @@ button {
     display: -ms-flexbox;
     display: flex;
   }
+  .nav__item--dropdown>.nav__link {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav__item--dropdown>.nav__link.active::after {
+    transform: rotate(270deg);
+  }
+  .nav__item--dropdown>.nav__link::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 15px;
+    height: 20px;
+    -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+            transform: rotate(90deg);
+    -webkit-transition: -webkit-transform 0.3s ease;
+    transition: -webkit-transform 0.3s ease;
+    -o-transition: transform 0.3s ease;
+    filter: brightness(0);
+    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, -webkit-transform 0.3s ease;
+    background-image: url("/assets/icons/arrow-next.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
 }
 
 @media (max-width: 767px) {
