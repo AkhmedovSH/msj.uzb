@@ -13,13 +13,13 @@
 		</div>
 	</section>
 
-	<section class="desc">
+	{{-- <section class="desc">
 		<div class="container-fluid">
 			<p class="desc__text">
 				{{ $data['mini_description_' . app()->getLocale()] }}
 			</p>
 		</div>
-	</section>
+	</section> --}}
 
 	@if($data->block_1_subtitle_ru)
 	<section class="info">

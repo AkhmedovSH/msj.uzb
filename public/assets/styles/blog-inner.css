@@ -1,6 +1,6 @@
 .banner {
   height: 600px;
-  margin: 80px 0 0;
+  margin: 80px 0 50px;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -84,6 +84,9 @@
 }
 
 @media (max-width: 992px) {
+  .banner {
+    margin: 80px 0 50px;
+  }
   .banner__label {
     max-width: 370px;
     padding: 20px 30px;
