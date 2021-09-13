@@ -50,11 +50,12 @@ return [
     'desc_title' => 'Описание',
     'successfully_added_to_basket' => 'Товар успешно добавлен в корзину',
     'successfully_added_to_fav' => 'Товар успешно добавлен в избранное',
-    'ordered' => 'Поздравляем! <br> Ваш заказ успешно оформлен',
+    'ordered' => 'Ваш заказ успешно оформлен',
     'ordered_managers' => 'Наши менеджеры свяжутся с вами в ближайшее время',
     'go_home' => 'Вернуться на главную',
     'accent_to_comfort_and_style' => 'Акцент на комфорт и стиль',
     'new_women_collection' => 'Новая коллекция женской одежды',
     'discount_to_summer_collection' => '50% скидки на летнюю коллекцию',
-    'create_brutal_style' => 'Cоздайте брутальный мужской стиль'
+    'create_brutal_style' => 'Cоздайте брутальный мужской стиль',
+		'congratulation' => 'Поздравляем!',
 ];
