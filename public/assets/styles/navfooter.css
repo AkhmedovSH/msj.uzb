@@ -505,17 +505,20 @@ button {
   .nav__item:not(:last-child) {
     margin-right: 30px;
   }
+  .nav__item:last-child {
+    display: none;
+  }
 }
 
 @media (max-width: 1200px) {
   .nav {
-    margin-left: 75px;
+    margin-left: 50px;
+  }
+  .nav__item {
+    font-size: 14px;
   }
   .nav__item:not(:last-child) {
-    margin-right: 20px;
-  }
-  .nav__item:last-child {
-    display: none;
+    margin-right: 15px;
   }
   .footer__logo img {
     margin: 0 auto;
