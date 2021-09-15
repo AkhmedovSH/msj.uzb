@@ -17,7 +17,7 @@
 				</div>
 				<!-- Подкатегория менятся в зависимости от выбора категории. При добавлении новых категорий value должны совпадать с data-target -->
 				<div class="col-lg-3 col-md-6 col-12">
-					<select name="category" class="add-product__select" @change="selectCategory3()" v-model="sendData.category_id">
+					<select name="category" class="add-product__select" @change="selectCategory3(sendData.category_id)" v-model="sendData.category_id">
 						<option :value="item.id" v-for="(item, index) in categories3" :key="index">{{ item.name_ru }}</option>
 					</select>
 				</div>
@@ -253,6 +253,13 @@ import Editor from '@tinymce/tinymce-vue'
 					}
 				}
 			},
+			selectCategory3(category_id) {
+				for (let i = 0; i < this.brands.length; i++) {
+					if(this.brands[i]['category_id'] == category_id) {
+						this.brands = this.brands[i]
+					}
+				}
+			},
 			create() {
 				let formData = new FormData();
 				for (let i = 0; i < this.$refs.files.files.length; i++) {
@@ -268,7 +275,7 @@ import Editor from '@tinymce/tinymce-vue'
 				}
 
 				formData.append('name_ru', this.sendData.name_ru)
-				formData.append('name_ru', this.sendData.name_uz)
+				formData.append('name_uz', this.sendData.name_uz)
 				formData.append('price', this.sendData.price)
 				formData.append('description_ru', this.sendData.description_ru)
 				formData.append('description_uz', this.sendData.description_uz)

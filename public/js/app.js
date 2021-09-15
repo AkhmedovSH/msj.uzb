@@ -2969,6 +2969,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }
       }
     },
+    selectCategory3: function selectCategory3(category_id) {
+      for (var i = 0; i < this.brands.length; i++) {
+        if (this.brands[i]['category_id'] == category_id) {
+          this.brands = this.brands[i];
+        }
+      }
+    },
     create: function create() {
       var formData = new FormData();
 
@@ -2985,7 +2992,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       formData.append('name_ru', this.sendData.name_ru);
-      formData.append('name_ru', this.sendData.name_uz);
+      formData.append('name_uz', this.sendData.name_uz);
       formData.append('price', this.sendData.price);
       formData.append('description_ru', this.sendData.description_ru);
       formData.append('description_uz', this.sendData.description_uz);
@@ -23724,7 +23731,7 @@ var render = function() {
                         )
                       },
                       function($event) {
-                        return _vm.selectCategory3()
+                        return _vm.selectCategory3(_vm.sendData.category_id)
                       }
                     ]
                   }
