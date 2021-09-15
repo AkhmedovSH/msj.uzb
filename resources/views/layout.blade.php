@@ -18,7 +18,7 @@
 	<link rel="stylesheet" href="{{ asset('/assets/styles/basket.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=11')}}" />
-	
+
 
 	<title>msj</title>
 </head>
@@ -165,11 +165,11 @@
 					<div class="col-xl-2 col-md-3 col-sm-4 col-12">
 						<p class="footer__socials-title">{{ __('translation.socials') }}</p>
 						<ul class="footer__socials-list">
-							<!-- <li class="footer__socials-item">
-								<a href="javascript:void(0);" class="footer__socials-link">
+							<li class="footer__socials-item">
+								<a href="https://www.facebook.com/msjshop.uz/" class="footer__socials-link">
 									<img src="/assets/icons/facebook.svg" alt="Facebook Logo">
 								</a>
-							</li> -->
+							</li>
 							<li class="footer__socials-item">
 								<a href="https://www.instagram.com/msj__shop/" class="footer__socials-link">
 									<img src="/assets/icons/instagram.svg" alt="Instagram Logo">
