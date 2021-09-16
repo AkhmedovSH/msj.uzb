@@ -48,7 +48,7 @@
 	
 	<script src="{{ asset('/assets/libs/jquery/jquery.min.js')}}"></script>
 	<script src="{{ asset('/assets/scripts/admin.js')}}"></script>
-	<script src="{{ asset('/js/app.js?ver=5')}}"></script>
+	<script src="{{ asset('/js/app.js?ver=6')}}"></script>
 
 	<script src="/plugins/ckeditor/ckeditor.js"></script>
 	<script src="/plugins/ckfinder/ckfinder.js"></script>
