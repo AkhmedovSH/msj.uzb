@@ -1,7 +1,13 @@
 @extends('layout')
-@section('content')
 
-<link rel="stylesheet" href="{{ asset('/assets/styles/index.css?ver=6')}}" />
+@section('custom-styles')
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('/assets/styles/index.css?ver=7')}}" />
+@endsection
+
+@section('content')
 
 <main>
 
@@ -12,23 +18,38 @@
 					<div class="hero__splide splide">
 						<div class="splide__track">
 							<ul class="splide__list">
+								<li class="splide__slide splide__slide--fourth">
+									<div class="hero__box offset-1">
+										<h2 class="hero__title hero__title--montserrat">
+											AUTUMN <br>
+											COLLECTION <br>
+											2021
+										</h2>
+										{{-- <h3 class="hero__subtitle"></h3>
+										<div class="hero__btn-group">
+											<a href="/category-products/2" class="hero__btn">{{
+												__('translation.go_to_the_store') }}</a>
+										</div> --}}
+									</div>
+								</li>
 								<li class="splide__slide splide__slide--first">
 									<div class="hero__box offset-1">
 										<h2 class="hero__title">{{ __('translation.accent_to_comfort_and_style') }}</h2>
 										<h3 class="hero__subtitle">{{ __('translation.new_women_collection') }}</h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/1"
-												class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
+											<a href="/category-products/1" class="hero__btn">{{
+												__('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
 								<li class="splide__slide splide__slide--second">
 									<div class="hero__box offset-1">
-										<h2 class="hero__title">{{ __('translation.discount_to_summer_collection') }}</h2>
+										<h2 class="hero__title">{{ __('translation.discount_to_summer_collection') }}
+										</h2>
 										<h3 class="hero__subtitle"></h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/1"
-												class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
+											<a href="/category-products/1" class="hero__btn">{{
+												__('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
@@ -37,8 +58,8 @@
 										<h2 class="hero__title">{{ __('translation.create_brutal_style') }}</h2>
 										<h3 class="hero__subtitle"></h3>
 										<div class="hero__btn-group">
-											<a href="/category-products/2"
-												class="hero__btn">{{ __('translation.go_to_the_store') }}</a>
+											<a href="/category-products/2" class="hero__btn">{{
+												__('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
 								</li>
@@ -184,7 +205,8 @@
 						<h2 class="banner__title banner__title--white">
 							{{ __('translation.summer_discounts_on_all_men_polos') }}</h2>
 						<div class="banner__btn-group">
-							<a href="/category-products/2" class="banner__btn">{{ __('translation.go_to_the_store') }}</a>
+							<a href="/category-products/2" class="banner__btn">{{ __('translation.go_to_the_store')
+								}}</a>
 						</div>
 					</div>
 				</div>

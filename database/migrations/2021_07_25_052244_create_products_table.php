@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
 						$table->text('size_price')->nullable();
 						$table->text('description')->nullable();
 						$table->text('characteristics')->nullable();
-						$table->int('hide')->default(0);
+						$table->integer('hide')->default(0);
             $table->timestamps();
         });
     }

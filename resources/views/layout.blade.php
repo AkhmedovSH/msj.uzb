@@ -19,6 +19,7 @@
 	<link rel="stylesheet" href="{{ asset('/assets/styles/ordering-form.css')}}" />
 	<link rel="stylesheet" href="{{ asset('/assets/styles/product.css?ver=14')}}" />
 
+	@yield('custom-styles')
 
 	<title>msj</title>
 </head>

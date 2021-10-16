@@ -293,7 +293,7 @@ button {
   padding-left: 20px;
 }
 
-.nav__list--secondary:not(:last-child) {
+.nav__list--secondary:nth-child(2) {
   margin-right: 150px;
 }
 
@@ -586,7 +586,7 @@ button {
             flex-direction: column;
     padding: 0 0 0 0;
   }
-  .nav__list--secondary:not(:last-child) {
+  .nav__list--secondary:nth-child(2) {
     margin: 0;
   }
   .nav__item {
