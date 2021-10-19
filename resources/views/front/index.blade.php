@@ -25,14 +25,13 @@
 											COLLECTION <br>
 											2021
 										</h2>
-										{{-- <h3 class="hero__subtitle"></h3>
-										<div class="hero__btn-group">
+										<div class="hero__btn-group" style="z-index: 1">
 											<a href="/category-products/2" class="hero__btn">{{
 												__('translation.go_to_the_store') }}</a>
-										</div> --}}
+										</div>
 									</div>
 								</li>
-								<li class="splide__slide splide__slide--first">
+								{{-- <li class="splide__slide splide__slide--first">
 									<div class="hero__box offset-1">
 										<h2 class="hero__title">{{ __('translation.accent_to_comfort_and_style') }}</h2>
 										<h3 class="hero__subtitle">{{ __('translation.new_women_collection') }}</h3>
@@ -62,7 +61,7 @@
 												__('translation.go_to_the_store') }}</a>
 										</div>
 									</div>
-								</li>
+								</li> --}}
 							</ul>
 						</div>
 					</div>
